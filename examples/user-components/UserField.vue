@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import type { InputEmits, InputProps } from '@/components/input-controls/input/VInput.vue'
+import type { InputEmits, InputProps } from '@components/VInput.vue'
 
 export interface FieldProps extends InputProps {
   /** Текст перед полем ввода */

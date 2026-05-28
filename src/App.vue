@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
@@ -6,8 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink :to="{ name: 'input' }">VInput</RouterLink>
-        <RouterLink :to="{ name: 'field' }">VField</RouterLink>
+        <RouterLink :to="{ name: 'example-page' }">ExamplePage</RouterLink>
       </nav>
     </div>
   </header>
