@@ -27,8 +27,7 @@ const hasError = computed(() => true)
       <p>{{ prefix }}</p>
     </div>
 
-    <VInput :id v-model="model" autocomplete="off" maxlength="5" minlength="3" type="df" />
-    <VTextarea :rows="4"/>
+    <VInput :id v-model="model" :maxlength="5" :minlength="3" autocomplete="off" type="df" />
 
     <div v-if="suffix" class="v-field__suffix">
       <p>{{ suffix }}</p>

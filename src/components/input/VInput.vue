@@ -1,19 +1,15 @@
 <script lang="ts" setup>
-export interface InputProps {
+export type BaseInputProps = {
   /** Автозаполнение */
   autocomplete?: string
   /** Состояние "отключено" */
   disabled?: boolean
   /** Идентификатор */
   id?: string
-  /** Максимальное значение */
-  max?: string | number
   /** Максимальная длина строки  */
-  maxlength?: string | number
-  /** Максимальное значение */
-  min?: string | number
+  maxlength?: number
   /** Минимальная длина строки */
-  minlength?: string | number
+  minlength?: number
   /** Имя */
   name?: string
   /** Строка отображаемая в случае отсутствия какого-либо значения */
@@ -22,6 +18,13 @@ export interface InputProps {
   readonly?: boolean
   /** Поле ввода должно быть заполнено */
   required?: boolean
+}
+
+export type InputProps = BaseInputProps & {
+  /** Максимальное значение */
+  max?: number
+  /** Максимальное значение */
+  min?: number
   /** Тип */
   type?: string
 }

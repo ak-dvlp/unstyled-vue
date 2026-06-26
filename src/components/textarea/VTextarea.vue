@@ -1,23 +1,10 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
+import type { BaseInputProps } from '@components/input/VInput.vue'
 
-export interface TextareaProps {
-  /** Автозаполнение */
-  autocomplete?: string
+export type TextareaProps = BaseInputProps & {
   /** Автоматическое исправление орфографических ошибок */
   autocorrect?: 'on' | 'off'
-  /** Состояние "отключено" */
-  disabled?: boolean
-  /** Идентификатор */
-  id?: string
-  /** Максимальная длина строки  */
-  maxlength?: string | number
-  /** Минимальная длина строки */
-  minlength?: string | number
-  /** Имя */
-  name?: string
-  /** Строка отображаемая в случае отсутствия какого-либо значения */
-  placeholder?: string
   /** Состояние "только для чтения" */
   readonly?: boolean
   /** Поле ввода должно быть заполнено */
