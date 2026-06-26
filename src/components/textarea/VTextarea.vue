@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-export interface InputProps {
+import { onMounted } from 'vue'
+
+export interface TextareaProps {
   /** Автозаполнение */
   autocomplete?: string
+  /** Автоматическое исправление орфографических ошибок */
+  autocorrect?: 'on' | 'off'
   /** Состояние "отключено" */
   disabled?: boolean
   /** Идентификатор */
   id?: string
-  /** Максимальное значение */
-  max?: string | number
   /** Максимальная длина строки  */
   maxlength?: string | number
-  /** Максимальное значение */
-  min?: string | number
   /** Минимальная длина строки */
   minlength?: string | number
   /** Имя */
@@ -22,24 +22,26 @@ export interface InputProps {
   readonly?: boolean
   /** Поле ввода должно быть заполнено */
   required?: boolean
-  /** Тип */
-  type?: string
+  /** Количество видимых строк области текста. */
+  rows?: number
 }
 
-const props = withDefaults(defineProps<InputProps>(), {
+const props = withDefaults(defineProps<TextareaProps>(), {
   autocomplete: 'off',
-  type: 'text',
+  autocorrect: 'off',
 })
 
-// export interface InputEmits {
-//   (e: 'update:modelValue', value: string | number | null): void
-// }
+const { rows } = props
 
-// defineEmits<InputEmits>()
+onMounted(() => {
+  if (rows && typeof rows === 'number' && rows <= 0) {
+    console.warn('Значение свойства rows компонента Textarea должно быть положительным числом не равным нулю.')
+  }
+})
 
 const model = defineModel<string | number | null>()
 </script>
 
 <template>
-  <input v-bind="props" v-model="model" />
+  <textarea v-bind="props" v-model="model" />
 </template>

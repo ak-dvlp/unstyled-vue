@@ -7,6 +7,7 @@ const md = ref('3')
 </script>
 
 <template>
+  {{ md }}
   <UserField v-model="md" />
   <h1>Страница компонента VField 77</h1>
 </template>
