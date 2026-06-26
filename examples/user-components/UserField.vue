@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import type { InputEmits, InputProps } from '@components/VInput.vue'
+import type { InputEmits, InputProps } from '@components/input/VInput.vue'
 
 export interface FieldProps extends InputProps {
   /** Текст перед полем ввода */
@@ -12,13 +12,9 @@ export interface FieldProps extends InputProps {
 
 const { suffix } = defineProps<FieldProps>()
 
-interface FieldEmits extends InputEmits {
-  (e: 'input', value: string): void
-}
+defineEmits<InputEmits>()
 
-defineEmits<FieldEmits>()
-
-const model = defineModel({ type: String })
+const model = defineModel<string | number | null>()
 
 const hasError = computed(() => true)
 </script>
@@ -33,7 +29,7 @@ const hasError = computed(() => true)
       <p>{{ prefix }}</p>
     </div>
 
-    <VInput :id v-model="model" maxlength="5" minlength="3" type="text" />
+    <VInput :id v-model="model" maxlength="5" minlength="3" type="df" />
 
     <div v-if="suffix" class="v-field__suffix">
       <p>{{ suffix }}</p>

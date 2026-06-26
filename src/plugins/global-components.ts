@@ -1,4 +1,4 @@
-import VInput from '@components/VInput.vue'
+import VInput from '@components/input/VInput.vue'
 
 import type { App } from 'vue'
 
