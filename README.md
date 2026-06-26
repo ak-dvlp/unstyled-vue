@@ -5,17 +5,17 @@
 ### Установка пакетов
 
 ```sh
-npm install
+yarn install
 ```
 
 ### Запуск сервера разработки
 
 ```sh
-npm run dev
+yarn dev
 ```
 
 ### Запуск тестов компонентов в режиме UI mode
 
 ```sh
-npm run test-ct
+yarn test-ct
 ```
