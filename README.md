@@ -8,6 +8,12 @@
 yarn install
 ```
 
+### Интерактивное обновление пакетов
+
+```sh
+yarn upgrade-interactive --latest
+```
+
 ### Запуск сервера разработки
 
 ```sh
