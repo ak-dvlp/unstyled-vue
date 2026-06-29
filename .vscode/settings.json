@@ -9,5 +9,5 @@
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "cSpell.words": ["Aleksandr", "ianvs"]
+  "cSpell.words": ["Aleksandr", "ianvs", "maxlength"]
 }

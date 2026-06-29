@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import type { BaseInputProps } from '@components/input/VInput.vue'
+import type { BaseInputProps } from '../base.props'
 
-export type TextareaProps = BaseInputProps & {
+export interface TextareaProps extends BaseInputProps {
   /** Автоматическое исправление орфографических ошибок */
   autocorrect?: 'on' | 'off'
   /** Состояние "только для чтения" */
