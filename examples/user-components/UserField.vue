@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import type { InputProps } from '@components/input/VInput.vue'
+import { type VInputProps } from '@/index'
 
-export interface FieldProps extends InputProps {
+export interface FieldProps extends VInputProps {
   /** Текст перед полем ввода */
   prefix?: string
   /** Текст после поля ввода */

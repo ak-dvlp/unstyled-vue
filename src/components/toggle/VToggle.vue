@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-export interface ToggleProps {
+export interface VToggleProps {
   a: string
 }
 
-const props = withDefaults(defineProps<ToggleProps>(), {
+const props = withDefaults(defineProps<VToggleProps>(), {
   a: '',
 })
 

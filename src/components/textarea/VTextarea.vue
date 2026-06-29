@@ -2,7 +2,7 @@
 import { onMounted } from 'vue'
 import type { BaseInputProps } from '../base.props'
 
-export interface TextareaProps extends BaseInputProps {
+export interface VTextareaProps extends BaseInputProps {
   /** Автоматическое исправление орфографических ошибок */
   autocorrect?: 'on' | 'off'
   /** Состояние "только для чтения" */
@@ -13,7 +13,7 @@ export interface TextareaProps extends BaseInputProps {
   rows?: number
 }
 
-const props = withDefaults(defineProps<TextareaProps>(), {
+const props = withDefaults(defineProps<VTextareaProps>(), {
   autocomplete: 'off',
   autocorrect: 'off',
 })

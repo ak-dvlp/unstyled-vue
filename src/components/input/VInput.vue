@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { BaseInputProps } from '../base.props'
 
-export interface InputProps extends BaseInputProps {
+export interface VInputProps extends BaseInputProps {
   /** Максимальное значение */
   max?: number
   /** Максимальное значение */
@@ -10,7 +10,7 @@ export interface InputProps extends BaseInputProps {
   type?: string
 }
 
-const props = withDefaults(defineProps<InputProps>(), {
+const props = withDefaults(defineProps<VInputProps>(), {
   autocomplete: 'off',
   type: 'text',
 })

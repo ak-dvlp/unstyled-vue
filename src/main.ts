@@ -1,6 +1,6 @@
 import './assets/main.css'
 
-import globalComponents from '@src/plugins/global-components.ts'
+import globalComponents from '@/plugins/global-components.ts'
 
 import { createApp } from 'vue'
 
