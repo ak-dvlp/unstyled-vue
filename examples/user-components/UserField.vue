@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import { type VInputProps } from '@/index'
+import type { BaseInputProps } from '@/index'
 
-export interface FieldProps extends VInputProps {
+export interface FieldProps extends BaseInputProps {
   /** Текст перед полем ввода */
   prefix?: string
   /** Текст после поля ввода */
@@ -27,7 +27,7 @@ const hasError = computed(() => true)
       <p>{{ prefix }}</p>
     </div>
 
-    <VInput :id v-model="model" :maxlength="5" :minlength="3" autocomplete="off" type="df" />
+    <BaseInput :id v-model="model" :maxlength="5" :minlength="3" autocomplete="off" type="df" />
 
     <div v-if="suffix" class="v-field__suffix">
       <p>{{ suffix }}</p>

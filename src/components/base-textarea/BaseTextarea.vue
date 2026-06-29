@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import type { BaseInputProps } from '../base.props'
+import type { BaseFieldProps } from '../../types/base-field-props'
 
-export interface VTextareaProps extends BaseInputProps {
+export interface BaseTextareaProps extends BaseFieldProps {
   /** Автоматическое исправление орфографических ошибок */
   autocorrect?: 'on' | 'off'
   /** Состояние "только для чтения" */
@@ -13,7 +13,7 @@ export interface VTextareaProps extends BaseInputProps {
   rows?: number
 }
 
-const props = withDefaults(defineProps<VTextareaProps>(), {
+const props = withDefaults(defineProps<BaseTextareaProps>(), {
   autocomplete: 'off',
   autocorrect: 'off',
 })

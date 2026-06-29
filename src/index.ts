@@ -1,3 +1,5 @@
-export { VInput, type VInputProps } from './components/input/index'
-export { VTextarea, type VTextareaProps } from './components/textarea/index'
-export { VToggle, type VToggleProps } from './components/toggle/index'
+export { BaseInput, type BaseInputProps } from './components/base-input/index'
+export { BaseSwitch, type BaseSwitchProps } from './components/base-switch/index'
+export { BaseTextarea, type BaseTextareaProps } from './components/base-textarea/index'
+export { BaseToggle, type BaseToggleProps } from './components/base-toggle/index'
+export { SegmentedControl, type SegmentedControlProps } from './components/segmented-control/index'

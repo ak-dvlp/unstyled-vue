@@ -1,4 +1,4 @@
-export interface BaseInputProps {
+export interface BaseFieldProps {
   /** Автозаполнение */
   autocomplete?: string
   /** Состояние "отключено" */
