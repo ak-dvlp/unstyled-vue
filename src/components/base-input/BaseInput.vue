@@ -2,22 +2,33 @@
 import type { BaseFieldProps } from '../../types/base-field-props'
 
 export interface BaseInputProps extends BaseFieldProps {
-  /** Максимальное значение */
+  /** Максимальное значение. */
   max?: number
-  /** Максимальное значение */
+  /** Максимальное значение. */
   min?: number
-  /** Тип */
+  /** Тип. */
   type?: string
 }
 
-const props = withDefaults(defineProps<BaseInputProps>(), {
-  autocomplete: 'off',
-  type: 'text',
-})
+const { autocomplete = 'off', type = 'text' } = defineProps<BaseInputProps>()
 
 const model = defineModel<string | number | null>()
 </script>
 
 <template>
-  <input v-bind="props" v-model="model" />
+  <input
+    :id
+    v-model="model"
+    :autocomplete
+    :disabled
+    :max
+    :maxlength
+    :min
+    :minlength
+    :name
+    :placeholder
+    :readonly
+    :required
+    :type
+  />
 </template>

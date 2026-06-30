@@ -3,22 +3,13 @@ import { onMounted } from 'vue'
 import type { BaseFieldProps } from '../../types/base-field-props'
 
 export interface BaseTextareaProps extends BaseFieldProps {
-  /** Автоматическое исправление орфографических ошибок */
+  /** Автоматическое исправление орфографических ошибок. */
   autocorrect?: 'on' | 'off'
-  /** Состояние "только для чтения" */
-  readonly?: boolean
-  /** Поле ввода должно быть заполнено */
-  required?: boolean
   /** Количество видимых строк области текста. */
   rows?: number
 }
 
-const props = withDefaults(defineProps<BaseTextareaProps>(), {
-  autocomplete: 'off',
-  autocorrect: 'off',
-})
-
-const { rows } = props
+const { autocomplete = 'off', autocorrect = 'off', rows } = defineProps<BaseTextareaProps>()
 
 onMounted(() => {
   if (rows && typeof rows === 'number' && rows <= 0) {
@@ -30,5 +21,18 @@ const model = defineModel<string | number | null>()
 </script>
 
 <template>
-  <textarea v-bind="props" v-model="model" />
+  <textarea
+    :id
+    v-model="model"
+    :autocomplete
+    :autocorrect
+    :disabled
+    :maxlength
+    :minlength
+    :name
+    :placeholder
+    :readonly
+    :required
+    :rows
+  />
 </template>
