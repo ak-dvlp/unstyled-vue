@@ -4,7 +4,7 @@ import type { BaseFieldProps } from '../../types/base-field-props'
 export interface BaseInputProps extends BaseFieldProps {
   /** Максимальное значение. */
   max?: number
-  /** Максимальное значение. */
+  /** Минимальное значение. */
   min?: number
   /** Тип. */
   type?: string
