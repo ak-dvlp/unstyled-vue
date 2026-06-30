@@ -1,11 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": [
-    "env.d.ts",
+    "examples/**/*",
+    "examples/**/*.vue",
     "src/**/*",
     "src/**/*.vue",
-    "examples/**/*",
-    "examples/**/*.vue"
+    "tests/**/*",
+    "env.d.ts"
     // "examples/types/components.d.ts"
   ],
   "exclude": ["src/**/__tests__/*"],
@@ -16,7 +17,6 @@
     // Path mapping for cleaner imports.
     "paths": {
       "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
       "@examples/*": ["./examples/*"]
     },
 

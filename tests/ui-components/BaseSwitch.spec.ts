@@ -1,8 +1,7 @@
+import BaseSwitch from '@/components/base-switch/BaseSwitch.vue'
 import { expect, test } from '@playwright/experimental-ct-vue'
 
-import SegmentedControl from '../SegmentedControl.vue'
-
 test('Первоначальная проверка', async ({ mount }) => {
-  const component = await mount(SegmentedControl, { props: { name: 'textarea' } })
+  const component = await mount(BaseSwitch, { props: { name: 'textarea' } })
   await expect(component).toHaveAttribute('type', 'textarea')
 })
