@@ -9,7 +9,7 @@
   "author": "Aleksandr-86 <Aleksandr-Karpenko-86@yandex.ru>",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
+    "demo": "vite --config examples/vite.config.ts",
     "build": "run-p type-check \"build-only {@}\" --",
     "test:unit": "vitest",
     "test:e2e": "playwright test",

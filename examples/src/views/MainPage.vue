@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import UserField from '@examples/user-components/UserField.vue'
+import UserField from '@examples/src/user-components/UserField.vue'
 
 import { ref } from 'vue'
 

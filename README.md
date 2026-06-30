@@ -14,10 +14,10 @@ yarn install
 yarn upgrade-interactive --latest
 ```
 
-### Запуск сервера разработки
+### Запуск демонстрационной версии
 
 ```sh
-yarn dev
+yarn demo
 ```
 
 ### Запуск тестов компонентов в режиме UI mode

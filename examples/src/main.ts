@@ -1,9 +1,8 @@
 import './assets/main.css'
 
-import globalComponents from '@/plugins/global-components.ts'
-
 import { createApp } from 'vue'
 
+import globalComponents from '../src/plugins/global-components.ts'
 import App from './App.vue'
 import router from './router'
 
