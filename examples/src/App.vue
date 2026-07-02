@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-import { RouterLink, RouterView } from 'vue-router'
-import ThemeToggleTemp from '@examples/src/user-components/ThemeToggleTemp.vue'
+import { RouterView } from 'vue-router'
+import ThemeToggle from '@examples/src/user-components/ThemeToggle.vue'
 </script>
 
 <template>
   <div class="absolute left-0 top-0 grid h-screen w-screen grid-rows-[3rem_auto] overflow-hidden">
-    <header class="flex justify-end p-1">
-      <ThemeToggleTemp />
+    <header class="shadow-card flex p-1">
+      <ThemeToggle />
     </header>
 
-    <main>
-      <nav class="tw-flex">
+    <main class="p-3.75">
+      <!-- <nav class="tw-flex">
         <RouterLink :to="{ name: 'main-page' }">Главная страница</RouterLink>
-      </nav>
+      </nav> -->
 
       <RouterView />
     </main>

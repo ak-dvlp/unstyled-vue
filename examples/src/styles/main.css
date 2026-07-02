@@ -1,0 +1,12 @@
+@import './base.css';
+@import 'tailwindcss';
+
+/* Сопоставление семантических переменных с пользовательскими вспомогательными классами Tailwind */
+@theme inline {
+  --shadow-card: 2px 3px 10px 0 var(--color-border);
+  --color-theme-light: var(--neutral-100);
+  --color-theme-dark: var(--neutral-800);
+}
+
+/* Стили компонентов  */
+@import './components/switch.css';

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { BaseFieldProps } from '../../types/base-field-props'
+import type { BaseFieldProps } from '../../types/base-props'
 
 export interface BaseInputProps extends BaseFieldProps {
   /** Максимальное значение. */

@@ -9,7 +9,7 @@ export interface SegmentedControlProps {
 }
 
 withDefaults(defineProps<SegmentedControlProps>(), {
-  name: 'v-toggle',
+  name: 'v-segmented-control',
 })
 
 const model = defineModel<string | boolean>()

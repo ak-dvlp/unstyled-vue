@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import type { BaseFieldProps } from '../../types/base-field-props'
+import type { BaseFieldProps } from '../../types/base-props'
 
 export interface BaseTextareaProps extends BaseFieldProps {
   /** Автоматическое исправление орфографических ошибок. */

@@ -1,12 +1,20 @@
 <script lang="ts" setup>
-import UserField from '@examples/src/user-components/UserField.vue'
+import UserSwitch from '../user-components/UserSwitch.vue'
 
-import { ref } from 'vue'
+import { reactive } from 'vue'
 
-const md = ref('3')
+const state = reactive({
+  model: '',
+  disabled: false,
+  error: false,
+})
 </script>
 
 <template>
-  Модель {{ md }}
-  <UserField v-model="md" />
+  <div class="flex flex-col">
+    <UserSwitch v-model="state.disabled" label="disabled" />
+    <UserSwitch v-model="state.error" label="error" />
+
+    <UserSwitch v-model="state.model" :disabled="state.disabled" :error="state.error" label="UserSwitch" />
+  </div>
 </template>
