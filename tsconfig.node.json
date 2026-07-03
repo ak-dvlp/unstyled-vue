@@ -7,7 +7,7 @@
     "cypress.config.*",
     "playwright.config.*",
     "eslint.config.*",
-    "examples/vite.config.ts"
+    "vite.config.ts"
   ],
   "compilerOptions": {
     // Most tools use transpilation instead of Node.js's native type-stripping.
