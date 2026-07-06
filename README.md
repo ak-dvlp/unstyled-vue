@@ -66,16 +66,16 @@ yarn test-ct
 │   └── user-components/ - тесты пользовательских компонентов
 ├── .editorconfig - конфигурация среды разработки
 ├── .eslintcache - кэш результатов проверки ESLint
+├── .gitattributes
 ├── .gitignore
 ├── .nvmrc
 ├── .prettierrc
-├── README.md
 ├── env.d.ts
 ├── eslint.config.ts
 ├── package.json
 ├── playwright.config.ts - конфигурация Playwright (сквозные тесты)
 ├── playwright-ct.config.ts - конфигурация Playwright (тесты компонентов)
-├── tailwind.config.ts
+├── README.md
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json
