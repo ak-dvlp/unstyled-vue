@@ -1,3 +1,4 @@
+export { BaseCheckbox, type BaseCheckboxProps } from './components/base-checkbox/index'
 export { BaseInput, type BaseInputProps } from './components/base-input/index'
 export { BaseSwitch, type BaseSwitchProps } from './components/base-switch/index'
 export { BaseTextarea, type BaseTextareaProps } from './components/base-textarea/index'

@@ -18,3 +18,20 @@ export interface BaseFieldProps {
   /** Поле обязательно к заполнению. */
   required?: boolean
 }
+
+export interface BaseCheckboxProps {
+  /** Состояние "отключено". */
+  disabled?: boolean
+  /** Активация промежуточного состояния */
+  // indeterminate?: boolean
+  /** Ложное значение */
+  falseValue?: string | number | null
+  /** Ярлык */
+  label?: string
+  /** Имя */
+  name?: string
+  /** Состояние "только для чтения" */
+  readonly?: boolean
+  /** Истинное значение */
+  trueValue?: string | number | null
+}

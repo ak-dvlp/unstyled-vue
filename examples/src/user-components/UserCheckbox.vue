@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import type { BaseSwitchProps } from '@/index'
+import type { BaseCheckboxProps } from '@/index'
 
-interface UserSwitchProps extends BaseSwitchProps {
+interface UserCheckboxProps extends BaseCheckboxProps {
   /** Наличие ошибки */
   error?: boolean
 }
 
-const { disabled, error, falseValue, label, name, readonly, trueValue } = defineProps<UserSwitchProps>()
+const { disabled, error, falseValue, label, name, readonly, trueValue } = defineProps<UserCheckboxProps>()
 
 const model = defineModel<string | number | boolean | null | undefined>()
 
@@ -26,7 +26,7 @@ const thumbBackground = computed(() => {
 
 <template>
   <div class="user-switch">
-    <BaseSwitch v-model="model" :disabled :false-value :label :name :readonly :true-value />
+    <BaseCheckbox v-model="model" :disabled :false-value :label :name :readonly :true-value />
   </div>
 </template>
 

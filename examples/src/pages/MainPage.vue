@@ -1,7 +1,6 @@
 <script setup lang="ts">
+import UserSwitch from '@examples/src/user-components/UserSwitch.vue'
 import { reactive } from 'vue'
-
-import UserSwitch from '../user-components/UserSwitch.vue'
 
 const state = reactive({
   model: '',
