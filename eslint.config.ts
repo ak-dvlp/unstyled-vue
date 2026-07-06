@@ -2,14 +2,15 @@ import pluginVitest from '@vitest/eslint-plugin'
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
 import { globalIgnores } from 'eslint/config'
 import skipFormatting from 'eslint-config-prettier/flat'
+import perfectionist from 'eslint-plugin-perfectionist'
 import pluginPlaywright from 'eslint-plugin-playwright'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import pluginVue from 'eslint-plugin-vue'
 
 export default defineConfigWithVueTs(
   {
-    name: 'app/files-to-lint',
     files: ['**/*.{vue,ts}'],
+    name: 'app/files-to-lint',
   },
 
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
@@ -20,15 +21,34 @@ export default defineConfigWithVueTs(
   {
     name: 'app/sorting-rules',
     plugins: {
+      perfectionist,
       'simple-import-sort': simpleImportSort,
     },
     rules: {
-      'simple-import-sort/imports': 'error',
+      'perfectionist/sort-interfaces': [
+        'error',
+        {
+          order: 'asc',
+          type: 'alphabetical',
+        },
+      ],
+
+      'perfectionist/sort-objects': [
+        'error',
+        {
+          order: 'asc',
+          type: 'alphabetical',
+        },
+      ],
+
       'simple-import-sort/exports': 'error',
+
+      'simple-import-sort/imports': 'error',
 
       'vue/attributes-order': [
         'error',
         {
+          alphabetical: true,
           order: [
             'DEFINITION',
             'LIST_RENDERING',
@@ -43,7 +63,6 @@ export default defineConfigWithVueTs(
             'EVENTS',
             'CONTENT',
           ],
-          alphabetical: true,
         },
       ],
     },

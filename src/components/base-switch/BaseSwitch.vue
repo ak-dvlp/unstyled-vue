@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import type { BaseCheckboxProps } from '../../types/base-props'
 
-const { falseValue, readonly, trueValue } = defineProps<BaseCheckboxProps>()
+const { disabled, falseValue, readonly, trueValue } = defineProps<BaseCheckboxProps>()
 
 const model = defineModel<boolean | string | number | null>()
 

@@ -25,7 +25,7 @@ const thumbBackground = computed(() => {
 </script>
 
 <template>
-  <div class="user-switch">
+  <div class="user-checkbox">
     <BaseCheckbox v-model="model" :disabled :false-value :label :name :readonly :true-value />
   </div>
 </template>
