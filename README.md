@@ -120,13 +120,12 @@ yarn test-ct
 }
 ```
 
-`ESLint` выполняет сортировку:  
-а) Vue-атрибутов блока `<template>` при помощи плагина `eslint-plugin-vue`;  
-б) Импортов и экспортов во Vue-компонентах и файлах TypeScript при помощи плагина `eslint-plugin-simple-import-sort`.
+`ESLint` выполняет сортировку:
+а) Vue-атрибутов блока `<template>` (`eslint-plugin-vue`);  
+б) Импортов и экспортов во Vue-компонентах и TypeScript-файлах (`eslint-plugin-simple-import-sort`).
 
 `Prettier` выполняет сортировку:
-
-а) Служебных классов Tailwind в значении атрибута class при помощи плагина `prettier-plugin-tailwindcss`;
-б) CSS-правил блока `<style>` однофайловых Vue-компонентов используя плагин `prettier-plugin-css-order`.
+а) Служебных классов Tailwind в значении атрибута class (`prettier-plugin-tailwindcss`);
+б) CSS-правил блока `<style>` однофайловых Vue-компонентов (`prettier-plugin-css-order`).
 
 </details>
