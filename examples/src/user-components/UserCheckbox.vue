@@ -4,8 +4,12 @@ import { computed } from 'vue'
 import type { BaseCheckboxProps } from '@/index'
 
 interface UserCheckboxProps extends BaseCheckboxProps {
-  /** Наличие ошибки */
+  a: number
+  zs: number
+
   error?: boolean
+  /** Наличие ошибки */
+  z?: number
 }
 
 const { disabled, error, falseValue, label, name, readonly, trueValue } = defineProps<UserCheckboxProps>()

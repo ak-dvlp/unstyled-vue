@@ -5,6 +5,8 @@ import skipFormatting from 'eslint-config-prettier/flat'
 import perfectionist from 'eslint-plugin-perfectionist'
 import pluginPlaywright from 'eslint-plugin-playwright'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
+// @ts-expect-error Плагин не предоставляет определения типов TypeScript
+import sortDestructureKeys from 'eslint-plugin-sort-destructure-keys'
 import pluginVue from 'eslint-plugin-vue'
 
 export default defineConfigWithVueTs(
@@ -23,26 +25,37 @@ export default defineConfigWithVueTs(
     plugins: {
       perfectionist,
       'simple-import-sort': simpleImportSort,
+      'sort-destructure-keys': sortDestructureKeys,
     },
     rules: {
       'perfectionist/sort-interfaces': [
         'error',
         {
-          order: 'asc',
           type: 'alphabetical',
+          order: 'asc',
+
+          newlinesBetween: 1,
+
+          groups: ['required-properties', 'optional-properties', 'unknown'],
+          customGroups: [
+            {
+              groupName: 'required-properties',
+              selector: 'property',
+              modifiers: ['required'],
+            },
+            {
+              groupName: 'optional-properties',
+              selector: 'property',
+              modifiers: ['optional'],
+            },
+          ],
         },
       ],
 
-      'perfectionist/sort-objects': [
-        'error',
-        {
-          order: 'asc',
-          type: 'alphabetical',
-        },
-      ],
+      'perfectionist/sort-objects': 'off',
+      'sort-destructure-keys/sort-destructure-keys': ['error', { caseSensitive: false }],
 
       'simple-import-sort/exports': 'error',
-
       'simple-import-sort/imports': 'error',
 
       'vue/attributes-order': [

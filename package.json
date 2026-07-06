@@ -18,7 +18,10 @@
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --fix --cache",
     "format": "prettier --write --experimental-cli src/",
-    "test-ct": "playwright test -c playwright-ct.config.ts --ui"
+    "test-ct": "playwright test -c playwright-ct.config.ts --ui",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.1",
@@ -42,6 +45,7 @@
     "eslint-plugin-perfectionist": "5.9.1",
     "eslint-plugin-playwright": "2.10.4",
     "eslint-plugin-simple-import-sort": "13.0.0",
+    "eslint-plugin-sort-destructure-keys": "3.0.0",
     "eslint-plugin-vue": "10.9.2",
     "jiti": "2.7.0",
     "jsdom": "29.1.1",
@@ -53,6 +57,7 @@
     "typescript": "6.0.3",
     "vite": "8.1.0",
     "vite-plugin-vue-devtools": "8.1.1",
+    "vitepress": "2.0.0-alpha.17",
     "vitest": "4.1.9",
     "vue-tsc": "3.3.5"
   },

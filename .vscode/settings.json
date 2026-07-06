@@ -12,5 +12,5 @@
   },
   "eslint.validate": ["javascript", "typescript", "vue"],
 
-  "cSpell.words": ["Aleksandr", "ianvs", "maxlength"]
+  "cSpell.words": ["Aleksandr", "ianvs", "maxlength", "Vite", "vitepress", "деструктуризации"]
 }
