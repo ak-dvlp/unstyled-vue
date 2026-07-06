@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 
 export interface BaseSwitchProps {
@@ -63,7 +63,7 @@ function onChange(evt: Event) {
 
 <template>
   <label class="switch">
-    <input class="visually-hidden" :checked="isChecked" :disabled :name :readonly type="checkbox" @change="onChange" />
+    <input :checked="isChecked" class="visually-hidden" :disabled :name :readonly type="checkbox" @change="onChange" />
     <div class="switch__body"></div>
     <span class="switch__label">{{ label }}</span>
   </label>

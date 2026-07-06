@@ -1,28 +1,31 @@
 import pluginVitest from '@vitest/eslint-plugin'
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
+import { globalIgnores } from 'eslint/config'
 import skipFormatting from 'eslint-config-prettier/flat'
 import pluginPlaywright from 'eslint-plugin-playwright'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import pluginVue from 'eslint-plugin-vue'
-import { globalIgnores } from 'eslint/config'
 
 export default defineConfigWithVueTs(
   {
     name: 'app/files-to-lint',
-    files: ['**/*.{vue,ts,mts,tsx}'],
+    files: ['**/*.{vue,ts}'],
   },
 
-  // 1. This globalIgnores helper function takes up the name "globalIgnores"
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
 
   ...pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
 
-  // 2. This new block handles your Vue attribute rules without reusing the restricted name
   {
-    name: 'app/vue-attribute-rules',
-    files: ['**/*.vue'],
-    // Use the explicitly imported plugin identifier object to safely target the rule
+    name: 'app/sorting-rules',
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+    },
     rules: {
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+
       'vue/attributes-order': [
         'error',
         {
@@ -34,9 +37,9 @@ export default defineConfigWithVueTs(
             'GLOBAL',
             'UNIQUE',
             'SLOT',
-            'TWO_WAY_BINDING', // This will now catch your v-model binds!
+            'TWO_WAY_BINDING',
             'OTHER_DIRECTIVES',
-            'OTHER_ATTR', // This catches normal text attributes
+            'OTHER_ATTR',
             'EVENTS',
             'CONTENT',
           ],
@@ -48,7 +51,7 @@ export default defineConfigWithVueTs(
 
   {
     ...pluginPlaywright.configs['flat/recommended'],
-    files: ['e2e/**/*.{test,spec}.{ts}'],
+    files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
   },
 
   {

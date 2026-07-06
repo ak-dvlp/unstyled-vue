@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { BaseSwitchProps } from '@/index'
 import { computed } from 'vue'
+
+import type { BaseSwitchProps } from '@/index'
 
 interface UserSwitchProps extends BaseSwitchProps {
   /** Наличие ошибки */

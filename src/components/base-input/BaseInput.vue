@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { BaseFieldProps } from '../../types/base-props'
 
 export interface BaseInputProps extends BaseFieldProps {

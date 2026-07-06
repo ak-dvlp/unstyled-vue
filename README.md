@@ -94,8 +94,39 @@ yarn test-ct
 
 ```json
 {
+  // Запуск форматирования при каждом явном сохранении (Ctrl + S).
+  "editor.formatOnSave": true,
+  // Назначение Prettier в качестве основного средства форматирования кода для всего проекта для всех типов файлов.
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[vue]": {
+    // Явное назначение Prettier в качестве основного средства форматирования Vue файлов.
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    // Явное назначение Prettier в качестве основного средства форматирования TypeScript файлов.
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    // Исправляет все ошибки которые могут быть исправлены автоматически при явном сохранении (Ctrl + S).
+    "source.fixAll.eslint": "explicit"
+  },
+  /** Даёт расширению ESLint разрешение просматривать файлы JavaScript, TypeScript и Vue.
+   * Без этой строки ESLint просматривал бы только исходные файлы JavaScript и полностью игнорировал бы шаблоны .vue.
+   */
+  "eslint.validate": ["javascript", "typescript", "vue"],
 
+  // Взаимодействие с расширением cSpell для проверки орфографии.
+  "cSpell.words": ["Aleksandr", "ianvs", "maxlength"]
 }
 ```
+
+`ESLint` выполняет сортировку:  
+а) Vue-атрибутов блока `<template>` при помощи плагина `eslint-plugin-vue`;  
+б) Импортов и экспортов во Vue-компонентах и файлах TypeScript при помощи плагина `eslint-plugin-simple-import-sort`.
+
+`Prettier` выполняет сортировку:
+
+а) Служебных классов Tailwind в значении атрибута class при помощи плагина `prettier-plugin-tailwindcss`;
+б) CSS-правил блока `<style>` однофайловых Vue-компонентов используя плагин `prettier-plugin-css-order`.
 
 </details>

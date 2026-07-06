@@ -1,5 +1,5 @@
-<script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+<script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 type CurrentTheme = 'light' | 'dark' | 'system'
 
@@ -53,7 +53,7 @@ onBeforeUnmount(() => mq.removeEventListener('change', onThemeChange))
 
 <template>
   <button
-    class="hover:bg-card cursor-pointer rounded-lg p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-500"
+    class="hover:bg-card cursor-pointer rounded-lg p-2 transition-colors focus:ring-2 focus:ring-slate-500 focus:outline-none"
     :class="{
       'hover:bg-theme-dark': currentTheme === 'light' || (currentTheme === 'dark' && isDarkSystem),
       'hover:bg-theme-light': currentTheme === 'system' || (currentTheme === 'dark' && !isDarkSystem),

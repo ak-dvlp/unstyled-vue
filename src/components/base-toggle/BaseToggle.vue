@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 export interface BaseToggleProps {
   /** Ложное значение */
   falseValue?: string | number
