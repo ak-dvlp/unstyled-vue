@@ -123,7 +123,8 @@ yarn test-ct
 `ESLint` выполняет сортировку:
 
 а) Vue-атрибутов блока `<template>` (`eslint-plugin-vue`);  
-б) Импортов и экспортов во Vue-компонентах и TypeScript-файлах (`eslint-plugin-simple-import-sort`).
+б) импортов и экспортов во Vue-компонентах и TypeScript-файлах (`eslint-plugin-simple-import-sort`);  
+в) свойств интерфейсов и объектов во Vue-компонентах и TypeScript-файлах (`eslint-plugin-perfectionist`).  
 
 `Prettier` выполняет сортировку:
 
