@@ -86,3 +86,16 @@ yarn test-ct
 ```
 
 </details>
+
+<details>
+<summary style="font-size: 1.25em; font-weight: 600;">⚙️ Конфигурация среды разработки и инструментов по форматированию</summary>
+
+### settings.json
+
+```json
+{
+
+}
+```
+
+</details>

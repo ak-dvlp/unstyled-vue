@@ -25,28 +25,8 @@
     "prettier-plugin-organize-attributes",
     "prettier-plugin-tailwindcss"
   ],
-  "attributeGroups": [
-    "^:?is$",
-    "^v-for$",
-    "^v-(if|else-if|else)$",
-    "^v-show$",
-    "^v-cloak",
-    "^v-pre",
-    "^v-once",
-    "^:?id$",
-    "^:?ref$",
-    "^:?key$",
-    "^v-bind$",
-    "^v-model",
-    "^class$",
-    "^:class$",
-    "$DEFAULT",
-    "^aria-",
-    "^@",
-    "^v-html$",
-    "^v-text$"
-  ],
-  "attributeSort": "ASC",
+  "attributeGroups": ["^setup$", "^lang$"],
+  "attributeSort": "NONE",
   "overrides": [
     {
       "files": "*.json",
