@@ -17,7 +17,6 @@
   ],
   "importOrderParserPlugins": ["typescript"],
   "importOrderTypeScriptVersion": "6.0.3",
-  "tailwindConfig": "./tailwind.config.ts",
   "tailwindSortClasses": true,
   "tailwindFormatter": "tailwindcss",
   "plugins": [
