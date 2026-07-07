@@ -14,10 +14,17 @@ yarn install
 yarn upgrade-interactive --latest
 ```
 
+<!--
 ### Запуск демонстрационной версии
 
 ```bash
 yarn demo
+``` -->
+
+### Локальное развёртывание документации
+
+```bash
+yarn docs:dev
 ```
 
 ### Запуск тестов компонентов в режиме UI mode

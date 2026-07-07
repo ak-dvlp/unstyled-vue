@@ -4,6 +4,7 @@ import { sidebarConfig } from './sidebar.ts'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/unstyled-vue/',
   lang: 'ru-RU',
   title: 'Unstyled-vue',
   description: 'Базовые Vue‑компоненты и составные функции: без встроенных стилей, под свою дизайн‑систему.',
