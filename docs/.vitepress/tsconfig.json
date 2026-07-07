@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "noUncheckedSideEffectImports": false,
+    "types": ["vite/client"]
+  },
+  "include": ["./theme/**/*.ts"]
+}

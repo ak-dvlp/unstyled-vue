@@ -3,23 +3,22 @@
 layout: home
 
 hero:
-  name: "Unstyled-vue: библиотека базовых Vue‑компонентов"
-  text: "Базовые Vue‑компоненты и составные функции: без встроенных стилей, под свою дизайн‑систему."
-  tagline: My great project tagline
+  name: 'Библиотека базовых Vue‑компонентов'
+  # text: ""
+  tagline: 'и составных функций, без встроенных стилей, под свою дизайн‑систему.'
   actions:
     - theme: brand
-      text: Markdown Examples
+      text: Компоненты
       link: /markdown-examples
     - theme: alt
       text: API Examples
       link: /api-examples
 
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+# features:
+#   - title: Feature A
+#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+#   - title: Feature B
+#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+#   - title: Feature C
+#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
-

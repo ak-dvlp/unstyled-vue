@@ -33,6 +33,7 @@ yarn test-ct
 
 ```bash
 ├── .vscode/ - проектные настройки для VS Code
+├── docs/ - документация
 ├── examples/
 │   ├── public/ - статические ресурсы, которые не участвуют в сборке
 │   ├── src/
@@ -72,9 +73,9 @@ yarn test-ct
 ├── .prettierrc - настройка правил форматирования для Prettier
 ├── env.d.ts - файл объявлений TypeScript, обеспечивающий безопасность типов, автозаполнение и распознавание компилятором переменных среды и импорта некодируемых ресурсов.
 ├── eslint.config.ts - файл конфигурации ESLint
-├── package.json -
-├── playwright.config.ts - файл конфигурации Playwright для сквозных тестов (e2e)
+├── package.json - главный файл конфигурации проекта на Node.js
 ├── playwright-ct.config.ts - файл конфигурации Playwright для тестов компонентов
+├── playwright.config.ts - файл конфигурации Playwright для сквозных тестов (e2e)
 ├── README.md - главный файл документации проекта
 ├── tsconfig.app.json - файл конфигурации TypeScript, в котором задаются правила компиляции основного кода приложения
 ├── tsconfig.json - основной файл конфигурации TypeScript
@@ -92,7 +93,7 @@ yarn test-ct
 
 ### .editorconfig
 
-```TOML
+```python
 [*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,vue,css,scss,sass,less,styl}]
 # Указание среде разработки сохранять целевые файлы в кодировке UTF-8.
 charset = utf-8
@@ -106,7 +107,7 @@ trim_trailing_whitespace = true
 
 ### settings.json
 
-```json
+```ts
 {
   // Запуск форматирования при каждом явном сохранении (Ctrl + S).
   "editor.formatOnSave": true,
@@ -151,7 +152,7 @@ trim_trailing_whitespace = true
 export default defineConfigWithVueTs(
   {
     /**
-     * Указывает ESLint на необходимость просматривать и проверять все файлы 
+     * Указывает ESLint на необходимость просматривать и проверять все файлы
      * с расширениями .vue и .ts в любом месте проекта.
      */
     files: ['**/*.{vue,ts}'],
@@ -201,7 +202,7 @@ export default defineConfigWithVueTs(
          */
         'error',
         {
-          // Сортировка свойств от А до Я.
+          // Сортировка свойств от A до Z.
           type: 'alphabetical',
           order: 'asc',
 
@@ -210,8 +211,8 @@ export default defineConfigWithVueTs(
 
           /**
            * Разделяет интерфейс на две части: все обязательные свойства располагаются в
-           * самом верху (в алфавитном порядке от А до Я), а все необязательные — внизу
-           * (также в алфавитном порядке от А до Я).
+           * самом верху (в алфавитном порядке от A до Z), а все необязательные — внизу
+           * (также в алфавитном порядке от A до Z).
            */
           groups: ['required-properties', 'optional-properties', 'unknown'],
           customGroups: [

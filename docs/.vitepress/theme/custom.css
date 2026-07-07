@@ -1,0 +1,22 @@
+/** Светлая тема */
+:root {
+  --vp-home-hero-name-background: linear-gradient(135deg, hsl(315, 64%, 46%), hsl(225, 86%, 53%));
+  --vp-home-hero-name-color: transparent;
+
+  --vp-c-brand-1: hsl(315, 64%, 46%);
+  --vp-c-brand-2: hsl(315, 44%, 46%);
+  --vp-c-brand-3: hsl(315, 64%, 21%);
+  --vp-c-brand-soft: hsl(315, 64%, 76%);
+}
+
+/** Тёмная тема */
+.dark {
+  --vp-home-hero-name-background: linear-gradient(135deg, hsl(0, 74%, 53%), hsl(210, 74%, 53%));
+  --vp-home-hero-name-color: transparent;
+  --vp-code-block-bg: #252528;
+
+  --vp-c-brand-1: hsl(210, 74%, 53%);
+  --vp-c-brand-2: hsl(210, 54%, 53%);
+  --vp-c-brand-3: hsl(210, 73%, 28%);
+  --vp-c-brand-soft: hsl(210, 74%, 83%);
+}
