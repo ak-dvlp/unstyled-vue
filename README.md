@@ -39,6 +39,9 @@ yarn test-ct
 <summary style="font-size: 1.25em; font-weight: 600;">🗄️ Структура проекта</summary>
 
 ```bash
+├── .github/ - проектные настройки для VS Code
+│   └── workflows/
+│   │   └── deploy.yml - файл конфигурации страниц GitHub
 ├── .vscode/ - проектные настройки для VS Code
 ├── docs/ - документация
 ├── examples/
