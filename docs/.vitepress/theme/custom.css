@@ -7,16 +7,35 @@
   --vp-c-brand-2: hsl(315, 64%, 21%);
   --vp-c-brand-3: hsl(315, 44%, 46%);
   --vp-c-brand-soft: hsl(315, 64%, 76%);
+
+  --vp-c-tip-soft: hsla(315, 94%, 21%, 0.2);
+  --vp-custom-block-tip-text: var(--vp-c-brand-1);
+
+  --vp-c-warning-soft: hsla(30, 94%, 58%, 0.4);
+  --vp-custom-block-warning-text: hsl(30, 74%, 43%);
+
+  --vp-c-danger-soft: hsla(0, 84%, 58%, 0.4);
+  --vp-custom-block-danger-text: hsl(0, 74%, 43%);
 }
 
 /** Тёмная тема */
 .dark {
   --vp-home-hero-name-background: linear-gradient(135deg, hsl(0, 74%, 53%), hsl(210, 74%, 53%));
   --vp-home-hero-name-color: transparent;
-  --vp-code-block-bg: #252528;
 
   --vp-c-brand-1: hsl(210, 74%, 53%);
   --vp-c-brand-2: hsl(210, 73%, 28%);
   --vp-c-brand-3: hsl(210, 54%, 43%);
   --vp-c-brand-soft: hsl(210, 74%, 83%);
+
+  --vp-code-block-bg: #252528;
+
+  --vp-c-tip-soft: hsla(210, 73%, 28%, 0.4);
+  --vp-custom-block-tip-text: var(--vp-c-brand-1);
+
+  --vp-c-warning-soft: hsla(30, 73%, 28%, 0.4);
+  --vp-custom-block-warning-text: hsl(30, 74%, 53%);
+
+  --vp-c-danger-soft: hsla(0, 73%, 28%, 0.4);
+  --vp-custom-block-danger-text: hsl(0, 74%, 53%);
 }
