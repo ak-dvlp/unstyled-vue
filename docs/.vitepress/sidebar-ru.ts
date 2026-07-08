@@ -1,6 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
 
-export const sidebarConfig: DefaultTheme.Sidebar = {
+export const sidebarConfigRussian: DefaultTheme.Sidebar = {
   '/components': [
     {
       text: 'Компоненты',
@@ -17,24 +17,20 @@ export const sidebarConfig: DefaultTheme.Sidebar = {
     },
   ],
 
-  '/composables': {
-    text: 'Составные функции',
-    collapsed: false,
-    items: [{ text: 'Составные функции', link: '/composables/' }],
-  },
+  '/composables': [
+    {
+      items: [{ text: 'Составные функции', link: '/composables/' }],
+    },
+  ],
 
-  '/types': {
-    text: 'Типы',
-    collapsed: false,
-    items: [{ text: 'Типы', link: '/types/' }],
-  },
-
-  '/examples': {
-    text: 'Примеры использования',
-    collapsed: false,
-    items: [
-      { text: 'Обзор', link: '/examples/' },
-      { text: 'UserInput', link: '/examples/user-input' },
-    ],
-  },
+  '/usage-examples': [
+    {
+      text: 'Примеры использования',
+      collapsed: false,
+      items: [
+        { text: 'Обзор', link: '/usage-examples/' },
+        { text: 'UserInput', link: '/usage-examples/user-input' },
+      ],
+    },
+  ],
 }

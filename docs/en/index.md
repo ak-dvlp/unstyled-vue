@@ -3,21 +3,21 @@
 layout: home
 
 hero:
-  name: 'Библиотека базовых Vue-компонентов'
+  name: 'A library of base Vue components'
   # text: ''
-  tagline: 'и составных функций без встроенных стилей под свою дизайн-систему.'
+  tagline: 'and composables without built-in styles, tailored for your design system.'
   actions:
     - theme: brand
-      text: Компоненты
-      link: /components
+      text: Components
+      link: /en/components
     # - theme: alt
     - theme: brand
-      text: Составные функции
-      link: /composables
+      text: Composables
+      link: /en/composables
 
     - theme: brand
-      text: Примеры использования
-      link: /usage-examples
+      text: Usage examples
+      link: /en/usage-examples
 
 # features:
 #   - title: Feature A

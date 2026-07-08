@@ -7,11 +7,10 @@ import './custom.css'
 
 import BaseCheckbox from '../../../src/components/base-checkbox/BaseCheckbox.vue'
 
-// export default DefaultTheme
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
-    // регистрируем пользовательские глобальные компоненты
+    // Глобальная регистрация компонентов
     app.component('BaseCheckbox', BaseCheckbox)
   },
 } satisfies Theme
