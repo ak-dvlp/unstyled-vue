@@ -1,16 +1,17 @@
 name: Deploy VitePress site to Pages
 
 on:
-  push:
-    branches: [main] # Change to master if your default branch is master
+  # push:
+  # branches: [main]
+  workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Устанавливает разрешения для GITHUB_TOKEN, разрешающие развертывание на страницах GitHub
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
+# Позволяет только одно одновременное развертывание
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -25,24 +26,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Not required, but recommended for lastUpdated timestamps
+          fetch-depth: 0 # Не требуется, но рекомендуется для последних обновленных временных меток
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: yarn # Automatically caches your Yarn modules
+          cache: yarn # Автоматическое кэширование модулей Yarn
 
       - name: Install dependencies
         run: yarn install --immutable
 
       - name: Build with VitePress
-        run: yarn docs:build # Assuming your package.json script runs "vitepress build docs"
+        run: yarn docs:build # Запуск сборки документации
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist # Points to the compiled static assets
+          path: docs/.vitepress/dist # Указывает на скомпилированные статические ресурсы
           overwrite: true
 
       - name: Deploy to GitHub Pages
