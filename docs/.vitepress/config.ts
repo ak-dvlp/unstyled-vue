@@ -6,7 +6,6 @@ import { sidebarConfigRussian } from './sidebar-ru'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/unstyled-vue/',
-  // lang: 'ru-RU',
   title: 'Unstyled-vue',
   description: 'Базовые Vue‑компоненты и составные функции: без встроенных стилей, под свою дизайн‑систему.',
 
@@ -24,13 +23,6 @@ export default defineConfig({
     root: {
       label: 'Русский',
       lang: 'ru',
-
-      markdown: {
-        container: {
-          tipLabel: 'Подсказка',
-          warningLabel: 'Внимание',
-        },
-      },
 
       themeConfig: {
         nav: [

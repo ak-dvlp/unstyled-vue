@@ -1,0 +1,34 @@
+// {
+//   "extends": "./tsconfig.json",
+//   "compilerOptions": {
+//     "composite": true,
+//     "module": "ESNext",
+
+//     "moduleResolution": "Bundler",
+//     // "allowImportingTsExtensions": true,
+//     "noEmit": true,
+
+//     "noUncheckedSideEffectImports": false,
+//     "types": ["node", "vite/client"]
+//   },
+//   "include": [
+//     "docs/.vitepress/theme/**/*.{ts,vue}",
+//     "docs/components/**/*.md",
+//     "docs/components/**/*.data.ts",
+//     "src/**/*",
+//     "node_modules/vite/client.d.ts"
+//   ]
+// }
+{
+  "compilerOptions": {
+    // "noUncheckedSideEffectImports": false,
+    "types": ["vite/client"]
+  },
+  "include": [
+    "docs/.vitepress/theme/**/*.ts",
+    // "docs/components/**/*.md",
+    "docs/components/**/*.data.ts"
+    // "src/**/*"
+    // "env.d.ts"
+  ]
+}

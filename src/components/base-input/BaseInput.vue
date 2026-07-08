@@ -2,11 +2,20 @@
 import type { BaseFieldProps } from '../../types/base-props'
 
 export interface BaseInputProps extends BaseFieldProps {
-  /** Максимальное значение. */
+  /**
+   * @ru Максимальное значение.
+   * @en Max value.
+   */
   max?: number
-  /** Минимальное значение. */
+  /**
+   * @ru Минимальное значение.
+   * @en Min value.
+   */
   min?: number
-  /** Тип. */
+  /**
+   * @ru Тип.
+   * @en Type.
+   */
   type?: string
 }
 

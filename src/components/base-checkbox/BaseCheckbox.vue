@@ -5,7 +5,11 @@ import type { BaseCheckboxProps } from '../../types/base-props'
 
 const { falseValue, readonly, trueValue } = defineProps<BaseCheckboxProps>()
 
-const model = defineModel<boolean | string | number | null>()
+const model = defineModel<
+  // #region base-checkbox-model
+  boolean | string | number | null
+  // #endregion base-checkbox-model
+>()
 
 const isChecked = computed(() => {
   if (trueValue || falseValue) {

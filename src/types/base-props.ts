@@ -1,20 +1,21 @@
+// #region base-checkbox-props
 export interface BaseCheckboxProps {
   /** Состояние "отключено". */
   disabled?: boolean
-  /** Активация промежуточного состояния */
-  // indeterminate?: boolean
-  /** Ложное значение */
+  /** Ложное значение. */
   falseValue?: string | number | null
-  /** Ярлык */
+  /** Ярлык. */
   label?: string
-  /** Имя */
+  /** Имя. */
   name?: string
-  /** Состояние "только для чтения" */
+  /** Состояние "только для чтения". */
   readonly?: boolean
-  /** Истинное значение */
+  /** Истинное значение. */
   trueValue?: string | number | null
 }
+// #endregion base-checkbox-props
 
+// #region base-field-props
 export interface BaseFieldProps {
   /** Автозаполнение. */
   autocomplete?: string
@@ -35,3 +36,4 @@ export interface BaseFieldProps {
   /** Поле обязательно к заполнению. */
   required?: boolean
 }
+// #endregion base-field-props
