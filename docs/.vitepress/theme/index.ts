@@ -1,4 +1,6 @@
+/// <reference types="vite/client" />
 /* eslint-disable simple-import-sort/imports */
+
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 
@@ -6,12 +8,15 @@ import DefaultTheme from 'vitepress/theme'
 import './custom.css'
 
 import BaseCheckbox from '../../../src/components/base-checkbox/BaseCheckbox.vue'
+import BaseTable from '../../../src/components/base-table/BaseTable.vue'
 import PropsTable from './components/PropsTable.vue'
 
 export default {
   extends: DefaultTheme,
+
   enhanceApp({ app }) {
     // Глобальная регистрация компонентов
+    app.component('BaseTable', BaseTable)
     app.component('BaseCheckbox', BaseCheckbox)
     app.component('PropsTable', PropsTable)
   },

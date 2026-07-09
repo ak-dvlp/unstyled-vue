@@ -1,8 +1,8 @@
 # BaseCheckbox
 
-## Описание
+<!-- ## Описание
 
-Компонент BaseCheckbox предназначен для
+Компонент BaseCheckbox предназначен для -->
 
 ## Модель
 
@@ -14,4 +14,4 @@
 import { data } from '../props.data.ts'
 </script>
 
-<PropsTable :data="[...data.BaseFieldProps, ...data.BaseInputProps]" />
+<PropsTable :rows="data.BaseInputProps"  />

@@ -2,7 +2,7 @@ import path from 'path'
 import { Project } from 'ts-morph'
 import { fileURLToPath } from 'url'
 
-import type { PropItem } from '../types'
+import type { PropItem } from './types'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -11,10 +11,9 @@ declare const data: Record<string, PropItem[]>
 export { data }
 
 export default {
-  watch: ['../src/components/**/*.vue', '../src/types/**/*.ts'],
+  // watch: ['../src/components/**/*.vue', '../src/types/**/*.ts'],
 
   load() {
-    // const project = new Project({ compilerOptions: { allowJs: true } })
     const project = new Project()
 
     // Массив путей к целевым папкам содержащим нужные типы данных.
@@ -36,8 +35,6 @@ export default {
 
         // Пропускает интерфейсы, которые не соответствуют соглашению об именовании.
         if (!interfaceName.endsWith('Props')) continue
-
-        // const componentKey = interfaceName.replace('Props', '').toLowerCase()
 
         allProps[interfaceName] = inter.getProperties().map((prop) => {
           // Получение массива блоков JSDoc.

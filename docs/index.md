@@ -11,21 +11,21 @@ hero:
   actions:
     - theme: brand
       text: Компоненты
-      link: /components
+      link: /components/
     # - theme: alt
     - theme: brand
       text: Составные функции
-      link: /composables
+      link: /composables/
 
     - theme: brand
       text: Примеры использования
-      link: /usage-examples
+      link: /usage-examples/
 
-# features:
-#   - title: Feature A
-#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-#   - title: Feature B
-#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-#   - title: Feature C
-#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+features:
+  - title: TypeScript
+    details: Автодополнение и проверка типов в среде разработки для всех компонентов и составных функций
+  - title: Составные функции
+    details: Набор готовых функций для типовых задач с реактивными данными
+  - title: Без внешних зависимостей
+    details: Самодостаточные компоненты и функции — работают без сторонних библиотек.
 ---

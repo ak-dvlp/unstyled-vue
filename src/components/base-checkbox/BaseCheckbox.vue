@@ -7,7 +7,7 @@ const { falseValue, readonly, trueValue } = defineProps<BaseCheckboxProps>()
 
 const model = defineModel<
   // #region base-checkbox-model
-  boolean | string | number | null
+  boolean | string | number | null | undefined
   // #endregion base-checkbox-model
 >()
 

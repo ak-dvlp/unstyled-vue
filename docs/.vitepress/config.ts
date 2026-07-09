@@ -9,15 +9,15 @@ export default defineConfig({
   title: 'Unstyled-vue',
   description: 'Базовые Vue‑компоненты и составные функции: без встроенных стилей, под свою дизайн‑систему.',
 
-  markdown: {
-    container: {
-      infoLabel: 'Информация',
-      tipLabel: 'Совет',
-      warningLabel: 'Предупреждение',
-      dangerLabel: 'Опасность',
-      detailsLabel: 'Подробнее',
-    },
-  },
+  // markdown: {
+  //   container: {
+  //     infoLabel: 'Информация',
+  //     tipLabel: 'Совет',
+  //     warningLabel: 'Предупреждение',
+  //     dangerLabel: 'Опасность',
+  //     detailsLabel: 'Подробнее',
+  //   },
+  // },
 
   locales: {
     root: {

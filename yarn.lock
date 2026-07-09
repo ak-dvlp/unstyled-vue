@@ -3759,7 +3759,7 @@ ts-api-utils@^2.5.0:
   resolved "https://registry.yarnpkg.com/ts-api-utils/-/ts-api-utils-2.5.0.tgz#4acd4a155e22734990a5ed1fe9e97f113bcb37c1"
   integrity sha512-OJ/ibxhPlqrMM0UiNHJ/0CKQkoKF243/AEmplt3qpRgkW8VG7IfOS41h7V8TjITqdByHzrjcS/2si+y4lIh8NA==
 
-ts-morph@^28.0.0:
+ts-morph@28.0.0:
   version "28.0.0"
   resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-28.0.0.tgz#cd3ebdf89742a32b06ea7327df6445364ee26631"
   integrity sha512-Wp3tnZ2bzwxyTZMtgWVzXDfm7lB1Drz+y9DmmYH/L702PQhPyVrp3pkou3yIz4qjS14GY9kcpmLiOOMvl8oG1g==

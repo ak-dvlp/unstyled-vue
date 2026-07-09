@@ -14,4 +14,4 @@ Component BaseCheckbox
 import { data } from '../../props.data.ts'
 </script>
 
-<PropsTable :data="[...data.BaseFieldProps, ...data.BaseInputProps]" />
+<PropsTable :rows="[...data.BaseFieldProps, ...data.BaseInputProps]" />
