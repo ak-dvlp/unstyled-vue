@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
-    "types": ["vite/client"]
+    "composite": true,
+    "types": ["node"]
   },
-  "include": ["docs/.vitepress/theme/**/*.{ts,vue}", "docs/components/**/*.data.ts", "src/**/*"]
+  "include": [
+    // "docs/.vitepress/**/*.{ts,vue}",
+    // "docs/props.data.ts",
+    "docs/**/*.ts",
+    "docs/**/*.vue",
+    "src/**/*"
+  ]
 }

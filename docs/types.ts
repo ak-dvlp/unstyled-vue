@@ -9,4 +9,7 @@ export interface PropItem {
   name: string
   /** Тип (объединение типов) свойства. */
   type: string
+
+  /** Значение по умолчанию */
+  default?: string
 }

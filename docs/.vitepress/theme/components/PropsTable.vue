@@ -27,7 +27,7 @@ const headers = computed(() =>
 const cols: TableCol<PropItem>[] = [
   { key: 'name', width: '20%' },
   { key: 'type', width: '20%' },
-  { key: 'type', width: '20%' },
+  { key: 'default', width: '20%' },
   { key: lang.value === 'ru' ? 'description_ru' : 'description_en', width: '20%' },
 ]
 </script>
@@ -42,6 +42,10 @@ const cols: TableCol<PropItem>[] = [
       <template #name="{ row, value }">
         {{ value }}
         <span v-if="!row.isOptional" class="text-required">*</span>
+      </template>
+
+      <template #default="{ value }">
+        {{ value === undefined ? 'undefined' : value }}
       </template>
 
       <template #empty>Свойство не найдено</template>

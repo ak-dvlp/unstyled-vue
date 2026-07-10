@@ -16,7 +16,7 @@ export interface BaseInputProps extends BaseFieldProps {
    * @ru Тип.
    * @en Type.
    */
-  type?: string
+  type?: string | null
 }
 
 const { autocomplete = 'off', type = 'text' } = defineProps<BaseInputProps>()
