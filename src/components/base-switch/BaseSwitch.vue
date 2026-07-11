@@ -3,9 +3,18 @@ import { computed } from 'vue'
 
 import type { BaseCheckboxProps } from '../../types/base-props'
 
-const { disabled, falseValue, readonly, trueValue } = defineProps<BaseCheckboxProps>()
+// #region base-checkbox-model
+const model = defineModel<string | number | boolean | null>()
+// #endregion base-checkbox-model
 
-const model = defineModel<boolean | string | number | null>()
+const {
+  disabled = false,
+  falseValue = false,
+  label = '',
+  name = undefined,
+  readonly = false,
+  trueValue = true,
+} = defineProps<BaseCheckboxProps>()
 
 const isChecked = computed(() => {
   if (trueValue || falseValue) {

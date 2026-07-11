@@ -1,22 +1,20 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
+import { computed } from 'vue'
 
 import type { BaseCheckboxProps } from '../../types/base-props'
 
 // #region base-checkbox-model
-const model = defineModel<boolean | string | number | null>()
+const model = defineModel<string | number | boolean | null>()
 // #endregion base-checkbox-model
-
-const props = defineProps<BaseCheckboxProps>()
 
 const {
   disabled = false,
   falseValue = false,
   label = '',
-  name = `checkbox-${useId()}`,
+  name = undefined,
   readonly = false,
   trueValue = true,
-} = props
+} = defineProps<BaseCheckboxProps>()
 
 const isChecked = computed(() => {
   if (trueValue || falseValue) {
