@@ -27,7 +27,7 @@ const headers = computed(() =>
 const cols: TableCol<PropItem>[] = [
   { key: 'name', width: '10rem' },
   { key: 'type', width: 'auto', minWidth: '12.5rem' },
-  { key: 'default', width: '18rem' },
+  { key: 'default', width: '12rem' },
 ]
 </script>
 
@@ -54,8 +54,8 @@ const cols: TableCol<PropItem>[] = [
         </div>
       </template>
 
-      <template #default="{ value, row }">
-        <h3>{{ row }}{{ value }}</h3>
+      <template #default="{ value }">
+        <span :class="{ 'template-literal': value?.startsWith('`') }">{{ value }}</span>
       </template>
 
       <template #empty>Свойство не найдено</template>
@@ -95,5 +95,9 @@ const cols: TableCol<PropItem>[] = [
 
 .type-color {
   color: var(--vp-c-brand-1, hsl(210, 74%, 53%));
+}
+
+.template-literal {
+  color: var(--template-literal-text);
 }
 </style>

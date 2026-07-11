@@ -9,9 +9,14 @@ const model = defineModel<boolean | string | number | null>()
 
 const props = defineProps<BaseCheckboxProps>()
 
-const autoName = `checkbox-${useId()}`
-
-const { disabled = false, falseValue = false, label = '', name = autoName, readonly = false, trueValue = true } = props
+const {
+  disabled = false,
+  falseValue = false,
+  label = '',
+  name = `checkbox-${useId()}`,
+  readonly = false,
+  trueValue = true,
+} = props
 
 const isChecked = computed(() => {
   if (trueValue || falseValue) {
