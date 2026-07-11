@@ -1,9 +1,5 @@
 # BaseCheckbox
 
-<!-- ## Описание
-
-Компонент BaseCheckbox предназначен для -->
-
 ## Модель
 
 <<< @/../src/components/base-checkbox/BaseCheckbox.vue#base-checkbox-model{ts}
@@ -14,4 +10,5 @@
 import { data } from '../props.data.ts'
 </script>
 
-<PropsTable :rows="data.BaseInputProps"  />
+<PropsTable :rows="data.BaseCheckboxProps"  />
+

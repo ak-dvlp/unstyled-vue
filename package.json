@@ -5,8 +5,8 @@
   "type": "module",
   "description": "Набор компонентов пользовательского интерфейса",
   "main": "src/main.ts",
-  "repository": "git@github.com:Aleksandr-86/unstyled-vue.git",
-  "author": "Aleksandr-86 <Aleksandr-Karpenko-86@yandex.ru>",
+  "repository": "git@github.com:ak-dvlp/unstyled-vue.git",
+  "author": "ak-dvlp <Aleksandr-Karpenko-86@yandex.ru>",
   "license": "MIT",
   "scripts": {
     "demo": "vite",

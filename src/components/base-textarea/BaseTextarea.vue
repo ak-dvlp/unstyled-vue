@@ -4,9 +4,9 @@ import { onMounted } from 'vue'
 import type { BaseFieldProps } from '../../types/base-props'
 
 export interface BaseTextareaProps extends BaseFieldProps {
-  /** Автоматическое исправление орфографических ошибок. */
+  /** Автоматическое исправление орфографических ошибок */
   autocorrect?: 'on' | 'off'
-  /** Количество видимых строк области текста. */
+  /** Количество видимых строк области текста */
   rows?: number
 }
 

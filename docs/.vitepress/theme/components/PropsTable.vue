@@ -20,22 +20,25 @@ const filteredRows = computed(() => {
 
 const headers = computed(() =>
   lang.value === 'ru'
-    ? ['Имя свойства', 'Тип свойства', 'Значение по умолчанию', 'Описание']
-    : ['Property name', 'Property type', 'Default', 'Description'],
+    ? ['Имя', 'Описание и тип', 'Значение по умолчанию']
+    : ['Name', 'Description and type', 'Default'],
 )
 
 const cols: TableCol<PropItem>[] = [
-  { key: 'name', width: '20%' },
-  { key: 'type', width: '20%' },
-  { key: 'default', width: '20%' },
-  { key: lang.value === 'ru' ? 'description_ru' : 'description_en', width: '20%' },
+  { key: 'name', width: '10rem' },
+  { key: 'type', width: 'auto', minWidth: '12.5rem' },
+  { key: 'default', width: '18rem' },
 ]
 </script>
 
 <template>
   <div class="props-table">
     <div class="props-table__search-block">
-      <input v-model="search" class="props-table__search-input" placeholder="Поиск свойств..." />
+      <input
+        v-model="search"
+        class="props-table__search-input"
+        :placeholder="lang === 'ru' ? 'Поиск свойства' : 'Search property'"
+      />
     </div>
 
     <BaseTable :cols :headers :rows="filteredRows">
@@ -44,8 +47,15 @@ const cols: TableCol<PropItem>[] = [
         <span v-if="!row.isOptional" class="text-required">*</span>
       </template>
 
-      <template #default="{ value }">
-        {{ value === undefined ? 'undefined' : value }}
+      <template #type="{ row }">
+        <div>
+          <div>{{ lang === 'ru' ? row.description_ru : row.description_en }}</div>
+          <div class="type-color">{{ row.type }}</div>
+        </div>
+      </template>
+
+      <template #default="{ value, row }">
+        <h3>{{ row }}{{ value }}</h3>
       </template>
 
       <template #empty>Свойство не найдено</template>
@@ -57,12 +67,13 @@ const cols: TableCol<PropItem>[] = [
 .props-table {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-.props-table__table {
-  border-collapse: collapse;
-  width: 100%;
-  table-layout: fixed;
+/* Данный класс необходим чтобы перебить определяемые VitePress классы для элементы table */
+.props-table :deep(table) {
+  display: table !important;
+  width: 100% !important;
 }
 
 .props-table__search-block {
@@ -80,5 +91,9 @@ const cols: TableCol<PropItem>[] = [
 .text-required {
   color: var(--vp-custom-block-danger-text, hsl(0, 74%, 53%));
   font-size: 20px;
+}
+
+.type-color {
+  color: var(--vp-c-brand-1, hsl(210, 74%, 53%));
 }
 </style>

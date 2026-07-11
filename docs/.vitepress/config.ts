@@ -117,6 +117,6 @@ export default defineConfig({
   },
 
   themeConfig: {
-    socialLinks: [{ icon: 'github', link: 'https://github.com/Aleksandr-86/unstyled-vue' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/ak-dvlp/unstyled-vue' }],
   },
 })

@@ -8,7 +8,7 @@ Component BaseCheckbox
 
 <<< @/../src/components/base-checkbox/BaseCheckbox.vue#base-checkbox-model{ts}
 
-## Properties
+## Props
 
 <script setup>
 import { data } from '../../props.data.ts'

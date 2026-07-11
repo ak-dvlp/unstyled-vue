@@ -3,7 +3,7 @@ export interface BaseCheckboxProps {
   /** Состояние "отключено". */
   disabled?: boolean
   /** Ложное значение. */
-  falseValue?: string | number | null
+  falseValue?: string | number | boolean | null
   /** Ярлык. */
   label?: string
   /** Имя. */
@@ -11,7 +11,7 @@ export interface BaseCheckboxProps {
   /** Состояние "только для чтения". */
   readonly?: boolean
   /** Истинное значение. */
-  trueValue?: string | number | null
+  trueValue?: string | number | boolean | null
 }
 // #endregion base-checkbox-props
 

@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, useId } from 'vue'
 
 import type { BaseCheckboxProps } from '../../types/base-props'
 
-const { falseValue, readonly, trueValue } = defineProps<BaseCheckboxProps>()
+// #region base-checkbox-model
+const model = defineModel<boolean | string | number | null>()
+// #endregion base-checkbox-model
 
-const model = defineModel<
-  // #region base-checkbox-model
-  boolean | string | number | null | undefined
-  // #endregion base-checkbox-model
->()
+const props = defineProps<BaseCheckboxProps>()
+
+const autoName = `checkbox-${useId()}`
+
+const { disabled = false, falseValue = false, label = '', name = autoName, readonly = false, trueValue = true } = props
 
 const isChecked = computed(() => {
   if (trueValue || falseValue) {
@@ -52,7 +54,7 @@ function onChange(evt: Event) {
 
 <template>
   <label class="checkbox">
-    <input :checked="isChecked" class="checkbox__body" :readonly type="checkbox" @change="onChange" />
+    <input :checked="isChecked" class="checkbox__body" :disabled :name :readonly type="checkbox" @change="onChange" />
     <span class="checkbox__label">
       <slot>{{ label }}</slot>
     </span>

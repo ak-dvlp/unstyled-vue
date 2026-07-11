@@ -109,13 +109,14 @@ export default {
               ?.getCommentText() || ''
 
           const resolvedDefault = fileDefaults[propName]
+          const cleanType = prop.getTypeNode()?.getText() || prop.getType().getText()
 
           return {
             description_en: typeof enText === 'string' ? enText.trim() : 'No description provided',
             description_ru: typeof ruText === 'string' ? ruText.trim() : 'Описание отсутствует',
             isOptional: prop.hasQuestionToken(),
             name: prop.getName(),
-            type: prop.getType().getText(),
+            type: cleanType,
             ...(resolvedDefault ? { default: resolvedDefault } : {}),
           }
         })
