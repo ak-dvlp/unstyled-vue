@@ -2,7 +2,7 @@
 
 ## Model
 
-No v-model binding support.
+v-model binding not supported.
 
 ## Props
 
