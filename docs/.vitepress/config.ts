@@ -25,6 +25,12 @@ export default defineConfig({
       lang: 'ru',
 
       themeConfig: {
+        notFound: {
+          title: 'СТРАНИЦА НЕ НАЙДЕНА',
+          quote: 'Нажмите на кнопку ниже чтобы вернуться на главную страницу.',
+          linkText: 'Вернуться',
+        },
+
         nav: [
           {
             text: 'Навигация',
