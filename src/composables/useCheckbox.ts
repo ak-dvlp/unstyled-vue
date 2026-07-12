@@ -6,20 +6,20 @@ type Model = string | number | boolean | null | undefined
 
 /**
  * @ru
- * Составная функция для работы с checkbox-подобными HTML-элементами.
+ * Составная функция для работы с HTML-элементами типа checkbox.
  *
- * @param model Модель целевого компонента.
- * @param trueValue Параметр компонента.
- * @param falseValue Параметр компонента.
- * @returns Вычисляемое свойство isChecked и функция onChange.
+ * @param model - Модель целевого компонента.
+ * @param trueValue - Параметр конфигурации компонента.
+ * @param falseValue - Параметр конфигурации компонента.
+ * @returns Объект, содержащий вычисляемое свойство `isChecked` и функцию-обработчик `onChange`.
  *
  * @en
- * Composable function for working with checkbox-like HTML elements.
+ * A composable function for working with HTML checkbox elements.
  *
- * @param model Target component model.
- * @param trueValue Component configuration parameter.
- * @param falseValue Component configuration parameter.
- * @returns Computed property isChecked and an onChange handler function.
+ * @param model - Target component model.
+ * @param trueValue - Component configuration parameter.
+ * @param falseValue - Component configuration parameter.
+ * @returns An object containing the computed property `isChecked` and an `onChange` handler function.
  */
 export function useCheckbox(model: Ref<Model>, trueValue: () => Model, falseValue: () => Model) {
   /**
