@@ -25,7 +25,7 @@ type TableCol<T> = {
 
 ```ts
 type HeaderCell = {
-  /** Column header text */
+  /** Column header */
   label: string
   /** Number of columns to span */
   span?: number

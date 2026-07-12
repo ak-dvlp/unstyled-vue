@@ -82,19 +82,19 @@ const cols: TableCol<PropItem>[] = [
 }
 
 .props-table__search-input {
-  border: 1px solid var(--vt-c-divider, hsl(0, 0%, 90%));
+  border: 1px solid var(--divider);
   border-radius: 0.25rem;
   padding: 0.375rem 0.5rem;
   font-size: 0.9375rem;
 }
 
 .text-required {
-  color: var(--vp-custom-block-danger-text, hsl(0, 74%, 53%));
-  font-size: 20px;
+  color: var(--vp-custom-block-danger-text);
+  font-size: 1.25rem;
 }
 
 .type-color {
-  color: var(--vp-c-brand-1, hsl(210, 74%, 53%));
+  color: var(--vp-c-brand-1);
 }
 
 .template-literal {

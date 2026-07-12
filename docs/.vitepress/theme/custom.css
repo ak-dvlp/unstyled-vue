@@ -18,6 +18,7 @@
   --vp-custom-block-danger-text: hsl(0, 74%, 43%);
 
   --template-literal-text: hsl(210, 54%, 43%);
+  --divider: #e2e2e3;
 }
 
 /** Тёмная тема */
@@ -42,4 +43,5 @@
   --vp-custom-block-danger-text: hsl(0, 74%, 53%);
 
   --template-literal-text: hsl(315, 44%, 46%);
+  --divider: #2e2e32;
 }

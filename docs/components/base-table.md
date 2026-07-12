@@ -25,7 +25,7 @@ export type TableCol<T> = {
 
 ```ts
 export type HeaderCell = {
-  /** Текст заголовка столбца */
+  /** Заголовок столбца */
   label: string
   /** Количество объединяемых колонок */
   span?: number

@@ -1,39 +1,80 @@
-// #region base-checkbox-props
 export interface BaseCheckboxProps {
-  /** Состояние "отключено". */
+  /**
+   * @ru Состояние "отключено"
+   * @en Disabled state
+   */
   disabled?: boolean
-  /** Ложное значение. */
+  /**
+   * @ru Ложное значение
+   * @en False value
+   */
   falseValue?: string | number | boolean | null
-  /** Ярлык. */
+  /**
+   * @ru Метка
+   * @en Label
+   */
   label?: string
-  /** Имя. */
+  /**
+   * @ru Имя
+   * @en Name
+   */
   name?: string
-  /** Состояние "только для чтения". */
+  /**
+   * @ru Состояние "только для чтения"
+   * @en Read-only state
+   */
   readonly?: boolean
-  /** Истинное значение. */
+  /**
+   * @ru Истинное значение
+   * @en True value
+   */
   trueValue?: string | number | boolean | null
 }
-// #endregion base-checkbox-props
 
-// #region base-field-props
 export interface BaseFieldProps {
-  /** Автозаполнение. */
+  /**
+   * @ru Автозаполнение
+   * @en Autocomplete
+   */
   autocomplete?: string
-  /** Состояние "отключено". */
+  /**
+   * @ru Состояние "отключено"
+   * @en Disabled state
+   */
   disabled?: boolean
-  /** Идентификатор. */
+  /**
+   * @ru Идентификатор
+   * @en Identifier
+   */
   id?: string
-  /** Максимальная длина строки. */
+  /**
+   * @ru Максимальная длина строки
+   * @en Maximum string length
+   */
   maxlength?: number
-  /** Минимальная длина строки. */
+  /**
+   * @ru Минимальная длина строки
+   * @en Minimum string length
+   */
   minlength?: number
-  /** Имя. */
+  /**
+   * @ru Имя
+   * @en Name
+   */
   name?: string
-  /** Строка отображаемая в случае отсутствия какого-либо значения. */
+  /**
+   * @ru Строка отображаемая в случае отсутствия какого-либо значения
+   * @en Text displayed when there is no value
+   */
   placeholder?: string
-  /** Состояние "только для чтения". */
+  /**
+   * @ru Состояние "только для чтения"
+   * @en Read-only state
+   */
   readonly?: boolean
-  /** Поле обязательно к заполнению. */
+  /**
+   * @ru Обязательное поле
+   * @en Required field
+   */
   required?: boolean
 }
-// #endregion base-field-props

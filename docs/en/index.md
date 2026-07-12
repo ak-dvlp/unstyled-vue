@@ -26,5 +26,5 @@ features:
   - title: Composables
     details: A set of ready-to-use functions for common tasks with reactive data
   - title: Without external dependencies
-    details: Self-contained components and functions — work without third-party libraries.
+    details: Self-contained components and functions that works without third-party libraries.
 ---
