@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
-import { computed, ref } from 'vue'
+import { computed, Ref, ref } from 'vue'
 
 import type { TableCol } from '../../../../src/components/base-table/BaseTable.vue'
 import BaseTable from '../../../../src/components/base-table/BaseTable.vue'
@@ -10,7 +10,7 @@ const { rows } = defineProps<{
   rows: PropItem[]
 }>()
 
-const { lang } = useData()
+const { lang } = useData() as { lang: Ref<'en' | 'ru'> }
 
 const search = ref('')
 
@@ -26,7 +26,7 @@ const headers = computed(() =>
 
 const cols: TableCol<PropItem>[] = [
   { key: 'name', width: '10rem' },
-  { key: 'type', width: 'auto', minWidth: '12.5rem' },
+  { key: 'description', minWidth: '12.5rem' },
   { key: 'default', width: '12rem' },
 ]
 </script>
@@ -47,15 +47,15 @@ const cols: TableCol<PropItem>[] = [
         <span v-if="!row.isOptional" class="text-required">*</span>
       </template>
 
-      <template #type="{ row }">
+      <template #description="{ row }">
         <div>
-          <div>{{ lang === 'ru' ? row.description_ru : row.description_en }}</div>
+          <div>{{ row.description[lang] }}</div>
           <div class="type-color">{{ row.type }}</div>
         </div>
       </template>
 
       <template #default="{ value }">
-        <span :class="{ 'template-literal': value?.startsWith('`') }">{{ value }}</span>
+        <span :class="{ 'template-literal': value?.startsWith('`') }">{{ value || '-' }}</span>
       </template>
 
       <template #empty>Свойство не найдено</template>
@@ -64,12 +64,6 @@ const cols: TableCol<PropItem>[] = [
 </template>
 
 <style scoped>
-.props-table {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
 /* Данный класс необходим чтобы перебить определяемые VitePress классы для элементы table */
 .props-table :deep(table) {
   display: table !important;
@@ -98,6 +92,6 @@ const cols: TableCol<PropItem>[] = [
 }
 
 .template-literal {
-  color: var(--template-literal-text);
+  color: var(--highlighted-text);
 }
 </style>

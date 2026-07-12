@@ -1,3 +1,3 @@
 ### Документация
 
-- [ ] Переработать файлы composables.data.ts и props.data.ts с учётом особенностей `ts-morph`.
+- [ ] Переработать файлы composables.data.ts и props.data.ts используя документацию `ts-morph`.

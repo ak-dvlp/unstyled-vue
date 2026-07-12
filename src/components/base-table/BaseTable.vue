@@ -1,4 +1,6 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
+import { computed } from 'vue'
+
 export type TableCol<T> = {
   /** Уникальный ключ столбца */
   key: Extract<keyof T, string>
@@ -25,7 +27,7 @@ export interface BaseTableProps<T> {
    * @ru Конфигурация шапки таблицы
    * @en Table header configuration
    */
-  headers: (string | HeaderCell)[]
+  headers: string | HeaderCell | (string | HeaderCell)[]
   /**
    * @ru Массив данных для отображения в строках таблицы
    * @en Array of data objects to display in the table rows
@@ -33,7 +35,7 @@ export interface BaseTableProps<T> {
   rows: T[]
 }
 
-defineProps<BaseTableProps<T>>()
+const { headers } = defineProps<BaseTableProps<T>>()
 
 type DynamicSlots<T> = {
   [K in Extract<keyof T, string>]?: (props: { index: number; row: T; value: T[K] }) => unknown
@@ -44,6 +46,14 @@ type StaticSlots = {
 }
 
 defineSlots<DynamicSlots<T> & StaticSlots>()
+
+const resolvedHeaders = computed((): (string | HeaderCell)[] => {
+  if (Array.isArray(headers)) {
+    return headers
+  }
+
+  return headers ? [headers] : []
+})
 </script>
 
 <template>
@@ -57,7 +67,7 @@ defineSlots<DynamicSlots<T> & StaticSlots>()
       <thead class="table__thead">
         <tr class="table__row--header">
           <th
-            v-for="(col, i) in headers"
+            v-for="(col, i) in resolvedHeaders"
             :key="i"
             class="table__cell--header"
             :colspan="typeof col === 'object' ? col.span || 1 : 1"
@@ -97,7 +107,7 @@ defineSlots<DynamicSlots<T> & StaticSlots>()
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .table__container {
   width: 100%;
   overflow-x: auto;
@@ -108,7 +118,7 @@ defineSlots<DynamicSlots<T> & StaticSlots>()
   border-collapse: collapse;
   width: 100%;
   table-layout: auto;
-  color: var(--vp-c-text-2, #98989f);
+  /* color: var(--vp-c-text-2, #98989f); */
 }
 
 .table__cell--header,
@@ -116,4 +126,4 @@ defineSlots<DynamicSlots<T> & StaticSlots>()
   word-break: break-word;
   overflow-wrap: break-word;
 }
-</style>
+</style> -->

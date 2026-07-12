@@ -147,8 +147,10 @@ export default {
         const cleanType = prop.getTypeNode()?.getText() || prop.getType().getText()
 
         return {
-          description_en: typeof enText === 'string' ? enText.trim() : 'No description provided',
-          description_ru: typeof ruText === 'string' ? ruText.trim() : 'Описание отсутствует',
+          description: {
+            en: enText.trim(),
+            ru: ruText.trim(),
+          },
           isOptional: prop.hasQuestionToken(),
           name: propName,
           type: cleanType,

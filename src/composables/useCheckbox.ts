@@ -50,12 +50,12 @@ export function useCheckbox(model: Ref<Model>, trueValue: () => Model, falseValu
 
   /**
    * @ru
-   * Обработка события `change`.
+   * Обработчик события "change", передающий значение в модель.
    *
    * @param evt Событие
    *
    * @en
-   * Processing the change event.
+   * A "change" event handler that updates the model with the value.
    *
    * @param evt Event
    */

@@ -3,148 +3,199 @@ import path from 'path'
 import { type FunctionDeclaration, Project, SyntaxKind, type VariableDeclaration } from 'ts-morph'
 import { fileURLToPath } from 'url'
 
-export interface ComposableArgument {
-  name: string
-  type: string
-}
-
-export interface ReturnPropertyDoc {
-  description_en: string
-  description_ru: string
-  name: string
-  type: string
-}
-
-export interface ComposableItem {
-  arguments: ComposableArgument[]
-  description_en: string
-  description_ru: string
-  name: string
-  returns: string
-  returns_properties: ReturnPropertyDoc[]
-}
+import type { ComposableData } from './types'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-declare const data: Record<string, ComposableItem[]>
+declare const data: Record<string, ComposableData>
 export { data }
 
 function cleanTypeScriptType(typeString: string): string {
   return typeString.replace(/import\((['"`]).*?\1\)\./g, '')
 }
 
-function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): ComposableItem {
-  let name = ''
-  let args: { name: string; type: string }[] = []
-  let returnType = 'void'
-  let functionBodyNode = null
+/**
+ * Strips remaining comment formatting characters like trailing slashes,
+ * markdown/JSDoc block closures, asterisks, and excessive whitespace line feeds.
+ */
+function cleanDescriptionText(text: string): string {
+  return text
+    .replace(/^\s*\*+/gm, '') // Remove leading asterisks per line
+    .replace(/\/\s*$/, '') // Remove trailing slash block closures
+    .replace(/^\s*\/+/gm, '') // Remove leading slashes
+    .trim()
+}
 
-  if (node.getKind() === SyntaxKind.FunctionDeclaration) {
-    const func = node as FunctionDeclaration
-    name = func.getName() || 'anonymous'
-    returnType = cleanTypeScriptType(func.getReturnType().getText())
+/**
+ * Parses a raw JSDoc comment text block into main descriptions and parameter maps for both languages.
+ */
+function parseMixedJsDoc(jsDocText: string) {
+  const result = {
+    main: { en: '', ru: '' },
+    params: new Map<string, { en: string; ru: string }>(),
+  }
 
-    args = func.getParameters().map((p) => ({
-      name: p.getName(),
-      type: cleanTypeScriptType(p.getTypeNode()?.getText() || p.getType().getText()),
-    }))
+  // Split into language sections based on @ru and @en tags
+  const ruSectionMatch = jsDocText.match(/@ru([\s\S]*?)(?=@en|$)/)
+  const enSectionMatch = jsDocText.match(/@en([\s\S]*?)(?=@ru|$)/)
 
-    functionBodyNode = func
-  } else if (node.getKind() === SyntaxKind.VariableDeclaration) {
-    const varDecl = node as VariableDeclaration
-    name = varDecl.getName()
-    returnType = cleanTypeScriptType(varDecl.getType().getText())
+  const ruSection = ruSectionMatch ? ruSectionMatch[1] : ''
+  const enSection = enSectionMatch ? enSectionMatch[1] : ''
 
-    const initializer = varDecl.getInitializer()
+  // Helper to extract main description and params from a single language block
+  const parseSection = (sectionText: string, lang: 'en' | 'ru') => {
+    if (!sectionText.trim()) return
 
-    if (
-      initializer &&
-      (initializer.getKind() === SyntaxKind.ArrowFunction || initializer.getKind() === SyntaxKind.FunctionExpression)
-    ) {
-      const funcExpr = initializer
+    // Main description is everything up to the first @param or @returns tag
+    const mainMatch = sectionText.split(/@param|@returns/)[0]
+    result.main[lang] = mainMatch ? cleanDescriptionText(mainMatch) : ''
 
-      args = funcExpr.getParameters().map((p: any) => ({
-        name: p.getName(),
-        type: cleanTypeScriptType(p.getTypeNode()?.getText() || p.getType().getText()),
-      }))
+    // Match all @param definitions: @param name Description text
+    const paramRegex = /@param\s+(\w+)([\s\S]*?)(?=@param|@returns|$)/g
+    let match
+    while ((match = paramRegex.exec(sectionText)) !== null) {
+      const pName = match[1]
+      const pDesc = match[2] ? cleanDescriptionText(match[2]) : ''
 
-      returnType = cleanTypeScriptType(funcExpr.getReturnType().getText())
-      functionBodyNode = funcExpr
+      if (!result.params.has(pName)) {
+        result.params.set(pName, { en: '', ru: '' })
+      }
+      result.params.get(pName)![lang] = pDesc
     }
   }
+
+  parseSection(ruSection, 'ru')
+  parseSection(enSection, 'en')
+
+  return result
+}
+
+function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): any {
+  let name = ''
+  let params: any[] = []
+  let functionBodyNode = null
 
   const jsDocs = (node as any).getJsDocs?.() || []
   const jsDoc = jsDocs[0]
 
-  const ruText =
-    jsDoc
-      ?.getTags()
-      .find((t: any) => t.getTagName() === 'ru')
-      ?.getCommentText() || ''
+  // Extract all text inside /** ... */ block
+  const jsDocText = jsDoc ? jsDoc.getText() : ''
+  const parsedDoc = parseMixedJsDoc(jsDocText)
 
-  const enText =
-    jsDoc
-      ?.getTags()
-      .find((t: any) => t.getTagName() === 'en')
-      ?.getCommentText() || ''
+  if (node.getKind() === SyntaxKind.FunctionDeclaration) {
+    const func = node as FunctionDeclaration
+    name = func.getName() || 'anonymous'
+    functionBodyNode = func
 
-  const returnsProperties: ReturnPropertyDoc[] = []
+    params = func.getParameters().map((p) => {
+      const pName = p.getName()
+      return {
+        name: pName,
+        type: cleanTypeScriptType(p.getTypeNode()?.getText() || p.getType().getText()),
+        description: parsedDoc.params.get(pName) || { en: '', ru: '' },
+      }
+    })
+  } else if (node.getKind() === SyntaxKind.VariableDeclaration) {
+    const varDecl = node as VariableDeclaration
+    name = varDecl.getName()
+
+    const initializer = varDecl.getInitializer()
+    if (
+      initializer &&
+      (initializer.getKind() === SyntaxKind.ArrowFunction || initializer.getKind() === SyntaxKind.FunctionExpression)
+    ) {
+      const funcExpr = initializer as any
+      functionBodyNode = funcExpr
+
+      params = funcExpr.getParameters().map((p: any) => {
+        const pName = p.getName()
+        return {
+          name: pName,
+          type: cleanTypeScriptType(p.getTypeNode()?.getText() || p.getType().getText()),
+          description: parsedDoc.params.get(pName) || { en: '', ru: '' },
+        }
+      })
+    }
+  }
+
+  const returnsProperties: any[] = []
 
   if (functionBodyNode) {
     const innerFunctions = functionBodyNode.getFunctions ? functionBodyNode.getFunctions() : []
     const innerVariables = functionBodyNode.getVariableDeclarations ? functionBodyNode.getVariableDeclarations() : []
-
     const allInnerElements = [...innerFunctions, ...innerVariables]
 
     for (const element of allInnerElements) {
       const elementName = element.getName()
-
       if (!elementName) continue
 
-      const innerJsDocs = (element as any).getJsDocs?.() || []
+      // Look up parent VariableStatement if it is a VariableDeclaration to capture top JSDoc comments
+      let targetDocNode = element
+      if (element.getKind() === SyntaxKind.VariableDeclaration) {
+        const varStatement = element.getFirstAncestorByKind(SyntaxKind.VariableStatement)
+        if (varStatement) targetDocNode = varStatement
+      }
 
-      if (innerJsDocs.length > 0) {
-        const innerDoc = innerJsDocs[0]
+      const innerJsDocs = (targetDocNode as any).getJsDocs?.() || []
+      const innerDoc = innerJsDocs[0]
 
-        const innerRu =
-          innerDoc
-            .getTags()
-            .find((t: any) => t.getTagName() === 'ru')
-            ?.getCommentText() || ''
+      if (innerDoc) {
+        const innerDocText = innerDoc.getText()
+        const parsedInnerDoc = parseMixedJsDoc(innerDocText)
 
-        const innerEn =
-          innerDoc
-            .getTags()
-            .find((t: any) => t.getTagName() === 'en')
-            ?.getCommentText() || ''
-
-        if (innerRu || innerEn) {
-          let propertyType = 'unknown'
+        if (parsedInnerDoc.main.en || parsedInnerDoc.main.ru) {
+          const item: any = {
+            name: elementName,
+            description: parsedInnerDoc.main,
+            parameters: [],
+            type: 'computed',
+          }
 
           if (element.getKind() === SyntaxKind.FunctionDeclaration) {
             const funcElement = element as FunctionDeclaration
+            item.type = 'function'
 
-            const innerArgs = funcElement
+            funcElement
               .getParameters()
               .map((p) => {
                 const pType = cleanTypeScriptType(p.getTypeNode()?.getText() || p.getType().getText())
-                return `${p.getName()}: ${pType}`
+                const pName = p.getName()
+
+                item.parameters.push({
+                  name: pName,
+                  type: pType,
+                  description: parsedInnerDoc.params.get(pName) || { en: '', ru: '' },
+                })
+
+                return `${pName}: ${pType}`
               })
               .join(', ')
 
             const innerReturn = cleanTypeScriptType(funcElement.getReturnType().getText())
-            propertyType = `(${innerArgs}) => ${innerReturn}`
-          } else {
-            propertyType = cleanTypeScriptType(element.getType().getText())
+            item.returnValue = innerReturn
+          }
+          // 👇 3. Handle VariableDeclarations (like isChecked)
+          else if (element.getKind() === SyntaxKind.VariableDeclaration) {
+            const varElement = element as VariableDeclaration
+            const varType = cleanTypeScriptType(varElement.getType().getText())
+
+            item.returnValue = varType
+
+            // Check if the variable is initialized as an arrow function or function expression
+            const initializer = varElement.getInitializer()
+            if (
+              initializer &&
+              (initializer.getKind() === SyntaxKind.ArrowFunction ||
+                initializer.getKind() === SyntaxKind.FunctionExpression)
+            ) {
+              item.type = 'function' // It's an anonymous/arrow function assigned to a variable
+            } else {
+              item.type = 'computed' // It's a computed property, ref, or static value
+            }
           }
 
-          returnsProperties.push({
-            name: elementName,
-            type: propertyType,
-            description_en: typeof innerEn === 'string' ? innerEn.trim() : 'No description provided',
-            description_ru: typeof innerRu === 'string' ? innerRu.trim() : 'Описание отсутствует',
-          })
+          returnsProperties.push(item)
         }
       }
     }
@@ -152,51 +203,42 @@ function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): Com
 
   return {
     name,
-    arguments: args,
-    returns: returnType,
-    description_en: typeof enText === 'string' ? enText.trim() : 'No description provided',
-    description_ru: typeof ruText === 'string' ? ruText.trim() : 'Описание отсутствует',
-    returns_properties: returnsProperties,
+    description: parsedDoc.main,
+    parameters: params,
+    returns: returnsProperties,
   }
 }
 
 export default {
   load() {
     const project = new Project()
-    const allComposables: Record<string, ComposableItem[]> = {}
+    const allComposables: Record<string, any> = {}
 
     const composableFiles = fg.globSync(path.resolve(__dirname, '../src/composables/**/*.ts'))
     const sharedTypes = fg.globSync(path.resolve(__dirname, '../src/types/**/*.ts'))
 
-    if (sharedTypes.length > 0) {
-      project.addSourceFilesAtPaths(sharedTypes)
-    }
-
-    if (composableFiles.length > 0) {
-      project.addSourceFilesAtPaths(composableFiles)
-    }
+    if (sharedTypes.length > 0) project.addSourceFilesAtPaths(sharedTypes)
+    if (composableFiles.length > 0) project.addSourceFilesAtPaths(composableFiles)
 
     for (const filePath of composableFiles) {
       const sourceFile = project.getSourceFile(filePath)
       if (!sourceFile) continue
 
       const fileName = path.basename(filePath, '.ts')
-      const extractedItems: ComposableItem[] = []
+      const firstExportedFunc = sourceFile.getFunctions().find((f) => f.isExported())
 
-      const exportedFunctions = sourceFile.getFunctions().filter((f) => f.isExported())
-      for (const func of exportedFunctions) {
-        extractedItems.push(parseFunctionNode(func))
+      if (firstExportedFunc) {
+        allComposables[fileName] = parseFunctionNode(firstExportedFunc)
+        continue
       }
 
-      const variableStatements = sourceFile.getVariableStatements().filter((v) => v.isExported())
-      for (const statement of variableStatements) {
-        for (const declaration of statement.getDeclarations()) {
-          extractedItems.push(parseFunctionNode(declaration))
+      const exportedVariables = sourceFile.getVariableStatements().filter((v) => v.isExported())
+      for (const statement of exportedVariables) {
+        const declaration = statement.getDeclarations()[0]
+        if (declaration) {
+          allComposables[fileName] = parseFunctionNode(declaration)
+          break
         }
-      }
-
-      if (extractedItems.length > 0) {
-        allComposables[fileName] = extractedItems
       }
     }
 

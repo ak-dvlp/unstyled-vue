@@ -10,6 +10,7 @@ import './custom.css'
 import BaseCheckbox from '../../../src/components/base-checkbox/BaseCheckbox.vue'
 import BaseTable from '../../../src/components/base-table/BaseTable.vue'
 import PropsTable from './components/PropsTable.vue'
+import ComposableTable from './components/ComposableTable.vue'
 
 export default {
   extends: DefaultTheme,
@@ -19,5 +20,6 @@ export default {
     app.component('BaseTable', BaseTable)
     app.component('BaseCheckbox', BaseCheckbox)
     app.component('PropsTable', PropsTable)
+    app.component('ComposableTable', ComposableTable)
   },
 } satisfies Theme
