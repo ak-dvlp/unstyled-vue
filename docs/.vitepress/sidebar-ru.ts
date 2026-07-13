@@ -23,15 +23,4 @@ export const sidebarConfigRussian: DefaultTheme.Sidebar = {
       items: [{ text: 'Составные функции', link: '/composables/' }],
     },
   ],
-
-  '/usage-examples': [
-    {
-      text: 'Примеры использования',
-      collapsed: false,
-      items: [
-        { text: 'Обзор', link: '/usage-examples/' },
-        { text: 'UserInput', link: '/usage-examples/user-input' },
-      ],
-    },
-  ],
 }

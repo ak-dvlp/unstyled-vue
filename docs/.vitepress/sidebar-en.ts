@@ -23,15 +23,4 @@ export const sidebarConfigEnglish: DefaultTheme.Sidebar = {
       items: [{ text: 'Composables', link: '/en/composables/' }],
     },
   ],
-
-  '/en/usage-examples': [
-    {
-      text: 'Usage Examples',
-      collapsed: false,
-      items: [
-        { text: 'Overview', link: '/en/usage-examples/' },
-        { text: 'UserInput', link: '/en/usage-examples/user-input' },
-      ],
-    },
-  ],
 }

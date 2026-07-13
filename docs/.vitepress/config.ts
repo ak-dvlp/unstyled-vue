@@ -9,15 +9,15 @@ export default defineConfig({
   title: 'Unstyled-vue',
   description: 'Базовые Vue‑компоненты и составные функции: без встроенных стилей, под свою дизайн‑систему.',
 
-  // markdown: {
-  //   container: {
-  //     infoLabel: 'Информация',
-  //     tipLabel: 'Совет',
-  //     warningLabel: 'Предупреждение',
-  //     dangerLabel: 'Опасность',
-  //     detailsLabel: 'Подробнее',
-  //   },
-  // },
+  head: [
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: '/unstyled-vue//favicon.ico',
+      },
+    ],
+  ],
 
   locales: {
     root: {
@@ -34,11 +34,10 @@ export default defineConfig({
         nav: [
           {
             text: 'Навигация',
-            activeMatch: '^/(components|composables|usage-examples)/',
+            activeMatch: '^/(components|composables)/',
             items: [
               { text: 'Компоненты', link: '/components/' },
               { text: 'Составные функции', link: '/composables/' },
-              { text: 'Примеры использования', link: '/usage-examples/' },
             ],
           },
         ],
@@ -108,11 +107,10 @@ export default defineConfig({
         nav: [
           {
             text: 'Navigation',
-            activeMatch: '^/en/(components|composables|usage-examples)/',
+            activeMatch: '^/en/(components|composables)/',
             items: [
               { text: 'Components', link: '/en/components/' },
               { text: 'Composables', link: '/en/composables/' },
-              { text: 'Usage Examples', link: '/en/usage-examples/' },
             ],
           },
         ],

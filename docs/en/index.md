@@ -16,10 +16,6 @@ hero:
       text: Composables
       link: /en/composables/
 
-    - theme: brand
-      text: Usage Examples
-      link: /en/usage-examples/
-
 features:
   - title: TypeScript
     details: Autocomplete and type checking in the IDE for all components and composables

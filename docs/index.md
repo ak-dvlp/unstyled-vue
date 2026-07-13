@@ -4,7 +4,6 @@ layout: home
 
 hero:
   name: Библиотека базовых Vue-компонентов
-  # text: ''
   tagline: |
     и составных функций без встроенных стилей
     под вашу дизайн-систему.
@@ -12,14 +11,9 @@ hero:
     - theme: brand
       text: Компоненты
       link: /components/
-    # - theme: alt
     - theme: brand
       text: Составные функции
       link: /composables/
-
-    - theme: brand
-      text: Примеры использования
-      link: /usage-examples/
 
 features:
   - title: TypeScript
