@@ -1,5 +1,5 @@
-@import 'tailwindcss';
 @import './base.css';
+@import 'tailwindcss';
 
 /* Сопоставление семантических переменных с пользовательскими вспомогательными классами Tailwind */
 @theme inline {

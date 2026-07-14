@@ -5,7 +5,8 @@ export default {
   plugins: [
     tailwindcss(),
     postcssIsolateStyles({
-      includeFiles: [/theme-default/],
+      // Keeps the isolation focused exclusively on default layout components
+      includeFiles: [/theme-default\/styles\/components/],
     }),
   ],
 }
