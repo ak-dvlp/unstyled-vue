@@ -1,16 +1,7 @@
 <script setup lang="ts">
-export interface SegmentedControlProps {
-  /** Ложное значение */
-  falseValue?: string | number
-  /** Имя */
-  name: string
-  /** Истинное значение */
-  trueValue?: string | number
-}
+import type { SegmentedControlProps } from '.'
 
-withDefaults(defineProps<SegmentedControlProps>(), {
-  name: 'v-segmented-control',
-})
+const { name } = defineProps<SegmentedControlProps>()
 
 const model = defineModel<string | boolean>()
 </script>

@@ -1,23 +1,5 @@
 <script setup lang="ts">
-import type { BaseFieldProps } from '../../types/base-props'
-
-export interface BaseInputProps extends BaseFieldProps {
-  /**
-   * @ru Максимальное значение
-   * @en Max value
-   */
-  max?: number
-  /**
-   * @ru Минимальное значение
-   * @en Min value
-   */
-  min?: number
-  /**
-   * @ru Тип
-   * @en Type
-   */
-  type?: string
-}
+import type { BaseInputProps } from '.'
 
 const { autocomplete = 'off', type = 'text' } = defineProps<BaseInputProps>()
 

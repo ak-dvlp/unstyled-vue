@@ -1,14 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 
-import type { BaseFieldProps } from '../../types/base-props'
-
-export interface BaseTextareaProps extends BaseFieldProps {
-  /** Автоматическое исправление орфографических ошибок */
-  autocorrect?: 'on' | 'off'
-  /** Количество видимых строк области текста */
-  rows?: number
-}
+import type { BaseTextareaProps } from '.'
 
 const { autocomplete = 'off', autocorrect = 'off', rows } = defineProps<BaseTextareaProps>()
 
