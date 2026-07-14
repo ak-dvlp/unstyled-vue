@@ -2,7 +2,7 @@
 
 ## Model
 
-<<< @/../src/components/base-checkbox/BaseCheckbox.vue#base-checkbox-model{ts}
+<<< @/../src/components/base-checkbox/BaseCheckbox.vue#base-checkbox-model {ts}
 
 ## Props
 
@@ -14,7 +14,7 @@ import { data } from '../../props.data.ts'
 
 ## Template
 
-```html{1-3}
+```html {1-3}
 <label :class="ui?.root">
   <input :checked="isChecked" :class="ui?.control" :disabled :name :readonly type="checkbox" @change="onChange" />
   <span :class="ui?.label">
@@ -22,3 +22,9 @@ import { data } from '../../props.data.ts'
   </span>
 </label>
 ```
+
+## Styling example
+
+<<< @/../examples/src/user-components/UserCheckbox.vue#user-checkbox-template {ts}
+
+<UserCheckbox label="Example" />

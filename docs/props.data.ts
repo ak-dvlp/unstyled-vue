@@ -143,13 +143,10 @@ export default {
             .find((t) => t.getTagName() === 'en')
             ?.getCommentText() || ''
 
-        const resolvedDefault = propName === 'classes' ? fileDefaults['ui']:  fileDefaults[propName]
-        console.log('alsdkf, reso', fileDefaults)
+        const resolvedDefault = propName === 'classes' ? fileDefaults['ui'] : fileDefaults[propName]
 
         const typeNodeText = prop.getTypeNode()?.getText()
-        const type = typeNodeText?.startsWith('{')
-          ? typeNodeText
-          : typeNodeText || prop.getType().getText()
+        const type = typeNodeText?.startsWith('{') ? typeNodeText : typeNodeText || prop.getType().getText()
 
         return {
           description: {

@@ -11,11 +11,11 @@ const __dirname = path.dirname(__filename)
 declare const data: Record<string, ComposableData>
 export { data }
 
-function cleanTypeScriptType(typeString: string): string {
+function cleanTypeScriptType(typeString: string) {
   return typeString.replace(/import\((['"`]).*?\1\)\./g, '')
 }
 
-function cleanDescriptionText(text: string): string {
+function cleanDescriptionText(text: string) {
   return text
     .replace(/^\s*\*+/gm, '')
     .replace(/^- /, '')
@@ -37,21 +37,29 @@ function parseMixedJsDoc(jsDocText: string) {
   const parseSection = (sectionText: string, lang: 'en' | 'ru') => {
     if (!sectionText.trim()) return
 
-    const mainMatch = sectionText.split(/@param|@returns/)[0]
-    result.main[lang] = mainMatch ? cleanDescriptionText(mainMatch) : ''
+    const mainParts = sectionText.split(/@param|@returns/)
+    const mainMatch = mainParts ? mainParts[0] : ''
 
-    // const paramRegex = /@param\s+(\w+)([\s\S]*?)(?=@param|@returns|$)/g
-    const paramRegex = /@param\s+(\w+)\s*(?:-\s*)?([\s\S]*?)(?=@param|@returns|$)/g
+    result.main[lang] = cleanDescriptionText(mainMatch)
+      .replace(/[\/\*]+$/, '')
+      .trim()
+
+    const paramRegex = /@param\s+(\w+)\s*(?:-\s*)?([\s\S]*?)(?=@param|@returns|\*\/|\/|$)/g
 
     let match
 
     while ((match = paramRegex.exec(sectionText)) !== null) {
       const pName = match[1]
-      const pDesc = match[2] ? cleanDescriptionText(match[2]) : ''
+      const pDesc = match[2]
+        ? cleanDescriptionText(match[2])
+            .replace(/[\/\*]+$/, '')
+            .trim()
+        : ''
 
       if (!result.params.has(pName)) {
         result.params.set(pName, { en: '', ru: '' })
       }
+
       result.params.get(pName)![lang] = pDesc
     }
   }
@@ -62,7 +70,7 @@ function parseMixedJsDoc(jsDocText: string) {
   return result
 }
 
-function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): any {
+function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration) {
   let name = ''
   let params: any[] = []
   let functionBodyNode = null
@@ -102,6 +110,7 @@ function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): any
 
       params = funcExpr.getParameters().map((p: any) => {
         const pName = p.getName()
+
         return {
           name: pName,
           type: cleanTypeScriptType(p.getTypeNode()?.getText() || p.getType().getText()),
@@ -154,8 +163,8 @@ function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): any
             funcElement
               .getParameters()
               .map((p) => {
-                const pType = cleanTypeScriptType(p.getTypeNode()?.getText() || p.getType().getText())
                 const pName = p.getName()
+                const pType = cleanTypeScriptType(p.getTypeNode()?.getText() || p.getType().getText())
 
                 item.parameters.push({
                   name: pName,
@@ -204,7 +213,7 @@ function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): any
 export default {
   load() {
     const project = new Project()
-    const allComposables: Record<string, any> = {}
+    const allComposables: Record<string, unknown> = {}
 
     const composableFiles = fg.globSync(path.resolve(__dirname, '../src/composables/**/*.ts'))
     const sharedTypes = fg.globSync(path.resolve(__dirname, '../src/types/**/*.ts'))
