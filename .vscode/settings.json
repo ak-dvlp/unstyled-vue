@@ -11,6 +11,11 @@
     "source.fixAll.eslint": "explicit"
   },
   "eslint.validate": ["javascript", "typescript", "vue"],
+  "cSpell.words": ["Aleksandr", "ianvs", "maxlength", "Vite", "vitepress", "деструктуризации", "одностраничных"],
 
-  "cSpell.words": ["Aleksandr", "ianvs", "maxlength", "Vite", "vitepress", "деструктуризации", "одностраничных"]
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "classes", "ui"],
+  "tailwindCSS.experimental.classRegex": [
+    ["classes:\\s*{([^)]*)\\s*}", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["ui:\\s*{([^)]*)\\s*}", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
 }

@@ -4,7 +4,7 @@
 
 <<< @/../src/components/base-checkbox/BaseCheckbox.vue#base-checkbox-model{ts}
 
-## Свойства
+## Входные параметры
 
 <script setup>
 import { data } from '../props.data.ts'
@@ -15,10 +15,14 @@ import { data } from '../props.data.ts'
 ## Шаблон
 
 ```html{1-3}
-  <label class="checkbox">
-    <input :checked="isChecked" class="checkbox__body" :disabled :name :readonly type="checkbox" @change="onChange" />
-    <span class="checkbox__label">
-      <slot>{{ label }}</slot>
-    </span>
-  </label>
+<label :class="ui?.root">
+  <input :checked="isChecked" :class="ui?.control" :disabled :name :readonly type="checkbox" @change="onChange" />
+  <span :class="ui?.label">
+    <slot>{{ label }}</slot>
+  </span>
+</label>
 ```
+
+## Пример стилизации
+
+<UserCheckbox label="Пример" />

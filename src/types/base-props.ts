@@ -1,5 +1,14 @@
 export interface BaseCheckboxProps {
   /**
+   * @ru Классы компонента
+   * @en Component classes
+   */
+  classes?: {
+    root?: string
+    control?: string
+    label?: string
+  }
+  /**
    * @ru Состояние "отключено"
    * @en Disabled state
    */

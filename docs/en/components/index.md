@@ -2,11 +2,9 @@
 
 In general, the library components do not include any styles, though some styles are still applied, for example, to ensure the intended behavior when working with screen readers.
 
-Library components are styled using CSS classes, the names of which can be found in the highlighted lines of the `Template` section on each component's page.
+The library components support styling via the classes object prop. The keys of this object are highlighted in the 'Template' section on each component's page. You can use standard `CSS classes`, `Tailwind classes`, or a combination of both.
 
-::: info
-In the examples of this library, styles are placed in separate folders. The `<style>` blocks <br />
-of Vue components are used for dynamic style management via `v-bind`.
-:::
+Required component props are marked with a red asterisk <span style="color: var(--vp-custom-block-danger-text); font-size: 1.25rem;">\*</span>. <br />
+Many required and all optional props have default values. This ensures type safety, stable performance across different build environments, and handles cases where dynamic data is temporarily missing.
 
-Required component props are marked with a red asterisk <span style="color: var(--vp-custom-block-danger-text); font-size: 1.25rem;">\*</span>. Optional props have explicitly defined default values to guarantee bulletproof type safety, ensure consistent behavior across different build environments, and maintain complete alignment with the documentation.
+The `Component Internals Notes` section found on some pages does not directly relate to the documentation and serves only as short notes for myself.

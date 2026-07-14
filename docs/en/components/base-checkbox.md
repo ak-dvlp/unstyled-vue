@@ -15,10 +15,10 @@ import { data } from '../../props.data.ts'
 ## Template
 
 ```html{1-3}
-  <label class="checkbox">
-    <input :checked="isChecked" class="checkbox__body" :disabled :name :readonly type="checkbox" @change="onChange" />
-    <span class="checkbox__label">
-      <slot>{{ label }}</slot>
-    </span>
-  </label>
+<label :class="ui?.root">
+  <input :checked="isChecked" :class="ui?.control" :disabled :name :readonly type="checkbox" @change="onChange" />
+  <span :class="ui?.label">
+    <slot>{{ label }}</slot>
+  </span>
+</label>
 ```

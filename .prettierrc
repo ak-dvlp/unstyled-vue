@@ -5,6 +5,8 @@
   "plugins": ["prettier-plugin-css-order", "prettier-plugin-tailwindcss"],
   "tailwindSortClasses": true,
   "tailwindFormatter": "tailwindcss",
+  "tailwindAttributes": ["classes", "ui"],
+  "tailwindFunctions": ["clsx", "twMerge"],
   "overrides": [
     {
       "files": "*.json",

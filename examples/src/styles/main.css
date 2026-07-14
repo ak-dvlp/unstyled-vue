@@ -1,5 +1,5 @@
-@import './base.css';
 @import 'tailwindcss';
+@import './base.css';
 
 /* Сопоставление семантических переменных с пользовательскими вспомогательными классами Tailwind */
 @theme inline {
@@ -9,4 +9,3 @@
 }
 
 /* Стили компонентов  */
-@import './components/switch.css';

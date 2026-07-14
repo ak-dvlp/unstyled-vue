@@ -23,19 +23,35 @@ export interface BaseTableProps<T> {
    * @en Table column configuration
    */
   cols: TableCol<T>[]
+
+  /**
+   * @ru Классы компонента
+   * @en Component classes
+   */
+  classes?: {
+    root?: string
+    table?: string
+    header?: string
+    headerRow?: string
+    headerCell?: string
+    body?: string
+    row?: string
+    cell?: string
+    emptyCell?: string
+  }
   /**
    * @ru Конфигурация шапки таблицы
    * @en Table header configuration
    */
-  headers: string | HeaderCell | (string | HeaderCell)[]
+  headers?: string | HeaderCell | (string | HeaderCell)[]
   /**
    * @ru Массив данных для отображения в строках таблицы
    * @en Array of data objects to display in the table rows
    */
-  rows: T[]
+  rows?: T[]
 }
 
-const { headers } = defineProps<BaseTableProps<T>>()
+const { classes: ui = {}, cols = [], headers = [], rows = [] } = defineProps<BaseTableProps<T>>()
 
 type DynamicSlots<T> = {
   [K in Extract<keyof T, string>]?: (props: { index: number; row: T; value: T[K] }) => unknown
@@ -57,19 +73,19 @@ const resolvedHeaders = computed((): (string | HeaderCell)[] => {
 </script>
 
 <template>
-  <div class="table__container">
-    <table class="table">
+  <div :class="ui?.root">
+    <table :class="ui?.table">
       <!-- Семантическое описание колонок -->
       <colgroup>
         <col v-for="(col, i) in cols" :key="i" :style="{ width: col.width }" />
       </colgroup>
 
-      <thead class="table__thead">
-        <tr class="table__row--header">
+      <thead :class="ui?.header">
+        <tr :class="ui?.headerRow">
           <th
             v-for="(col, i) in resolvedHeaders"
             :key="i"
-            class="table__cell--header"
+            :class="ui?.headerCell"
             :colspan="typeof col === 'object' ? col.span || 1 : 1"
           >
             {{ typeof col === 'object' ? col.label : col }}
@@ -77,12 +93,12 @@ const resolvedHeaders = computed((): (string | HeaderCell)[] => {
         </tr>
       </thead>
 
-      <tbody class="table__tbody">
-        <tr v-for="(row, rowIndex) in rows" :key="rowIndex" class="table__row">
+      <tbody :class="ui?.body">
+        <tr v-for="(row, rowIndex) in rows" :key="rowIndex" :class="ui?.row">
           <td
             v-for="(col, colIndex) in cols"
             :key="colIndex"
-            class="table__cell"
+            :class="ui?.cell"
             :style="{
               width: col.width,
               minWidth: col.minWidth || col.width,
@@ -96,34 +112,13 @@ const resolvedHeaders = computed((): (string | HeaderCell)[] => {
         </tr>
 
         <!-- Строка для пустого массива rows -->
-        <tr v-if="rows.length === 0" class="table__row">
-          <td class="table__cell--empty" :colspan="cols.length">
+        <tr v-if="rows.length === 0" :class="ui?.row">
+          <td :class="ui?.emptyCell" :colspan="cols.length">
             <!-- Текст по умолчанию -->
-            <slot name="empty">Таблица пуста</slot>
+            <slot name="empty"></slot>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </template>
-
-<!-- <style scoped>
-.table__container {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.table {
-  border-collapse: collapse;
-  width: 100%;
-  table-layout: auto;
-  /* color: var(--vp-c-text-2, #98989f); */
-}
-
-.table__cell--header,
-.table__cell {
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
-</style> -->

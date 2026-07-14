@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import UserSwitch from '@examples/src/user-components/UserSwitch.vue'
-import { reactive, ref } from 'vue'
+import UserCheckbox from '@examples/src/user-components/UserCheckbox.vue'
+// import UserSwitch from '@examples/src/user-components/UserSwitch.vue'
+import { reactive } from 'vue'
 
 const state = reactive({
   model: '',
@@ -18,31 +19,9 @@ const state = reactive({
 // const rows = [{ description_en: '', description_ru: '', isOptional: false, name: 'cols', type: 'TableCol<T>[]' }]
 
 // const headers = computed(() => ['Имя свойства', 'Тип свойства', 'Значение по умолчанию', 'Описание'])
-const tst = ref(false)
-
-const flag = ref(false)
-
-const trueValue = ref(true)
-const falseValue = ref(false)
-
-function changeSome() {
-  if (flag.value) {
-    flag.value = false
-    trueValue.value = 'истина'
-    falseValue.value = 'ложь'
-  } else {
-    flag.value = true
-    trueValue.value = true
-    falseValue.value = false
-  }
-}
 </script>
 
 <template>
-  <button @click="changeSome">Нажать</button>
-  {{ trueValue }} {{ falseValue }}
-  <div>{{ tst }}</div>
-  <BaseSwitch v-model="tst" :false-value="falseValue" indeterminate :true-value="trueValue" />
   <div class="flex flex-col">
     <!-- <BaseTable class="test" :cols :headers :rows="rows">
       <template #name="{ row, value }">
@@ -56,10 +35,12 @@ function changeSome() {
 
       <template #empty>Свойство не найдено</template>
     </BaseTable> -->
+    <UserCheckbox label="alsdfjk" />
 
-    <UserSwitch v-model="state.disabled" label="disabled" />
-    <UserSwitch v-model="state.error" label="error" />
+    <!-- <UserCheckbox v-model="state.disabled" :classes="{ label: 'adf', root: 'adsf' }" label="disabled" /> -->
+    <!-- <UserSwitch v-model="state.error" label="error" /> -->
 
-    <UserSwitch v-model="state.model" :disabled="state.disabled" :error="state.error" label="UserSwitch" />
+    <!-- <UserSwitch v-model="state.model" :disabled="state.disabled" :error="state.error" label="UserSwitch" /> -->
+    <div>aldfkj</div>
   </div>
 </template>

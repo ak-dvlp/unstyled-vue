@@ -14,12 +14,12 @@ import { data } from '../../props.data.ts'
 
 ## Template
 
-```html{1-4}
-  <label class="switch">
-    <input :checked="isChecked" class="visually-hidden" :disabled :name :readonly type="checkbox" @change="onChange" />
-    <div class="switch__body"></div>
-    <span class="switch__label">
-      <slot>{{ label }}</slot>
-    </span>
-  </label>
+```html{1,3,4}
+<label :class="ui?.root">
+  <input :checked="isChecked" class="visually-hidden" :disabled :name :readonly type="checkbox" @change="onChange" />
+  <div :class="ui?.control"></div>
+  <span :class="ui?.label">
+    <slot>{{ label }}</slot>
+  </span>
+</label>
 ```

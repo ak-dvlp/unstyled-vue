@@ -1,0 +1,11 @@
+import tailwindcss from '@tailwindcss/postcss'
+import { postcssIsolateStyles } from 'vitepress'
+
+export default {
+  plugins: [
+    tailwindcss(),
+    postcssIsolateStyles({
+      includeFiles: [/theme-default/],
+    }),
+  ],
+}
