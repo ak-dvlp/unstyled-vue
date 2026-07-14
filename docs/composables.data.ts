@@ -15,45 +15,36 @@ function cleanTypeScriptType(typeString: string): string {
   return typeString.replace(/import\((['"`]).*?\1\)\./g, '')
 }
 
-/**
- * Strips remaining comment formatting characters like trailing slashes,
- * markdown/JSDoc block closures, asterisks, and excessive whitespace line feeds.
- */
 function cleanDescriptionText(text: string): string {
   return text
-    .replace(/^\s*\*+/gm, '') // Remove leading asterisks per line
-    .replace(/\/\s*$/, '') // Remove trailing slash block closures
-    .replace(/^\s*\/+/gm, '') // Remove leading slashes
+    .replace(/^\s*\*+/gm, '')
+    .replace(/^- /, '')
     .trim()
 }
 
-/**
- * Parses a raw JSDoc comment text block into main descriptions and parameter maps for both languages.
- */
 function parseMixedJsDoc(jsDocText: string) {
   const result = {
     main: { en: '', ru: '' },
     params: new Map<string, { en: string; ru: string }>(),
   }
 
-  // Split into language sections based on @ru and @en tags
   const ruSectionMatch = jsDocText.match(/@ru([\s\S]*?)(?=@en|$)/)
   const enSectionMatch = jsDocText.match(/@en([\s\S]*?)(?=@ru|$)/)
 
   const ruSection = ruSectionMatch ? ruSectionMatch[1] : ''
   const enSection = enSectionMatch ? enSectionMatch[1] : ''
 
-  // Helper to extract main description and params from a single language block
   const parseSection = (sectionText: string, lang: 'en' | 'ru') => {
     if (!sectionText.trim()) return
 
-    // Main description is everything up to the first @param or @returns tag
     const mainMatch = sectionText.split(/@param|@returns/)[0]
     result.main[lang] = mainMatch ? cleanDescriptionText(mainMatch) : ''
 
-    // Match all @param definitions: @param name Description text
-    const paramRegex = /@param\s+(\w+)([\s\S]*?)(?=@param|@returns|$)/g
+    // const paramRegex = /@param\s+(\w+)([\s\S]*?)(?=@param|@returns|$)/g
+    const paramRegex = /@param\s+(\w+)\s*(?:-\s*)?([\s\S]*?)(?=@param|@returns|$)/g
+
     let match
+
     while ((match = paramRegex.exec(sectionText)) !== null) {
       const pName = match[1]
       const pDesc = match[2] ? cleanDescriptionText(match[2]) : ''
@@ -79,7 +70,6 @@ function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): any
   const jsDocs = (node as any).getJsDocs?.() || []
   const jsDoc = jsDocs[0]
 
-  // Extract all text inside /** ... */ block
   const jsDocText = jsDoc ? jsDoc.getText() : ''
   const parsedDoc = parseMixedJsDoc(jsDocText)
 
@@ -90,6 +80,7 @@ function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): any
 
     params = func.getParameters().map((p) => {
       const pName = p.getName()
+
       return {
         name: pName,
         type: cleanTypeScriptType(p.getTypeNode()?.getText() || p.getType().getText()),
@@ -101,6 +92,7 @@ function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): any
     name = varDecl.getName()
 
     const initializer = varDecl.getInitializer()
+
     if (
       initializer &&
       (initializer.getKind() === SyntaxKind.ArrowFunction || initializer.getKind() === SyntaxKind.FunctionExpression)
@@ -130,11 +122,14 @@ function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): any
       const elementName = element.getName()
       if (!elementName) continue
 
-      // Look up parent VariableStatement if it is a VariableDeclaration to capture top JSDoc comments
       let targetDocNode = element
+
       if (element.getKind() === SyntaxKind.VariableDeclaration) {
         const varStatement = element.getFirstAncestorByKind(SyntaxKind.VariableStatement)
-        if (varStatement) targetDocNode = varStatement
+
+        if (varStatement) {
+          targetDocNode = varStatement
+        }
       }
 
       const innerJsDocs = (targetDocNode as any).getJsDocs?.() || []
@@ -174,24 +169,21 @@ function parseFunctionNode(node: FunctionDeclaration | VariableDeclaration): any
 
             const innerReturn = cleanTypeScriptType(funcElement.getReturnType().getText())
             item.returnValue = innerReturn
-          }
-          // 👇 3. Handle VariableDeclarations (like isChecked)
-          else if (element.getKind() === SyntaxKind.VariableDeclaration) {
+          } else if (element.getKind() === SyntaxKind.VariableDeclaration) {
             const varElement = element as VariableDeclaration
             const varType = cleanTypeScriptType(varElement.getType().getText())
 
             item.returnValue = varType
-
-            // Check if the variable is initialized as an arrow function or function expression
             const initializer = varElement.getInitializer()
+
             if (
               initializer &&
               (initializer.getKind() === SyntaxKind.ArrowFunction ||
                 initializer.getKind() === SyntaxKind.FunctionExpression)
             ) {
-              item.type = 'function' // It's an anonymous/arrow function assigned to a variable
+              item.type = 'function'
             } else {
-              item.type = 'computed' // It's a computed property, ref, or static value
+              item.type = 'computed'
             }
           }
 
@@ -222,6 +214,7 @@ export default {
 
     for (const filePath of composableFiles) {
       const sourceFile = project.getSourceFile(filePath)
+
       if (!sourceFile) continue
 
       const fileName = path.basename(filePath, '.ts')
@@ -233,8 +226,10 @@ export default {
       }
 
       const exportedVariables = sourceFile.getVariableStatements().filter((v) => v.isExported())
+
       for (const statement of exportedVariables) {
         const declaration = statement.getDeclarations()[0]
+
         if (declaration) {
           allComposables[fileName] = parseFunctionNode(declaration)
           break

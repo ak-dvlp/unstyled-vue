@@ -29,6 +29,28 @@ const cols: TableCol<PropItem>[] = [
   { key: 'description', minWidth: '12.5rem' },
   { key: 'default', width: '12rem' },
 ]
+
+function codeString(str: string) {
+  const inner = str
+    .replace(/^\s*\{\s*/, '')
+    .replace(/\s*\}\s*$/, '')
+    .trim()
+
+  if (!inner) return '{}'
+
+  const tokens = inner.split(/\s+/).filter(Boolean)
+  const lines: string[] = []
+
+  for (let i = 0; i < tokens.length; i += 2) {
+    const name = tokens[i]
+    const type = tokens[i + 1]
+    if (name && type) {
+      lines.push(`  ${name} ${type}`)
+    }
+  }
+
+  return '{\n' + lines.join('\n') + '\n}'
+}
 </script>
 
 <template>
@@ -50,7 +72,13 @@ const cols: TableCol<PropItem>[] = [
       <template #description="{ row }">
         <div>
           <div>{{ row.description[lang] }}</div>
-          <div class="type-color">{{ row.type }}</div>
+          <div v-if="row.type.startsWith('{')" class="type-color">
+            <!-- <div v-for="(item, i) in formatObjectLikeString(row.type)" :key="i">
+              <div>{{ item }}</div>
+            </div> -->
+            <pre class="language-ts">{{ codeString(row.type) }}</pre>
+          </div>
+          <div v-else class="type-color">{{ row.type }}</div>
         </div>
       </template>
 
