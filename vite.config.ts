@@ -13,6 +13,7 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '@examples': fileURLToPath(new URL('./examples', import.meta.url)),
+      '@docs': fileURLToPath(new URL('./docs', import.meta.url)),
     },
   },
   server: {

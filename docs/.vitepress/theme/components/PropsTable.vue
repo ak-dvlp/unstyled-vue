@@ -24,7 +24,7 @@ const headers = computed(() =>
     : ['Name', 'Description and type', 'Default'],
 )
 
-const cols: TableCol<PropItem>[] = [
+const COLS: TableCol<PropItem>[] = [
   { key: 'name', width: '10rem' },
   { key: 'description', minWidth: '12.5rem' },
   { key: 'default', width: '12rem' },
@@ -54,7 +54,7 @@ function codeString(str: string) {
 </script>
 
 <template>
-  <div class="props-table">
+  <div class="props-table overflow-x-auto">
     <div class="props-table__search-block">
       <input
         v-model="search"
@@ -63,7 +63,7 @@ function codeString(str: string) {
       />
     </div>
 
-    <BaseTable :cols :headers :rows="filteredRows">
+    <BaseTable :cols="COLS" :headers :rows="filteredRows">
       <template #name="{ row, value }">
         {{ value }}
         <span v-if="!row.isOptional" class="text-required">*</span>

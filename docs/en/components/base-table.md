@@ -85,6 +85,12 @@ type HeaderCell = {
 </div>
 ```
 
+## Example
+
+<ExampleContainer>
+  <ExampleTable />
+</ExampleContainer>
+
 ## Component Internals Notes
 
 The `empty` slot allows a message to be displayed when the rows array is empty.

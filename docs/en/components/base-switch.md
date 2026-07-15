@@ -26,6 +26,8 @@ import { data } from '../../props.data.ts'
 
 ## Example
 
-<<< @/../examples/src/components/ExampleCheckbox.vue#user-checkbox-template {ts}
+<ExampleContainer>
+  <ExampleSwitch label="Label" />
+</ExampleContainer>
 
-<ExampleSwitch label="Label" />
+<<< @/../examples/src/components/ExampleCheckbox.vue#user-checkbox-template {ts}

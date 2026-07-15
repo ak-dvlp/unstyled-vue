@@ -2,7 +2,7 @@
 
 ## Модель
 
-<<< @/../src/components/base-checkbox/BaseCheckbox.vue#base-checkbox-model{ts}
+<<< @/../src/components/base-switch/BaseSwitch.vue#base-switch-model {ts}
 
 ## Входные параметры
 
@@ -14,18 +14,12 @@ import { data } from '../props.data.ts'
 
 ## Шаблон
 
-```html{1,3,4}
-<label :class="ui?.root">
-  <input :checked="isChecked" class="visually-hidden" :disabled :name :readonly type="checkbox" @change="onChange" />
-  <div :class="ui?.control"></div>
-  <span :class="ui?.label">
-    <slot>{{ label }}</slot>
-  </span>
-</label>
-```
+<<< @/../src/components/base-switch/BaseSwitch.vue#base-switch-template {1,5,12,13html}
 
 ## Пример
 
-<<< @/../examples/src/components/ExampleCheckbox.vue#user-checkbox-template {ts}
+<ExampleContainer>
+  <ExampleSwitch label="Текст" />
+</ExampleContainer>
 
-<ExampleSwitch label="Текст" />
+<<< @/../examples/src/components/ExampleCheckbox.vue#user-checkbox-template {ts}

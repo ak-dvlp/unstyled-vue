@@ -25,6 +25,7 @@
   --red-500: hsl(357, 96%, 58%);
   --amber-400: hsl(44, 100%, 50%);
   --amber-500: hsl(36, 100%, 50%);
+  --violet-700: hsl(263, 70%, 50%);
 }
 
 /** Светлая тема */
@@ -43,7 +44,8 @@
   --color-warning: var(--amber-500);
   --color-disabled: var(--neutral-300);
 
-  --color-label: var(--neutral-800);
+  --color-label: var(--sky-950);
+  --color-my-label-inverse: var(--color-background);
 }
 
 /** Тёмная тема */
@@ -63,6 +65,7 @@
   --color-disabled: var(--neutral-200);
 
   --color-label: var(--blue-300);
+  --color-my-label-inverse: var(--color-background);
 }
 
 /* Сопоставление семантических переменных с пользовательскими классами Tailwind */
@@ -76,6 +79,8 @@
 
   --color-switch-body: var(--color-switch-body);
 
+  --color-my-divider: var(--color-divider);
   --color-my-label: var(--color-label);
-  --color-my-track: var(--color-track);
+  --color-my-label-inverse: var(--color-my-label-inverse);
+  --color-my-card: var(--color-card);
 }

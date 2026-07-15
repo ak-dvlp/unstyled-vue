@@ -85,6 +85,12 @@ export type HeaderCell = {
 </div>
 ```
 
+## Пример
+
+<ExampleContainer>
+  <ExampleTable />
+</ExampleContainer>
+
 ## Комментарии к устройству компонента
 
 Наличие слота `empty` позволяет отображать сообщение при пустом массиве `rows`.

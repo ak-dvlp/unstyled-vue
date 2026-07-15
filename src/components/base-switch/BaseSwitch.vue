@@ -2,9 +2,9 @@
 import { useCheckbox } from '../../composables/useCheckbox'
 import type { BaseCheckboxProps } from '../base-checkbox/index'
 
-// #region base-checkbox-model
+// #region base-switch-model
 const model = defineModel<string | number | boolean | null>()
-// #endregion base-checkbox-model
+// #endregion base-switch-model
 
 const {
   classes: ui = {},
@@ -24,10 +24,11 @@ const { isChecked, onChange } = useCheckbox(
 </script>
 
 <template>
+  <!-- #region base-switch-template -->
   <label :class="ui?.root">
     <input
       :checked="isChecked"
-      class="base-switch__visually-hidden"
+      class="base-switch--visually-hidden"
       :class="ui?.input"
       :disabled
       :name
@@ -40,10 +41,12 @@ const { isChecked, onChange } = useCheckbox(
       <slot>{{ label }}</slot>
     </span>
   </label>
+  <!-- #endregion base-switch-template -->
 </template>
 
 <style scoped>
-.base-switch__visually-hidden {
+/* #region base-switch-style */
+.base-switch--visually-hidden {
   position: absolute;
   clip-path: inset(50%);
   margin: -1px;
@@ -54,4 +57,5 @@ const { isChecked, onChange } = useCheckbox(
   overflow: hidden;
   white-space: nowrap;
 }
+/* #endregion base-switch-style */
 </style>
