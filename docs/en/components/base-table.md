@@ -91,6 +91,8 @@ type HeaderCell = {
   <ExampleTable />
 </ExampleContainer>
 
+<<< @/../examples/src/components/ExampleTable.vue#example-table-template {ts}
+
 ## Component Internals Notes
 
 The `empty` slot allows a message to be displayed when the rows array is empty.

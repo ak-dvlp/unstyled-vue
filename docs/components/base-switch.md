@@ -22,4 +22,4 @@ import { data } from '../props.data.ts'
   <ExampleSwitch label="Текст" />
 </ExampleContainer>
 
-<<< @/../examples/src/components/ExampleCheckbox.vue#user-checkbox-template {ts}
+<<< @/../examples/src/components/ExampleSwitch.vue#example-switch-template {ts}

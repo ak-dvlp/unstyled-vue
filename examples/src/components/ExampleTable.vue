@@ -7,9 +7,7 @@ import type { TableCol } from '@/index'
 const { lang } = useData() as { lang: Ref<'en' | 'ru'> }
 
 const headers = computed(() =>
-  lang.value === 'ru'
-    ? ['Инструмент', 'Тип', 'Звучание']
-    : ['Instrument', 'Type', 'Sound'],
+  lang.value === 'ru' ? ['Инструмент', 'Тип', 'Звучание'] : ['Instrument', 'Type', 'Sound'],
 )
 
 type Row = {
@@ -68,15 +66,16 @@ const COLS: TableCol<(typeof rows.value)[number]>[] = [
 <template>
   <BaseTable
     :classes="{
+      // #region example-table-template
       root: 'border-my-label overflow-hidden rounded-xl border',
       table: 'text-my-label w-full text-left text-sm',
       header: 'bg-my-label border-b text-xs font-semibold tracking-wider uppercase',
-      headerRow: '',
       headerCell: 'text-my-label-inverse px-6 py-3.5 font-semibold',
       body: 'divide-my-label divide-y',
       row: 'hover:bg-my-label hover:text-my-label-inverse transition-colors duration-150',
       cell: 'px-6 py-4 align-middle',
       emptyCell: 'px-6 py-4 text-sm',
+      // #endregion example-table-template
     }"
     :cols="COLS"
     :headers

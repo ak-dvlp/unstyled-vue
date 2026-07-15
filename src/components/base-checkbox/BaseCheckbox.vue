@@ -24,10 +24,12 @@ const { isChecked, onChange } = useCheckbox(
 </script>
 
 <template>
+  <!-- #region base-checkbox-template -->
   <label :class="ui?.root">
     <input :checked="isChecked" :class="ui?.control" :disabled :name :readonly type="checkbox" @change="onChange" />
     <span :class="ui?.label">
       <slot>{{ label }}</slot>
     </span>
   </label>
+  <!-- #endregion base-checkbox-template -->
 </template>

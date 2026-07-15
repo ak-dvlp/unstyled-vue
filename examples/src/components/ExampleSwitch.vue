@@ -21,7 +21,7 @@ const model = defineModel<string | number | boolean | null | undefined>()
       control:
         'ease bg-switch-body block h-2 w-6.25 min-w-6.25 rounded-full transition-all duration-150 peer-checked:bg-blue-500 after:relative after:top-[-0.15rem] after:left-0 after:block after:h-3.25 after:w-3.25 after:rounded-full after:border after:border-slate-400 after:bg-white after:transition-all after:duration-200 after:ease-linear peer-checked:after:left-3',
       label: 'text-my-label',
-      // #region example-switch-template
+      // #endregion example-switch-template
     }"
     :disabled
     :false-value

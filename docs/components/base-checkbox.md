@@ -14,14 +14,7 @@ import { data } from '../props.data.ts'
 
 ## Шаблон
 
-```html {1-3}
-<label :class="ui?.root">
-  <input :checked="isChecked" :class="ui?.control" :disabled :name :readonly type="checkbox" @change="onChange" />
-  <span :class="ui?.label">
-    <slot>{{ label }}</slot>
-  </span>
-</label>
-```
+<<< @/../src/components/base-checkbox/BaseCheckbox.vue#base-checkbox-template {1-3html}
 
 ## Пример
 
@@ -29,4 +22,4 @@ import { data } from '../props.data.ts'
   <ExampleCheckbox label="Текст" />
 </ExampleContainer>
 
-<<< @/../examples/src/components/ExampleCheckbox.vue#user-checkbox-template {ts}
+<<< @/../examples/src/components/ExampleCheckbox.vue#example-checkbox-template {ts}

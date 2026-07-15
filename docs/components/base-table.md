@@ -91,6 +91,8 @@ export type HeaderCell = {
   <ExampleTable />
 </ExampleContainer>
 
+<<< @/../examples/src/components/ExampleTable.vue#example-table-template {ts}
+
 ## Комментарии к устройству компонента
 
 Наличие слота `empty` позволяет отображать сообщение при пустом массиве `rows`.
