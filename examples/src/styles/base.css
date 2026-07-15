@@ -15,8 +15,10 @@
   --slate-500: hsl(215, 18%, 47%);
   --slate-600: hsl(215, 22%, 35%);
 
+  --blue-300: hsl(212, 100%, 81%);
   --blue-400: hsl(212, 100%, 66%);
   --blue-500: hsl(216, 100%, 58%);
+  --sky-950: hsl(204, 80%, 16%);
   --emerald-400: hsl(161, 100%, 42%);
   --emerald-500: hsl(160, 100%, 37%);
   --rose-400: hsl(350, 100%, 69%);
@@ -25,7 +27,7 @@
   --amber-500: hsl(36, 100%, 50%);
 }
 
-/* Светлая тема по умолчанию. */
+/** Светлая тема */
 :root {
   --color-background: var(--neutral-100);
   --color-card: var(--neutral-200);
@@ -34,58 +36,18 @@
   --color-text: var(--neutral-800);
 
   --color-switch-body: var(--slate-300);
-  --color-switch-thumb-border: var(--slate-400);
 
   --color-primary: var(--blue-500);
   --color-success: var(--emerald-500);
   --color-error: var(--red-500);
   --color-warning: var(--amber-500);
   --color-disabled: var(--neutral-300);
+
+  --color-label: var(--neutral-800);
 }
 
-/* Системная тёмная тема. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--neutral-800);
-    --color-card: var(--neutral-600);
-    --color-divider: var(--neutral-500);
-    --color-border: var(--neutral-400);
-    --color-text: var(--neutral-100);
-
-    --color-switch-body: var(--slate-200);
-    --color-switch-thumb-border: var(--slate-400);
-
-    --color-primary: var(--blue-400);
-    --color-success: var(--emerald-400);
-    --color-error: var(--rose-400);
-    --color-warning: var(--amber-400);
-    --color-disabled: var(--neutral-200);
-  }
-}
-
-/*
- * Явная светлая тема (за счёт специфичности перекрывает системную тему).
- * Срабатывает, когда у html есть класс theme-light.
- */
-html.theme-light {
-  --color-background: var(--neutral-100);
-  --color-card: var(--neutral-200);
-  --color-divider: var(--neutral-300);
-  --color-border: var(--neutral-400);
-  --color-text: var(--neutral-800);
-
-  --color-switch-body: var(--slate-300);
-  --color-switch-thumb-border: var(--slate-400);
-
-  --color-primary: var(--blue-500);
-  --color-success: var(--emerald-500);
-  --color-error: var(--red-500);
-  --color-warning: var(--amber-500);
-  --color-disabled: var(--neutral-300);
-}
-
-/* Тёмная тема. Срабатывает, когда у html есть класс theme-dark. */
-html.theme-dark {
+/** Тёмная тема */
+.dark {
   --color-background: var(--neutral-800);
   --color-card: var(--neutral-600);
   --color-divider: var(--neutral-500);
@@ -93,46 +55,27 @@ html.theme-dark {
   --color-text: var(--neutral-100);
 
   --color-switch-body: var(--slate-200);
-  --color-switch-thumb-border: var(--slate-400);
 
   --color-primary: var(--blue-400);
   --color-success: var(--emerald-400);
   --color-error: var(--rose-400);
   --color-warning: var(--amber-400);
   --color-disabled: var(--neutral-200);
+
+  --color-label: var(--blue-300);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
-}
+/* Сопоставление семантических переменных с пользовательскими классами Tailwind */
+@theme inline {
+  --color-body-background: var(--color-background);
+  --color-body-text: var(--color-text);
 
-body {
-  transition:
-    color 0.5s,
-    background-color 0.5s;
-  background: var(--color-background);
-  min-height: 100vh;
-  color: var(--color-text);
-  font-size: 15px;
-  line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --shadow-card: 2px 3px 10px 0 var(--color-border);
+  --color-theme-light: var(--neutral-100);
+  --color-theme-dark: var(--neutral-800);
+
+  --color-switch-body: var(--color-switch-body);
+
+  --color-my-label: var(--color-label);
+  --color-my-track: var(--color-track);
 }

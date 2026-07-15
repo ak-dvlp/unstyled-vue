@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCheckbox } from '../../composables/useCheckbox'
-import type { BaseCheckboxProps } from '.'
+import type { BaseCheckboxProps } from './index'
 
 // #region base-checkbox-model
 const model = defineModel<string | number | boolean | null>()

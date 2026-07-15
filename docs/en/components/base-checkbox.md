@@ -23,8 +23,8 @@ import { data } from '../../props.data.ts'
 </label>
 ```
 
-## Styling example
+## Example
 
-<<< @/../examples/src/user-components/UserCheckbox.vue#user-checkbox-template {ts}
+<<< @/../examples/src/components/ExampleCheckbox.vue#user-checkbox-template {ts}
 
-<UserCheckbox label="Example" />
+<ExampleCheckbox label="Example" />

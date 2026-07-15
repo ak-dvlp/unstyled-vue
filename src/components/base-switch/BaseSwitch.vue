@@ -25,7 +25,16 @@ const { isChecked, onChange } = useCheckbox(
 
 <template>
   <label :class="ui?.root">
-    <input :checked="isChecked" class="visually-hidden" :disabled :name :readonly type="checkbox" @change="onChange" />
+    <input
+      :checked="isChecked"
+      class="base-switch__visually-hidden"
+      :class="ui?.input"
+      :disabled
+      :name
+      :readonly
+      type="checkbox"
+      @change="onChange"
+    />
     <div :class="ui?.control"></div>
     <span :class="ui?.label">
       <slot>{{ label }}</slot>
@@ -34,12 +43,11 @@ const { isChecked, onChange } = useCheckbox(
 </template>
 
 <style scoped>
-.visually-hidden {
+.base-switch__visually-hidden {
   position: absolute;
-  opacity: 0;
   clip-path: inset(50%);
   margin: -1px;
-  border: 0;
+  border-width: 0;
   padding: 0;
   width: 1px;
   height: 1px;

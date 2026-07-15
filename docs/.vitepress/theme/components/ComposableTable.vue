@@ -2,8 +2,8 @@
 import { useData } from 'vitepress'
 import { computed, Ref } from 'vue'
 
-import type { TableCol } from '../../../../src/components/base-table/BaseTable.vue'
 import BaseTable from '../../../../src/components/base-table/BaseTable.vue'
+import type { TableCol } from '../../../../src/components/base-table/index'
 import type { ComposableData, ComposableParameter, ComposableReturnValue } from '../../../types'
 
 const { data } = defineProps<{

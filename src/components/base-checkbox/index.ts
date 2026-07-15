@@ -7,6 +7,7 @@ export interface BaseCheckboxProps {
    */
   classes?: {
     root?: string
+    input?: string
     control?: string
     label?: string
   }

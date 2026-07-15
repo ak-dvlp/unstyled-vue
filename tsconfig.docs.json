@@ -4,7 +4,7 @@
     "types": ["node"]
   },
   "include": [
-    // "docs/.vitepress/**/*.{ts,vue}",
+    "docs/.vitepress/**/*.{ts,vue}",
     // "docs/props.data.ts",
     "docs/**/*.ts",
     "docs/**/*.vue",

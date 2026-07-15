@@ -79,7 +79,10 @@ export default {
     const allProps: Record<string, PropItem[]> = {}
 
     const vueFiles = fg.globSync(path.resolve(__dirname, '../src/components/**/*.vue'))
-    const tsFiles = fg.globSync(path.resolve(__dirname, '../src/types/**/*.ts'))
+    const tsFiles = fg.globSync([
+      path.resolve(__dirname, '../src/types/**/*.ts'),
+      path.resolve(__dirname, '../src/components/**/*.ts'),
+    ])
 
     if (tsFiles.length > 0) {
       project.addSourceFilesAtPaths(tsFiles)

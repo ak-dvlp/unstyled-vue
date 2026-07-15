@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import ThemeToggle from '@examples/src/user-components/ThemeToggle.vue'
+import ThemeToggle from '@examples/src/components/ThemeToggle.vue'
 import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div class="absolute top-0 left-0 grid h-screen w-screen grid-rows-[3rem_auto] overflow-hidden">
+  <div
+    class="bg-body-background text-body-text absolute top-0 left-0 grid h-screen w-screen grid-rows-[3rem_auto] overflow-hidden"
+  >
     <header class="shadow-card flex p-1">
       <ThemeToggle />
     </header>
