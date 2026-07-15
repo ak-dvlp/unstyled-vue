@@ -8,8 +8,8 @@ const { lang } = useData() as { lang: Ref<'en' | 'ru'> }
 
 const headers = computed(() =>
   lang.value === 'ru'
-    ? ['Имя', 'Описание и тип', 'Значение по умолчанию']
-    : ['Name', 'Description and type', 'Default'],
+    ? ['Инструмент', 'Тип', 'Звучание']
+    : ['Instrument', 'Type', 'Sound'],
 )
 
 type Row = {
