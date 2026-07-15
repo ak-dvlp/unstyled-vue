@@ -5,6 +5,7 @@ hero:
   name: |
     A library of base
     Vue components
+    (work in progress)
   tagline: |
     and composables without built-in styles,
     for your design system.
