@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import type { BaseInputProps } from '.'
 
-const { autocomplete = 'off', type = 'text' } = defineProps<BaseInputProps>()
-
+// #region base-input-model
 const model = defineModel<string | number | null>()
+// #endregion base-input-model
+
+const { autocomplete = 'off', type = 'text' } = defineProps<BaseInputProps>()
 </script>
 
 <template>
+  <!-- #region base-input-template -->
   <input
     :id
     v-model="model"
@@ -22,4 +25,5 @@ const model = defineModel<string | number | null>()
     :required
     :type
   />
+  <!-- #endregion base-input-template -->
 </template>

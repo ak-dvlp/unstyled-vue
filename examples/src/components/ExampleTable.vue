@@ -4,7 +4,7 @@ import { computed, type Ref } from 'vue'
 
 import type { TableCol } from '@/index'
 
-const { lang } = useData() as { lang: Ref<'en' | 'ru'> }
+const { lang } = useData() as unknown as { lang: Ref<'en' | 'ru'> }
 
 const headers = computed(() =>
   lang.value === 'ru' ? ['Инструмент', 'Тип', 'Звучание'] : ['Instrument', 'Type', 'Sound'],
@@ -66,7 +66,7 @@ const COLS: TableCol<(typeof rows.value)[number]>[] = [
 <template>
   <BaseTable
     :classes="{
-      // #region example-table-template
+      // #region example-table-classes
       root: 'border-my-label overflow-hidden rounded-xl border',
       table: 'text-my-label w-full text-left text-sm',
       header: 'bg-my-label border-b text-xs font-semibold tracking-wider uppercase',
@@ -75,7 +75,7 @@ const COLS: TableCol<(typeof rows.value)[number]>[] = [
       row: 'hover:bg-my-label hover:text-my-label-inverse transition-colors duration-150',
       cell: 'px-6 py-4 align-middle',
       emptyCell: 'px-6 py-4 text-sm',
-      // #endregion example-table-template
+      // #endregion example-table-classes
     }"
     :cols="COLS"
     :headers

@@ -5,9 +5,9 @@ import { RouterView } from 'vue-router'
 
 <template>
   <div
-    class="bg-body-background text-body-text absolute top-0 left-0 grid h-screen w-screen grid-rows-[3rem_auto] overflow-hidden"
+    class="bg-my-body-background text-my-body-text absolute top-0 left-0 grid h-screen w-screen grid-rows-[3rem_auto] overflow-hidden"
   >
-    <header class="shadow-card flex p-1">
+    <header class="shadow-my-card flex p-1">
       <ThemeToggle />
     </header>
 

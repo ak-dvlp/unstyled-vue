@@ -3,6 +3,10 @@ import { onMounted } from 'vue'
 
 import type { BaseTextareaProps } from '.'
 
+// #region base-textarea-model
+const model = defineModel<string | number | null>()
+// #endregion base-textarea-model
+
 const { autocomplete = 'off', autocorrect = 'off', rows } = defineProps<BaseTextareaProps>()
 
 onMounted(() => {
@@ -10,11 +14,10 @@ onMounted(() => {
     console.warn('Значение свойства rows компонента Textarea должно быть положительным числом не равным нулю.')
   }
 })
-
-const model = defineModel<string | number | null>()
 </script>
 
 <template>
+  <!-- #region base-textarea-template -->
   <textarea
     :id
     v-model="model"
@@ -29,4 +32,5 @@ const model = defineModel<string | number | null>()
     :required
     :rows
   />
+  <!-- #endregion base-textarea-template -->
 </template>

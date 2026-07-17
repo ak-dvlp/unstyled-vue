@@ -22,4 +22,4 @@ import { data } from '../../props.data.ts'
   <ExampleCheckbox label="Label" />
 </ExampleContainer>
 
-<<< @/../examples/src/components/ExampleCheckbox.vue#example-checkbox-template {ts}
+<<< @/../examples/src/components/ExampleCheckbox.vue#example-checkbox-classes {ts}

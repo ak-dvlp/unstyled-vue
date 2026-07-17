@@ -91,7 +91,7 @@ type HeaderCell = {
   <ExampleTable />
 </ExampleContainer>
 
-<<< @/../examples/src/components/ExampleTable.vue#example-table-template {ts}
+<<< @/../examples/src/components/ExampleTable.vue#example-table-classes {ts}
 
 ## Component Internals Notes
 

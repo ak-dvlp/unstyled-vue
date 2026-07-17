@@ -32,7 +32,7 @@ onMounted(() => {
 <template>
   <button
     class="cursor-pointer rounded-lg p-2 transition-colors focus:ring-2 focus:ring-slate-500 focus:outline-none"
-    :class="currentTheme === 'light' ? 'hover:bg-theme-dark' : 'hover:bg-theme-light'"
+    :class="currentTheme === 'light' ? 'hover:bg-my-theme-dark' : 'hover:bg-my-theme-light'"
     @click="toggleTheme"
   >
     <span aria-hidden="true">

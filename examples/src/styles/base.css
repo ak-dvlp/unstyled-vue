@@ -18,7 +18,6 @@
   --blue-300: hsl(212, 100%, 81%);
   --blue-400: hsl(212, 100%, 66%);
   --blue-500: hsl(216, 100%, 58%);
-  --sky-950: hsl(204, 80%, 16%);
   --emerald-400: hsl(161, 100%, 42%);
   --emerald-500: hsl(160, 100%, 37%);
   --rose-400: hsl(350, 100%, 69%);
@@ -26,6 +25,8 @@
   --amber-400: hsl(44, 100%, 50%);
   --amber-500: hsl(36, 100%, 50%);
   --violet-700: hsl(263, 70%, 50%);
+
+  --cloud-sky: hsl(212, 94%, 20%);
 }
 
 /** Светлая тема */
@@ -44,8 +45,8 @@
   --color-warning: var(--amber-500);
   --color-disabled: var(--neutral-300);
 
-  --color-label: var(--sky-950);
-  --color-my-label-inverse: var(--color-background);
+  --color-label: var(--cloud-sky);
+  --color-label-inverse: var(--color-background);
 }
 
 /** Тёмная тема */
@@ -65,22 +66,22 @@
   --color-disabled: var(--neutral-200);
 
   --color-label: var(--blue-300);
-  --color-my-label-inverse: var(--color-background);
+  --color-label-inverse: var(--color-background);
 }
 
 /* Сопоставление семантических переменных с пользовательскими классами Tailwind */
 @theme inline {
-  --color-body-background: var(--color-background);
-  --color-body-text: var(--color-text);
+  --color-my-body-background: var(--color-background);
+  --color-my-body-text: var(--color-text);
 
-  --shadow-card: 2px 3px 10px 0 var(--color-border);
-  --color-theme-light: var(--neutral-100);
-  --color-theme-dark: var(--neutral-800);
+  --shadow-my-card: 2px 3px 10px 0 var(--color-border);
+  --color-my-theme-light: var(--neutral-100);
+  --color-my-theme-dark: var(--neutral-800);
 
-  --color-switch-body: var(--color-switch-body);
+  --color-my-switch-body: var(--color-switch-body);
 
   --color-my-divider: var(--color-divider);
   --color-my-label: var(--color-label);
-  --color-my-label-inverse: var(--color-my-label-inverse);
+  --color-my-label-inverse: var(--color-label-inverse);
   --color-my-card: var(--color-card);
 }
