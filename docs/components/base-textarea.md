@@ -14,7 +14,7 @@ import { data } from '../props.data.ts'
 
 ## Шаблон
 
-<<< @/../src/components/base-textarea/BaseTextarea.vue#base-textarea-template {1-3html}
+<<< @/../src/components/base-textarea/BaseTextarea.vue#base-textarea-template {html}
 
 ## Пример
 

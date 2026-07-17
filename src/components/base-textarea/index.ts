@@ -3,8 +3,14 @@ import type { BaseFieldProps } from '../../types/base-props.ts'
 export { default as BaseTextarea } from './BaseTextarea.vue'
 
 export interface BaseTextareaProps extends BaseFieldProps {
-  /** Автоматическое исправление орфографических ошибок */
+  /**
+   * @ru Автоматическое исправление орфографических ошибок
+   * @en Automatic correction of spelling errors
+   */
   autocorrect?: 'on' | 'off'
-  /** Количество видимых строк области текста */
+  /**
+   * @ru Количество видимых строк области текста
+   * @en The number of visible text lines for the textarea
+   */
   rows?: number
 }
