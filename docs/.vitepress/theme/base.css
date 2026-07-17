@@ -24,6 +24,12 @@
 
   --highlighted-text: hsl(210, 54%, 43%);
   --divider: hsl(240, 2%, 89%);
+
+  --type-boolean: #f97583;
+  --type-string-symbol: #22863a;
+  --type-number-bigint: #6f42c1;
+  --type-undefined-null: #005cc5;
+  --type-object: #e36209;
 }
 
 /** Тёмная тема */
@@ -54,13 +60,27 @@
 
   --highlighted-text: hsl(315, 44%, 46%);
   --divider: hsl(240, 4%, 29%);
+
+  --type-boolean: #f97583;
+  --type-string-symbol: #85e89d;
+  --type-number-bigint: #b392f0;
+  --type-object: #ffab70;
+  --type-undefined-null: #79b8ff;
 }
 
 /* Сопоставление семантических переменных с пользовательскими классами Tailwind */
 @theme inline {
   --color-highlighted-text: var(--highlighted-text);
+  --color-brand-1: var(--vp-c-brand-1);
   --color-brand-3: var(--vp-c-brand-3);
   --color-divider: var(--divider);
+  --color-custom-block-danger-text: var(--vp-custom-block-danger-text);
+
+  --color-type-boolean: var(--type-boolean);
+  --color-type-string-symbol: var(--type-string-symbol);
+  --color-type-number-bigint: var(--type-number-bigint);
+  --color-type-object: var(--type-object);
+  --color-type-undefined-null: var(--type-undefined-null);
 }
 
 .language-ts code,

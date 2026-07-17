@@ -10,7 +10,7 @@ const { rows } = defineProps<{
   rows: PropItem[]
 }>()
 
-const { lang } = useData() as { lang: Ref<'en' | 'ru'> }
+const { lang } = useData() as unknown as { lang: Ref<'ru' | 'en'> }
 
 const search = ref('')
 
@@ -55,10 +55,10 @@ function codeString(str: string) {
 
 <template>
   <div class="props-table overflow-x-auto">
-    <div class="props-table__search-block">
+    <div class="flex justify-end">
       <input
         v-model="search"
-        class="props-table__search-input"
+        class="border-divider rounded border px-1.5 py-2 text-[0.9375rem]"
         :placeholder="lang === 'ru' ? 'Поиск свойства' : 'Search property'"
       />
     </div>
@@ -66,24 +66,30 @@ function codeString(str: string) {
     <BaseTable :cols="COLS" :headers :rows="filteredRows">
       <template #name="{ row, value }">
         {{ value }}
-        <span v-if="!row.isOptional" class="text-required">*</span>
+        <span v-if="!row.isOptional" class="text-custom-block-danger-text text-xl">*</span>
       </template>
 
       <template #description="{ row }">
         <div>
           <div>{{ row.description[lang] }}</div>
-          <div v-if="row.type.startsWith('{')" class="type-color">
-            <!-- <div v-for="(item, i) in formatObjectLikeString(row.type)" :key="i">
-              <div>{{ item }}</div>
-            </div> -->
+          <div v-if="row.type.startsWith('{')" class="text-brand-1">
             <pre class="language-ts">{{ codeString(row.type) }}</pre>
           </div>
-          <div v-else class="type-color">{{ row.type }}</div>
+          <div v-else class="text-brand-1">{{ row.type }}</div>
         </div>
       </template>
 
       <template #default="{ value }">
-        <span :class="{ 'template-literal': value?.startsWith('`') }">{{ value || '-' }}</span>
+        <span
+          :class="{
+            'text-type-boolean': value === 'true' || value === 'false',
+            'text-type-string-symbol': value && value.startsWith('\''),
+            'text-type-number-bigint': value && Number(value),
+            'text-type-object': value && (value.startsWith('{') || value.startsWith('[')),
+            'text-type-undefined-null': value === 'undefined' || value === 'null',
+          }"
+          >{{ value || '-' }}</span
+        >
       </template>
 
       <template #empty>Свойство не найдено</template>
@@ -92,34 +98,9 @@ function codeString(str: string) {
 </template>
 
 <style scoped>
-/* Данный класс необходим чтобы перебить определяемые VitePress классы для элементы table */
+/* Данный класс необходим чтобы перебить определяемые VitePress классы для элемента table */
 .props-table :deep(table) {
   display: table !important;
   width: 100% !important;
-}
-
-.props-table__search-block {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.props-table__search-input {
-  border: 1px solid var(--divider);
-  border-radius: 0.25rem;
-  padding: 0.375rem 0.5rem;
-  font-size: 0.9375rem;
-}
-
-.text-required {
-  color: var(--vp-custom-block-danger-text);
-  font-size: 1.25rem;
-}
-
-.type-color {
-  color: var(--vp-c-brand-1);
-}
-
-.template-literal {
-  color: var(--highlighted-text);
 }
 </style>

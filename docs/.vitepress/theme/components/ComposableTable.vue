@@ -10,7 +10,7 @@ const { data } = defineProps<{
   data: ComposableData
 }>()
 
-const { lang } = useData() as { lang: Ref<'en' | 'ru'> }
+const { lang } = useData() as unknown as { lang: Ref<'en' | 'ru'> }
 
 const paramsHeaders = computed(() =>
   lang.value === 'ru' ? ['Параметр', 'Описание и тип'] : ['Parameter', 'Description and Type'],
