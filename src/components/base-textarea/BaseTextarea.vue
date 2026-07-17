@@ -7,7 +7,19 @@ import type { BaseTextareaProps } from '.'
 const model = defineModel<string | number | null>()
 // #endregion base-textarea-model
 
-const { autocomplete = 'off', autocorrect = 'off', rows } = defineProps<BaseTextareaProps>()
+const {
+  autocomplete = 'off',
+  autocorrect = 'off',
+  disabled = false,
+  id = undefined,
+  maxlength = undefined,
+  minlength = undefined,
+  name = undefined,
+  placeholder = undefined,
+  readonly = false,
+  required = false,
+  rows = undefined,
+} = defineProps<BaseTextareaProps>()
 
 onMounted(() => {
   if (rows && typeof rows === 'number' && rows <= 0) {

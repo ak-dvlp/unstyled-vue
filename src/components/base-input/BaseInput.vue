@@ -5,7 +5,20 @@ import type { BaseInputProps } from '.'
 const model = defineModel<string | number | null>()
 // #endregion base-input-model
 
-const { autocomplete = 'off', type = 'text' } = defineProps<BaseInputProps>()
+const {
+  autocomplete = 'off',
+  disabled = false,
+  id = undefined,
+  max = undefined,
+  maxlength = undefined,
+  min = undefined,
+  minlength = undefined,
+  name = undefined,
+  placeholder = undefined,
+  readonly = false,
+  required = false,
+  type = 'text',
+} = defineProps<BaseInputProps>()
 </script>
 
 <template>
