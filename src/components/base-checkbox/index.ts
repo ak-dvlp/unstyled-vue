@@ -37,6 +37,11 @@ export interface BaseCheckboxProps {
    */
   readonly?: boolean
   /**
+   * @ru Обязательное поле
+   * @en Required field
+   */
+  required?: boolean
+  /**
    * @ru Истинное значение
    * @en True value
    */

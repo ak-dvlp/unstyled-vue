@@ -85,8 +85,7 @@ function codeString(str: string) {
             'text-type-boolean': value === 'true' || value === 'false',
             'text-type-string-symbol': value && value.startsWith('\''),
             'text-type-number-bigint': value && Number(value),
-            'text-type-object': value && (value.startsWith('{') || value.startsWith('[')),
-            'text-type-undefined-null': value === 'undefined' || value === 'null',
+            'text-type-object-null': value && (value.startsWith('{') || value.startsWith('[') || value === 'null'),
           }"
           >{{ value || '-' }}</span
         >

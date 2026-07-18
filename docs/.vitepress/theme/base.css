@@ -27,9 +27,8 @@
 
   --type-boolean: #f97583;
   --type-string-symbol: #22863a;
-  --type-number-bigint: #6f42c1;
-  --type-undefined-null: #005cc5;
-  --type-object: #e36209;
+  --type-number-bigint: #005cc5;
+  --type-object-null: #6f42c1;
 }
 
 /** Тёмная тема */
@@ -63,9 +62,8 @@
 
   --type-boolean: #f97583;
   --type-string-symbol: #85e89d;
-  --type-number-bigint: #b392f0;
-  --type-object: #ffab70;
-  --type-undefined-null: #79b8ff;
+  --type-number-bigint: #79b8ff;
+  --type-object-null: #b392f0;
 }
 
 /* Сопоставление семантических переменных с пользовательскими классами Tailwind */
@@ -79,8 +77,7 @@
   --color-type-boolean: var(--type-boolean);
   --color-type-string-symbol: var(--type-string-symbol);
   --color-type-number-bigint: var(--type-number-bigint);
-  --color-type-object: var(--type-object);
-  --color-type-undefined-null: var(--type-undefined-null);
+  --color-type-object-null: var(--type-object-null);
 }
 
 .language-ts code,

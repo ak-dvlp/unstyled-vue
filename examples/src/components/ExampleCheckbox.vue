@@ -16,7 +16,7 @@ const { disabled, falseValue, label, name, readonly, trueValue } = defineProps<E
     v-model="model"
     :classes="{
       // #region example-checkbox-classes
-      root: 'border-my-label bg-my-label/10 has-checked:border-my-label inline-flex w-fit max-w-sm cursor-pointer items-center gap-3 rounded-xl border p-4 transition-colors duration-150 select-none hover:bg-transparent',
+      root: 'border-my-label bg-my-label/10 has-checked:border-my-label inline-flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-all duration-150 select-none hover:bg-transparent',
       control: 'border-my-label accent-my-label h-4 w-4 cursor-pointer rounded',
       label: 'text-my-label group-hover:text-my-label text-sm font-medium transition-colors duration-150',
       // #endregion example-checkbox-classes

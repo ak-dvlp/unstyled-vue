@@ -47,6 +47,8 @@
 
   --color-label: var(--cloud-sky);
   --color-label-inverse: var(--color-background);
+  --color-error: var(--red-500);
+  --color-invalid: var(--amber-500);
 }
 
 /** Тёмная тема */
@@ -67,6 +69,8 @@
 
   --color-label: var(--blue-300);
   --color-label-inverse: var(--color-background);
+  --color-error: var(--rose-400);
+  --color-invalid: var(--amber-400);
 }
 
 /* Сопоставление семантических переменных с пользовательскими классами Tailwind */
@@ -84,4 +88,6 @@
   --color-my-label: var(--color-label);
   --color-my-label-inverse: var(--color-label-inverse);
   --color-my-card: var(--color-card);
+  --color-my-error: var(--color-error);
+  --color-my-invalid: var(--color-invalid);
 }
