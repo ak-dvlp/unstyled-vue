@@ -36,9 +36,9 @@ const showControl = computed(() => disabled || error || readonly || required)
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-px">
+  <div class="vp-raw flex flex-col gap-y-px">
     <!-- Элементы управления -->
-    <div v-if="showControl" class="vp-raw flex flex-wrap justify-end gap-3 empty:hidden">
+    <div v-if="showControl" class="flex flex-wrap justify-end gap-3 empty:hidden">
       <template v-for="key in Object.keys(state)" :key>
         <BaseCheckbox
           v-if="props[key as keyof typeof props]"

@@ -13,6 +13,7 @@ const {
   label = '',
   name = undefined,
   readonly = false,
+  required = false,
   trueValue = true,
 } = defineProps<BaseCheckboxProps>()
 
@@ -26,7 +27,16 @@ const { isChecked, onChange } = useCheckbox(
 <template>
   <!-- #region base-checkbox-template -->
   <label :class="ui?.root">
-    <input :checked="isChecked" :class="ui?.control" :disabled :name :readonly type="checkbox" @change="onChange" />
+    <input
+      :checked="isChecked"
+      :class="ui?.control"
+      :disabled
+      :name
+      :readonly
+      :required
+      type="checkbox"
+      @change="onChange"
+    />
     <span :class="ui?.label">
       <slot>{{ label }}</slot>
     </span>
