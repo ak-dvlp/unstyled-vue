@@ -28,6 +28,7 @@ const stateClasses = computed(() => ({
   <div class="relative w-full">
     <BaseInput
       v-model="model"
+      autocomplete="nope"
       :class="withStates ? stateClasses : basicClasses"
       :disabled
       name="example-input"

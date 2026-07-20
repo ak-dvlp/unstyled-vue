@@ -66,7 +66,7 @@ In this example, the custom class `accent-my-label` (previously used to tint the
 ### Checkbox with an Icon
 
 ::: warning
-In this example, the `input` element must include the `sr-only` class or its `CSS` equivalent:
+In this example, the `input` element is visually hidden but remains accessible to screen readers using the `sr-only` class, which consists of the following `CSS rules`:
 
 ```css
 .your-class-name {
@@ -82,7 +82,7 @@ In this example, the `input` element must include the `sr-only` class or its `CS
 }
 ```
 
-This is because a `div` element acting as a container for the `SVG` image is used to display the checkbox instead of the native `input` element.
+This is necessary because a `div` element, serving as a container for an `SVG image`, is used to display the selection field instead of the `input` element.
 :::
 
 <ExampleContainer>
