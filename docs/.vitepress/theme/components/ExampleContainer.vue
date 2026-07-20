@@ -9,7 +9,7 @@ export interface ExampleState {
   simple?: boolean
 }
 
-const model = defineModel(undefined)
+const model = defineModel<unknown>()
 
 const props = defineProps<ExampleState>()
 const { disabled, error, readonly, required } = props
@@ -65,7 +65,7 @@ const showControl = computed(() => disabled || error || readonly || required)
         ></slot>
       </template>
 
-      <div v-else class="space-red-500 divide-divider flex w-full divide-x-2 divide-dashed">
+      <div v-else class="space-red-500 divide-divider flex w-full gap-x-3 divide-x-2 divide-dashed">
         <div class="w-1/3 p-1 text-sm">
           <div>
             _model_: _<span class="text-brand-1">{{ model }}</span
@@ -89,7 +89,7 @@ const showControl = computed(() => disabled || error || readonly || required)
             :modelValue="model"
             :readonly="state.readonly"
             :required="state.required"
-            :updateModelValue="(val: boolean) => (model = val)"
+            :updateModelValue="(val: any) => (model = val)"
           ></slot>
         </div>
       </div>

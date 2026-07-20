@@ -29,8 +29,10 @@ import { data } from '../props.data.ts'
 
 ### Поле ввода с простым набором стилей
 
-<ExampleContainer >
-  <ExampleInput placeholder="Введите текст"  />
+<ExampleContainer>
+  <template #default="{ modelValue, updateModelValue }">
+    <ExampleInput :model-value="modelValue" placeholder="Введите текст" @update:model-value="updateModelValue" />
+  </template>
 </ExampleContainer>
 
 <<< @/../examples/src/components/ExampleInput.vue#example-input-basic-classes {ts}
@@ -38,8 +40,16 @@ import { data } from '../props.data.ts'
 ### Поле ввода с стилями учитывающими состояния: "отключено", "ошибка", "только для чтения", "обязательный"
 
 <ExampleContainer disabled error readonly required>
-  <template #default="{ disabled, error, readonly, required }">
-    <ExampleInput :disabled :error placeholder="Введите текст" :readonly :required with-states />
+  <template #default="{ disabled, error, readonly, required, modelValue, updateModelValue }">
+    <ExampleInput
+      :disabled
+      :error
+      placeholder="Введите текст"
+      :readonly
+      :required
+      with-states
+      @update:model-value="updateModelValue"
+    />
   </template>
 </ExampleContainer>
 

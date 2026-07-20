@@ -23,7 +23,9 @@ import { data } from '../../props.data.ts'
 ## Example
 
 <ExampleContainer>
-  <ExampleTextarea placeholder="Enter text" />
+  <template #default="{ modelValue, updateModelValue }">
+    <ExampleTextarea :model-value="modelValue" placeholder="Enter text" @update:model-value="updateModelValue" />
+  </template>
 </ExampleContainer>
 
 <<< @/../examples/src/components/ExampleTextarea.vue#example-textarea-classes {ts}

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import type { BaseInputModel } from '@/index.ts'
+
 import type { ExampleState } from '../../../docs/.vitepress/theme/components/ExampleContainer.vue'
+
+const model = defineModel<BaseInputModel>()
 
 const { error } = defineProps<ExampleState & { placeholder?: string; withStates?: boolean }>()
 
@@ -23,6 +27,7 @@ const stateClasses = computed(() => ({
 <template>
   <div class="relative">
     <BaseInput
+      v-model="model"
       :class="withStates ? stateClasses : basicClasses"
       :disabled
       name="example-input"
