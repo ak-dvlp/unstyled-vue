@@ -13,6 +13,8 @@
   --vp-c-brand-3: hsl(315, 44%, 46%);
   --vp-c-brand-soft: hsl(315, 64%, 76%);
 
+  --vp-c-text-1: hsl(240, 6%, 25%);
+
   --vp-c-tip-soft: hsla(315, 94%, 21%, 0.2);
   --vp-custom-block-tip-text: var(--vp-c-brand-1);
 
@@ -25,10 +27,10 @@
   --highlighted-text: hsl(210, 54%, 43%);
   --divider: hsl(240, 2%, 89%);
 
-  --type-boolean: #f97583;
-  --type-string-symbol: #22863a;
-  --type-number-bigint: #005cc5;
-  --type-object-null: #6f42c1;
+  --type-boolean: hsl(354, 92%, 72%);
+  --type-string-symbol: hsl(134, 60%, 33%);
+  --type-number-bigint: hsl(212, 100%, 39%);
+  --type-object: hsl(261, 51%, 51%);
 }
 
 /** Тёмная тема */
@@ -46,7 +48,9 @@
   --vp-c-brand-3: hsl(210, 54%, 43%);
   --vp-c-brand-soft: hsl(210, 74%, 83%);
 
-  --vp-code-block-bg: #252528;
+  --vp-code-block-bg: hsl(240, 4%, 15%);
+
+  --vp-c-text-1: hsl(60, 12%, 86%);
 
   --vp-c-tip-soft: hsla(210, 73%, 28%, 0.4);
   --vp-custom-block-tip-text: var(--vp-c-brand-1);
@@ -60,10 +64,10 @@
   --highlighted-text: hsl(315, 44%, 46%);
   --divider: hsl(240, 4%, 29%);
 
-  --type-boolean: #f97583;
-  --type-string-symbol: #85e89d;
-  --type-number-bigint: #79b8ff;
-  --type-object-null: #b392f0;
+  --type-boolean: hsl(354, 92%, 72%);
+  --type-string-symbol: hsl(135, 68%, 72%);
+  --type-number-bigint: hsl(212, 100%, 74%);
+  --type-object: hsl(261, 76%, 76%);
 }
 
 /* Сопоставление семантических переменных с пользовательскими классами Tailwind */
@@ -74,10 +78,14 @@
   --color-divider: var(--divider);
   --color-custom-block-danger-text: var(--vp-custom-block-danger-text);
 
+  --color-text-1: var(--vp-c-text-1);
+
   --color-type-boolean: var(--type-boolean);
   --color-type-string-symbol: var(--type-string-symbol);
   --color-type-number-bigint: var(--type-number-bigint);
-  --color-type-object-null: var(--type-object-null);
+  --color-type-object: var(--type-object);
+
+  --breakpoint-at630: 630px;
 }
 
 .language-ts code,

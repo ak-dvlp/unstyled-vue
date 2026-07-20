@@ -1,8 +1,8 @@
 # General Component Overview
 
-Component parameters are listed in the tables. Required parameters are marked with a red asterisk <span style="color: var(--vp-custom-block-danger-text); font-size: 1.25rem;">\*</span>. Many required and all optional parameters have default values. This helps ensure type safety and stable component behavior across different build environments, as well as in cases where dynamic data is temporarily unavailable.
+Component props are listed in the props tables. Required props are marked with a red asterisk <span style="color: var(--vp-custom-block-danger-text); font-size: 1.25rem;">\*</span>. Many required and all optional props have default values. This helps ensure type safety and stable component behavior across different build environments, as well as in cases where dynamic data is temporarily unavailable.
 
-The library components support styling via the `classes` object prop. The keys of this object are listed in the props table. You can use standard `CSS classes`, `Tailwind classes`, or a combination of both.
+The library components support styling via the `classes` object prop. You can use standard `CSS classes`, `Tailwind classes`, or a combination of both.
 
 ::: warning
 References to classes later in this documentation imply `Tailwind classes`. <br />

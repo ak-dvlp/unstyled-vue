@@ -85,13 +85,13 @@ function codeString(str: string) {
             'text-type-boolean': value === 'true' || value === 'false',
             'text-type-string-symbol': value && value.startsWith('\''),
             'text-type-number-bigint': value && Number(value),
-            'text-type-object-null': value && (value.startsWith('{') || value.startsWith('[') || value === 'null'),
+            'text-type-object': value && (value.startsWith('{') || value.startsWith('[')),
           }"
-          >{{ value || '-' }}</span
+          >{{ value || 'undefined' }}</span
         >
       </template>
 
-      <template #empty>{{ lang.ru ? 'Параметры не найдены' : 'Props not found' }}</template>
+      <template #empty>{{ lang === 'ru' ? 'Параметры не найдены' : 'Props not found' }}</template>
     </BaseTable>
   </div>
 </template>
