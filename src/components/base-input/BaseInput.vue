@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import type { BaseInputProps } from '.'
+import type { BaseInputModel, BaseInputProps } from '.'
 
-// #region base-input-model
-const model = defineModel<string | number | null>()
-// #endregion base-input-model
+const model = defineModel<BaseInputModel>()
 
 const {
   autocomplete = 'off',

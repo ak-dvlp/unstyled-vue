@@ -4,6 +4,10 @@
 
 <<< @/../src/components/base-input/BaseInput.vue#base-input-model {ts}
 
+::: info
+The model is not required
+:::
+
 ## Props
 
 <script setup>

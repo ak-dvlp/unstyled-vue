@@ -48,7 +48,10 @@
   --color-label: var(--cloud-sky);
   --color-label-inverse: var(--color-background);
   --color-error: var(--red-500);
-  --color-invalid: var(--amber-500);
+  --color-required: var(--amber-500);
+  --color-input-border: hsl(0, 0%, 46%);
+  --color-input-border-hover: hsl(0, 0%, 31%);
+  --color-input-bg: transparent;
 }
 
 /** Тёмная тема */
@@ -70,7 +73,10 @@
   --color-label: var(--blue-300);
   --color-label-inverse: var(--color-background);
   --color-error: var(--rose-400);
-  --color-invalid: var(--amber-400);
+  --color-required: var(--amber-400);
+  --color-input-border: hsl(0, 0%, 52%);
+  --color-input-border-hover: hsl(0, 0%, 67%);
+  --color-input-bg: hsl(0, 0%, 23%);
 }
 
 /* Сопоставление семантических переменных с пользовательскими классами Tailwind */
@@ -89,5 +95,9 @@
   --color-my-label-inverse: var(--color-label-inverse);
   --color-my-card: var(--color-card);
   --color-my-error: var(--color-error);
-  --color-my-invalid: var(--color-invalid);
+  --color-my-required: var(--color-required);
+
+  --color-my-input-border: var(--color-input-border);
+  --color-my-input-border-hover: var(--color-input-border-hover);
+  --color-my-input-bg: var(--color-input-bg);
 }

@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { useCheckbox } from '../../composables/useCheckbox'
-import type { BaseCheckboxProps } from './index'
-
-// #region base-checkbox-model
-const model = defineModel<string | number | boolean | null>()
-// #endregion base-checkbox-model
+import type { BaseCheckboxModel, BaseCheckboxProps } from '.'
 
 const {
-  classes: ui = {},
+  ariaDescribedby = undefined,
+  ariaInvalid = undefined,
+  ariaLabel = undefined,
+  classes = undefined,
   disabled = false,
   falseValue = false,
   label = '',
@@ -17,27 +15,42 @@ const {
   trueValue = true,
 } = defineProps<BaseCheckboxProps>()
 
-const { isChecked, onChange } = useCheckbox(
-  model,
-  () => trueValue,
-  () => falseValue,
-)
+const model = defineModel<BaseCheckboxModel>({
+  get(value) {
+    return value === trueValue
+  },
+  set(value: BaseCheckboxModel) {
+    if (readonly) {
+      return model.value
+    }
+
+    const isChecked = !!value
+
+    return isChecked ? trueValue : falseValue
+  },
+})
 </script>
 
 <template>
   <!-- #region base-checkbox-template -->
-  <label :class="ui?.root">
+  <label :class="classes?.root" @click="readonly ? $event.preventDefault() : null">
     <input
-      :checked="isChecked"
-      :class="ui?.control"
+      v-model="model"
+      :aria-describedby
+      :aria-invalid
+      :aria-label
+      :aria-readonly="readonly"
+      :class="classes?.input"
       :disabled
       :name
-      :readonly
       :required
       type="checkbox"
-      @change="onChange"
+      @keydown.space="readonly ? $event.preventDefault() : null"
     />
-    <span :class="ui?.label">
+
+    <slot name="control"></slot>
+
+    <span :class="classes?.label">
       <slot>{{ label }}</slot>
     </span>
   </label>

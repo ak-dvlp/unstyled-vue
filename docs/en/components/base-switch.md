@@ -1,8 +1,16 @@
 # BaseSwitch
 
+::: danger
+Candidate for deletion
+:::
+
 ## Model
 
 <<< @/../src/components/base-switch/BaseSwitch.vue#base-switch-model {ts}
+
+::: info
+The model is not required
+:::
 
 ## Props
 

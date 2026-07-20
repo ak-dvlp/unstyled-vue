@@ -1,5 +1,9 @@
 # Composables
 
+::: danger
+Candidate for deletion
+:::
+
 <script setup>
 import { data } from '../../composables.data.ts'
 </script>

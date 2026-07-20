@@ -4,6 +4,10 @@
 
 <<< @/../src/components/base-textarea/BaseTextarea.vue#base-textarea-model {ts}
 
+::: info
+The model is not required
+:::
+
 ## Props
 
 <script setup>

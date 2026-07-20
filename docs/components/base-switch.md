@@ -1,8 +1,16 @@
 # BaseSwitch
 
+::: danger Опасность
+Кандидат на удаление
+:::
+
 ## Модель
 
 <<< @/../src/components/base-switch/BaseSwitch.vue#base-switch-model {ts}
+
+::: info Информация
+Модель не является обязательной
+:::
 
 ## Входные параметры
 

@@ -36,7 +36,11 @@ const { isChecked, onChange } = useCheckbox(
       type="checkbox"
       @change="onChange"
     />
-    <div :class="ui?.control"></div>
+
+    <div :class="ui?.control">
+      <slot name="icon"></slot>
+    </div>
+
     <span :class="ui?.label">
       <slot>{{ label }}</slot>
     </span>

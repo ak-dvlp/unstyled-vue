@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import type { BaseTableProps, HeaderCell } from '.'
 
-const { classes: ui = {}, cols = [], headers = [], rows = [] } = defineProps<BaseTableProps<T>>()
+const { classes: ui = undefined, cols = [], headers = [], rows = [] } = defineProps<BaseTableProps<T>>()
 
 type DynamicSlots<T> = {
   [K in Extract<keyof T, string>]?: (props: { index: number; row: T; value: T[K] }) => unknown
