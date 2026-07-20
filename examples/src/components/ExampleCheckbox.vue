@@ -36,7 +36,7 @@ defineProps<ExampleCheckboxProps>()
     :classes="{
       root: 'group flex cursor-pointer items-center gap-1 select-none has-disabled:cursor-not-allowed has-aria-readonly:cursor-not-allowed',
       input:
-        'peer aria-invalid:checked:border-my-error enabled:checked:border-my-label border-my-input-border group-hover:required:border-my-required group-hoer:enabled:not-aria-readonly:not-aria-invalid:not-required:border-my-label aria-readonly:checked:border-my-label/70 aria-readonly:checked:bg-my-label/70 group-hover:aria-invalid:border-my-error bg-my-input-bg checked:bg-my-label disabled:checked:bg-my-label/70 aria-invalid:checked:bg-my-error h-3 w-3 cursor-pointer appearance-none rounded-[3px] border border-solid bg-clip-content p-px disabled:cursor-not-allowed aria-readonly:cursor-not-allowed aria-readonly:border-dashed',
+        'peer aria-invalid:checked:border-my-error enabled:checked:border-my-label border-my-input-border group-hover:required:border-my-required group-hover:enabled:not-aria-readonly:not-aria-invalid:not-required:border-my-label aria-readonly:checked:border-my-label/70 aria-readonly:checked:bg-my-label/70 group-hover:aria-invalid:border-my-error bg-my-input-bg checked:bg-my-label disabled:checked:bg-my-label/70 aria-invalid:checked:bg-my-error h-3 w-3 cursor-pointer appearance-none rounded-[3px] border border-solid bg-clip-content p-px disabled:cursor-not-allowed aria-readonly:cursor-not-allowed aria-readonly:border-dashed',
       label:
         'text-my-label peer-aria-invalid:text-my-error peer-required:peer-invalid:text-my-required peer-disabled:text-my-label/70 peer-aria-readonly:text-my-label/70',
     }"

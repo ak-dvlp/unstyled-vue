@@ -65,15 +65,23 @@ const showControl = computed(() => disabled || error || readonly || required)
         ></slot>
       </template>
 
-      <div v-else class="space-red-500 divide-divider flex w-full gap-x-3 divide-x-2 divide-dashed">
-        <div class="w-1/3 p-1 text-sm">
-          <div>
-            _model_: _<span class="text-brand-1">{{ model }}</span
-            >_
+      <div
+        v-else
+        class="at630:divide-divider at630:flex-row at630:divide-x-2 at630:divide-dashed flex w-full flex-col gap-3"
+      >
+        <div
+          class="at630:w-1/3 at630:flex-col flex flex-row flex-wrap gap-2 p-1 text-sm"
+          :class="{
+            'text-type-boolean': typeof model === 'boolean',
+            'text-type-string-symbol': typeof model === 'string',
+            'text-type-number-bigint': typeof model === 'number',
+            'text-type-object': typeof model === 'object',
+          }"
+        >
+          <div class="wrap-break-word">
+            <span class="text-text-1">_model_: _</span>{{ model }}<span class="text-text-1">_</span>
           </div>
-          <div>
-            typeof model: <span class="text-brand-1">{{ typeof model }}</span>
-          </div>
+          <div><span class="text-text-1">typeof model: </span>{{ typeof model }}</div>
           <!-- <div>
             model === null: <span class="text-my-label">{{ model === null }}</span>
           </div>
@@ -82,7 +90,7 @@ const showControl = computed(() => disabled || error || readonly || required)
           </div> -->
         </div>
 
-        <div class="flex w-2/3 items-center-safe justify-center">
+        <div class="at630:w-2/3 flex items-center-safe justify-center">
           <slot
             :disabled="state.disabled"
             :error="state.error"

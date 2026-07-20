@@ -67,7 +67,7 @@ const COLS: TableCol<(typeof rows.value)[number]>[] = [
   <BaseTable
     :classes="{
       // #region example-table-classes
-      root: 'border-my-label overflow-hidden rounded-xl border',
+      root: 'border-my-label overflow-x-auto rounded-xl border',
       table: 'text-my-label w-full text-left text-sm',
       header: 'bg-my-label border-b text-xs font-semibold tracking-wider uppercase',
       headerCell: 'text-my-label-inverse px-6 py-3.5 font-semibold',

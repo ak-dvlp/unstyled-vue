@@ -87,7 +87,7 @@ This is because a `div` element acting as a container for the `SVG` image is use
 
 <ExampleContainer>
   <template #default="{ modelValue, updateModelValue }">
-    <ExampleCheckbox kind="icons" label="Текст" :model-value="modelValue" @update:model-value="updateModelValue" />
+    <ExampleCheckbox kind="icons" label="Label" :model-value="modelValue" @update:model-value="updateModelValue" />
   </template>
 </ExampleContainer>
 
