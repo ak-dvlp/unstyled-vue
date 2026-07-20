@@ -59,7 +59,7 @@ function codeString(str: string) {
       <input
         v-model="search"
         class="border-divider rounded border px-1.5 py-2 text-[0.9375rem]"
-        :placeholder="lang === 'ru' ? 'Поиск свойства' : 'Search property'"
+        :placeholder="lang === 'ru' ? 'Поиск параметров' : 'Search props'"
       />
     </div>
 
@@ -91,7 +91,7 @@ function codeString(str: string) {
         >
       </template>
 
-      <template #empty>Свойство не найдено</template>
+      <template #empty>{{ lang.ru ? 'Параметры не найдены' : 'Props not found' }}</template>
     </BaseTable>
   </div>
 </template>

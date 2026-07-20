@@ -329,7 +329,7 @@ export default defineConfigWithVueTs(
 
 `Prettier` выполняет сортировку:
 
-а) Служебных классов Tailwind в значении атрибута class (`prettier-plugin-tailwindcss`);  
+а) Служебных классов Tailwind в значении атрибута class и classes (`prettier-plugin-tailwindcss`);  
 б) CSS-правил блока `<style>` однофайловых Vue-компонентов (`prettier-plugin-css-order`).
 
 </details>

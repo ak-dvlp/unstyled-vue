@@ -1,5 +1,9 @@
 # Составные функции
 
+::: danger Опасность 
+Кандидат на удаление
+:::
+
 <script setup>
 import { data } from '../composables.data.ts'
 </script>

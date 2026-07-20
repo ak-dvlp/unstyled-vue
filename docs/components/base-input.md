@@ -1,8 +1,17 @@
 # BaseInput
 
+::: warning Предупреждение
+В большинстве случаев можно обойтись без компонента `BaseInput`. Для объявления модели и параметров можно использовать свои или предоставляемые библиотекой типы `BaseInputModel` и `BaseInputProps`. <br />
+Стили данного компонента регулируются напрямую через атрибут `class`.
+:::
+
 ## Модель
 
-<<< @/../src/components/base-input/BaseInput.vue#base-input-model {ts}
+<<< @/../src/components/base-input/index.ts#base-input-model {ts}
+
+::: info Информация
+Модель не является обязательной
+:::
 
 ## Входные параметры
 
@@ -18,19 +27,29 @@ import { data } from '../props.data.ts'
 
 ## Примеры
 
-Поле ввода с простым набором стилей
+### Поле ввода с простым набором стилей
 
-<ExampleContainer >
-  <ExampleInput placeholder="Введите текст"  />
+<ExampleContainer>
+  <template #default="{ modelValue, updateModelValue }">
+    <ExampleInput :model-value="modelValue" placeholder="Введите текст" @update:model-value="updateModelValue" />
+  </template>
 </ExampleContainer>
 
 <<< @/../examples/src/components/ExampleInput.vue#example-input-basic-classes {ts}
 
-Поле ввода с стилями учитывающими состояния: "отключено", "ошибка", "только для чтения", "обязательный"
+### Поле ввода с стилями учитывающими состояния: "отключено", "ошибка", "только для чтения", "обязательный"
 
 <ExampleContainer disabled error readonly required>
-  <template #default="{ disabled, error, readonly, required }">
-    <ExampleInput :disabled :error placeholder="Введите текст" :readonly :required with-states />
+  <template #default="{ disabled, error, readonly, required, modelValue, updateModelValue }">
+    <ExampleInput
+      :disabled
+      :error
+      placeholder="Введите текст"
+      :readonly
+      :required
+      with-states
+      @update:model-value="updateModelValue"
+    />
   </template>
 </ExampleContainer>
 

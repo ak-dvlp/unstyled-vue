@@ -4,6 +4,10 @@
 
 <<< @/../src/components/base-textarea/BaseTextarea.vue#base-textarea-model {ts}
 
+::: info Информация
+Модель не является обязательной
+:::
+
 ## Входные параметры
 
 <script setup>
@@ -19,7 +23,9 @@ import { data } from '../props.data.ts'
 ## Пример
 
 <ExampleContainer>
-  <ExampleTextarea label="Текст" />
+  <template #default="{ modelValue, updateModelValue }">
+    <ExampleTextarea :model-value="modelValue" placeholder="Введите текст" @update:model-value="updateModelValue" />
+  </template>
 </ExampleContainer>
 
 <<< @/../examples/src/components/ExampleTextarea.vue#example-textarea-classes {ts}

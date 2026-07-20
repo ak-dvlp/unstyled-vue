@@ -34,60 +34,11 @@ export type HeaderCell = {
 
 ## Шаблон
 
-```html{1,2,8,9,13,21,22,26,40,41}
-<div :class="ui?.root">
-  <table :class="ui?.table">
-    <!-- Семантическое описание колонок -->
-    <colgroup>
-      <col v-for="(col, i) in cols" :key="i" :style="{ width: col.width }" />
-    </colgroup>
-
-    <thead :class="ui?.header">
-      <tr :class="ui?.headerRow">
-        <th
-          v-for="(col, i) in resolvedHeaders"
-          :key="i"
-          :class="ui?.headerCell"
-          :colspan="typeof col === 'object' ? col.span || 1 : 1"
-        >
-          {{ typeof col === 'object' ? col.label : col }}
-        </th>
-      </tr>
-    </thead>
-
-    <tbody :class="ui?.body">
-      <tr v-for="(row, rowIndex) in rows" :key="rowIndex" :class="ui?.row">
-        <td
-          v-for="(col, colIndex) in cols"
-          :key="colIndex"
-          :class="ui?.cell"
-          :style="{
-              width: col.width,
-              minWidth: col.minWidth || col.width,
-            }"
-        >
-          <slot :index="rowIndex" :name="col.key" :row="row" :value="row[col.key]">
-            <!-- Текст по умолчанию -->
-            {{ row[col.key] }}
-          </slot>
-        </td>
-      </tr>
-
-      <!-- Строка для пустого массива rows -->
-      <tr v-if="rows.length === 0" :class="ui?.row">
-        <td :class="ui?.emptyCell" :colspan="cols.length">
-          <!-- Текст по умолчанию -->
-          <slot name="empty"></slot>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-```
+<<< @/../src/components/base-table/BaseTable.vue#base-table-template {1,2,7,8,12,20,21,25,37,38html}
 
 ## Пример
 
-<ExampleContainer>
+<ExampleContainer simple>
   <ExampleTable />
 </ExampleContainer>
 

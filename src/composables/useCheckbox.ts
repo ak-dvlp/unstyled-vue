@@ -1,4 +1,4 @@
-import { computed, type Ref } from 'vue'
+import { computed, type MaybeRefOrGetter, type Ref, toValue } from 'vue'
 
 // #region use-checkbox-composable
 type Model = string | number | boolean | null | undefined
@@ -21,7 +21,12 @@ type Model = string | number | boolean | null | undefined
  * @param falseValue - Component configuration parameter.
  * @returns An object containing the computed property `isChecked` and an `onChange` handler function.
  */
-export function useCheckbox(model: Ref<Model>, trueValue: () => Model, falseValue: () => Model) {
+export function useCheckbox(
+  model: Ref<Model>,
+  readonly: MaybeRefOrGetter<boolean>,
+  trueValue: MaybeRefOrGetter<Model>,
+  falseValue: MaybeRefOrGetter<Model>,
+) {
   /**
    * @ru
    * Вычисляемое свойство отражающее состояние checked поля ввода.
@@ -30,8 +35,8 @@ export function useCheckbox(model: Ref<Model>, trueValue: () => Model, falseValu
    * A calculated property that reflects the checked state of the input field.
    */
   const isChecked = computed(() => {
-    const uTrue = trueValue()
-    const uFalse = falseValue()
+    const uTrue = toValue(trueValue)
+    const uFalse = toValue(falseValue)
 
     if (uTrue || uFalse) {
       if (model.value === uTrue) {
@@ -60,25 +65,18 @@ export function useCheckbox(model: Ref<Model>, trueValue: () => Model, falseValu
    * @param evt Event
    */
   function onChange(evt: Event) {
+    if (toValue(readonly)) {
+      evt.preventDefault()
+      return
+    }
+
     const { checked } = evt.target as HTMLInputElement
 
-    const uTrue = trueValue()
-    const uFalse = falseValue()
+    const uTrue = toValue(trueValue) as Model
+    const uFalse = toValue(falseValue) as Model
 
-    if (uTrue || uFalse) {
-      if (checked) {
-        if (uTrue) {
-          model.value = uTrue
-        } else {
-          model.value = true
-        }
-      } else {
-        if (uFalse) {
-          model.value = uFalse
-        } else {
-          model.value = false
-        }
-      }
+    if (uTrue !== true || uFalse !== false) {
+      model.value = checked ? uTrue : uFalse
     } else {
       model.value = checked
     }

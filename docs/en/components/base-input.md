@@ -1,8 +1,17 @@
 # BaseInput
 
+::: warning
+In most cases, the `BaseInput` component can be omitted. You can use your own types or the library-provided `BaseInputModel` and `BaseInputProps` to declare the model and props. <br />
+The styles for this component are managed directly via the `class` attribute
+:::
+
 ## Model
 
-<<< @/../src/components/base-input/BaseInput.vue#base-input-model {ts}
+<<< @/../src/components/base-input/index.ts#base-input-model {ts}
+
+::: info
+The model is not required
+:::
 
 ## Props
 
@@ -18,19 +27,29 @@ import { data } from '../../props.data.ts'
 
 ## Examples
 
-Input with simple styling
+### Input with simple styling
 
-<ExampleContainer >
-  <ExampleInput placeholder="Enter text"  />
+<ExampleContainer>
+  <template #default="{ modelValue, updateModelValue }">
+    <ExampleInput :model-value="modelValue" placeholder="Enter text" @update:model-value="updateModelValue" />
+  </template>
 </ExampleContainer>
 
 <<< @/../examples/src/components/ExampleInput.vue#example-input-basic-classes {ts}
 
-Input with state-dependent styling: "disabled", "error", "read-only", "required"
+### Input with state-dependent styling: "disabled", "error", "read-only", "required"
 
 <ExampleContainer disabled error readonly required>
-  <template #default="{ disabled, error, readonly, required }">
-    <ExampleInput with-states placeholder="Enter text" :disabled :error :readonly :required />
+  <template #default="{ disabled, error, readonly, required, modelValue, updateModelValue }">
+    <ExampleInput
+      :disabled
+      :error
+      placeholder="Enter text"
+      :readonly
+      :required
+      with-states
+      @update:model-value="updateModelValue"
+    />
   </template>
 </ExampleContainer>
 

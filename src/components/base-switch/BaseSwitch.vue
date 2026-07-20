@@ -7,7 +7,7 @@ const model = defineModel<string | number | boolean | null>()
 // #endregion base-switch-model
 
 const {
-  classes: ui = {},
+  classes = undefined,
   disabled = false,
   falseValue = false,
   label = '',
@@ -25,19 +25,23 @@ const { isChecked, onChange } = useCheckbox(
 
 <template>
   <!-- #region base-switch-template -->
-  <label :class="ui?.root">
+  <label :class="classes?.root">
     <input
       :checked="isChecked"
       class="base-switch--visually-hidden"
-      :class="ui?.input"
+      :class="classes?.input"
       :disabled
       :name
       :readonly
       type="checkbox"
       @change="onChange"
     />
-    <div :class="ui?.control"></div>
-    <span :class="ui?.label">
+
+    <div :class="classes?.control">
+      <slot name="icon"></slot>
+    </div>
+
+    <span :class="classes?.label">
       <slot>{{ label }}</slot>
     </span>
   </label>
