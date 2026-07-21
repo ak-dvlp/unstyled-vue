@@ -2,7 +2,7 @@
 
 ## Модель
 
-<<< @/../src/components/base-textarea/BaseTextarea.vue#base-textarea-model {ts}
+<<< @/../src/components/base-textarea/index.ts#base-textarea-model {ts}
 
 ::: info Информация
 Модель не является обязательной
