@@ -1,5 +1,10 @@
-<script setup lang="ts">
-import type { BaseCheckboxModel, BaseCheckboxProps } from '.'
+<script setup lang="ts" generic="T extends CheckboxItem = boolean">
+import type { BaseCheckboxEmits } from '../../types/base-emits'
+import type { BaseCheckboxProps, CheckboxItem } from '.'
+
+// #region base-checkbox-model
+const model = defineModel<T | T[]>()
+// #endregion base-checkbox-model
 
 const {
   ariaDescribedby = undefined,
@@ -13,27 +18,30 @@ const {
   readonly = false,
   required = false,
   trueValue = true,
-} = defineProps<BaseCheckboxProps>()
+  value = undefined,
+} = defineProps<BaseCheckboxProps<T>>()
 
-const model = defineModel<BaseCheckboxModel>({
-  get(value) {
-    return value === trueValue
-  },
-  set(value: BaseCheckboxModel) {
-    if (readonly) {
-      return model.value
-    }
+const emit = defineEmits<BaseCheckboxEmits>()
 
-    const isChecked = !!value
+function onInputClick(evt: PointerEvent) {
+  if (readonly) {
+    evt.preventDefault()
+    return
+  }
 
-    return isChecked ? trueValue : falseValue
-  },
-})
+  emit('click', evt)
+}
+
+function onInputKeydownSpace(evt: KeyboardEvent) {
+  if (readonly) {
+    evt.preventDefault()
+  }
+}
 </script>
 
 <template>
   <!-- #region base-checkbox-template -->
-  <label :class="classes?.root" @click="readonly ? $event.preventDefault() : null">
+  <label :class="classes?.root" @click.stop>
     <input
       v-model="model"
       :aria-describedby
@@ -42,10 +50,14 @@ const model = defineModel<BaseCheckboxModel>({
       :aria-readonly="readonly"
       :class="classes?.input"
       :disabled
+      :false-value
       :name
       :required
+      :true-value
       type="checkbox"
-      @keydown.space="readonly ? $event.preventDefault() : null"
+      :value
+      @click="onInputClick"
+      @keydown.space="onInputKeydownSpace"
     />
 
     <slot name="control"></slot>

@@ -5,7 +5,6 @@ export const sidebarConfigRussian: DefaultTheme.Sidebar = {
     { text: 'Обзор', link: '/components/' },
     { text: 'BaseCheckbox', link: '/components/base-checkbox' },
     { text: 'BaseInput', link: '/components/base-input' },
-    { text: 'BaseSwitch', link: '/components/base-switch' },
     { text: 'BaseTable', link: '/components/base-table' },
     { text: 'BaseTextarea', link: '/components/base-textarea' },
     // { text: 'BaseToggle', link: '/components/base-toggle' },

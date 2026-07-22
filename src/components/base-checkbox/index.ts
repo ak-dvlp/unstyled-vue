@@ -1,10 +1,10 @@
 export { default as BaseCheckbox } from './BaseCheckbox.vue'
 
-// #region base-checkbox-model
-export type BaseCheckboxModel = string | number | boolean | null
-// #endregion base-checkbox-model
+// #region checkbox-item
+export type CheckboxItem = string | number | boolean | Record<string, unknown> | null
+// #endregion checkbox-item
 
-export interface BaseCheckboxProps {
+export interface BaseCheckboxProps<T extends CheckboxItem = boolean> {
   /**
    * @ru Идентификатор элемента (например, подсказки или ошибки), описывающего данное поле выбора
    * @en Identifier of the element (e.g., hint or error) describing this checkbox
@@ -38,7 +38,7 @@ export interface BaseCheckboxProps {
    * @ru Ложное значение
    * @en False value
    */
-  falseValue?: string | number | boolean | null
+  falseValue?: T
   /**
    * @ru Метка
    * @en Label
@@ -63,5 +63,10 @@ export interface BaseCheckboxProps {
    * @ru Истинное значение
    * @en True value
    */
-  trueValue?: string | number | boolean | null
+  trueValue?: T
+  /**
+   * @ru Значение поля выбора, добавляемое в массив модели (в режиме группы)
+   * @en The value of the checkbox added to the model array (in group mode)
+   */
+  value?: T
 }

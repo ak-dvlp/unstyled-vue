@@ -2,6 +2,8 @@
 
 ## Model
 
+The component uses the following model type:
+
 <<< @/../src/components/base-textarea/index.ts#base-textarea-model {ts}
 
 ::: info

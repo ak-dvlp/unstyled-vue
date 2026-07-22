@@ -89,6 +89,7 @@
   --color-my-theme-dark: var(--neutral-800);
 
   --color-my-switch-body: var(--color-switch-body);
+  --color-my-primary: var(--color-primary);
 
   --color-my-divider: var(--color-divider);
   --color-my-label: var(--color-label);

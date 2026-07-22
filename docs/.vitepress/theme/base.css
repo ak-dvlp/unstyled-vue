@@ -89,7 +89,8 @@
 }
 
 .language-ts code,
-.language-html code {
+.language-html code,
+.language-vue code {
   white-space: pre-wrap;
 }
 

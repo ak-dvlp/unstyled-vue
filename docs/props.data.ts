@@ -223,7 +223,7 @@ export default {
           isOptional: prop.hasQuestionToken(),
           name: propName,
           type,
-          default: resolvedDefault,
+          base: resolvedDefault,
         }
       })
     }

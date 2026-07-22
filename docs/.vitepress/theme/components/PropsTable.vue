@@ -27,7 +27,7 @@ const headers = computed(() =>
 const COLS: TableCol<PropItem>[] = [
   { key: 'name', width: '10rem' },
   { key: 'description', minWidth: '12.5rem' },
-  { key: 'default', width: '12rem' },
+  { key: 'base', width: '12rem' },
 ]
 
 function codeString(str: string) {
@@ -79,7 +79,7 @@ function codeString(str: string) {
         </div>
       </template>
 
-      <template #default="{ value }">
+      <template #base="{ value }">
         <span
           :class="{
             'text-type-boolean': value === 'true' || value === 'false',

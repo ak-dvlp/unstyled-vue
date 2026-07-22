@@ -2,7 +2,16 @@
 
 ## Model
 
-<<< @/../src/components/base-checkbox/index.ts#base-checkbox-model {ts}
+The component uses the following generic model type:
+
+```ts
+T | T[]
+
+```
+
+where `T` extends `CheckboxItem`:
+
+<<< @/../src/components/base-checkbox/index.ts#checkbox-item {ts}
 
 ::: info
 The model is not required
@@ -18,7 +27,7 @@ import { data } from '../../props.data.ts'
 
 ## Template
 
-<<< @/../src/components/base-checkbox/BaseCheckbox.vue#base-checkbox-template {1,8,18html}
+<<< @/../src/components/base-checkbox/BaseCheckbox.vue#base-checkbox-template {1,8,22html}
 
 ## Examples
 
@@ -91,4 +100,89 @@ This is necessary because a `div` element, serving as a container for an `SVG im
   </template>
 </ExampleContainer>
 
-<<< @/../examples/src/components/ExampleCheckbox.vue#example-checkbox-icons-template {6-9,19,21,23-27html}
+<<< @/../examples/src/components/ExampleCheckbox.vue#example-checkbox-icons-template {6-9,21,23-29html}
+
+### Switch
+
+<ExampleContainer>
+  <template #default="{ modelValue, updateModelValue }">
+    <ExampleCheckbox kind="switch" label="Текст" :model-value="modelValue" @update:model-value="updateModelValue" />
+  </template>
+</ExampleContainer>
+
+<<< @/../examples/src/components/ExampleCheckbox.vue#example-checkbox-switch-template {5-7,16html}
+
+## Component architecture notes
+
+The component utilizes a generic model type of `T | T[]`, allowing the model to be either a single value or an array of values. A single `boolean` type is used by default. This typing ensures basic type safety. The examples below illustrate errors successfully intercepted by the `TypeScript` compiler.
+
+```vue
+<!-- BaseCheckbox standalone usage -->
+<script setup lang="ts">
+import { ref } from 'vue'
+
+import BaseCheckbox from '@/components/base-checkbox/BaseCheckbox.vue'
+
+const parentModel = ref<string>('')
+</script>
+
+<template>
+  <BaseCheckbox v-model="parentModel" :false-value="0" :true-value="1" />
+</template>
+```
+
+```bash
+examples/src/App.vue:10:17 - error TS2322: Type 'string' is not assignable to type '0 | 0[] | undefined'.
+
+10   <BaseCheckbox v-model="parentModel" :false-value="0" :true-value="1" />
+                   ~~~~~~~
+```
+
+```vue
+<!-- BaseCheckbox group usage -->
+<script setup lang="ts">
+import { ref } from 'vue'
+
+import BaseCheckbox from '@/components/base-checkbox/BaseCheckbox.vue'
+
+const parentModel = ref<string[]>([])
+</script>
+
+<template>
+  <BaseCheckbox v-model="parentModel" :value="5" />
+  <BaseCheckbox v-model="parentModel" :value="10" />
+</template>
+```
+
+```bash [.terminal]
+examples/src/App.vue:10:17 - error TS2322: Type 'string[]' is not assignable to type '5 | 5[] | undefined'.
+  Type 'string[]' is not assignable to type '5[]'.
+    Type 'string' is not assignable to type '5'.
+
+10   <BaseCheckbox v-model="parentModel" :value="5" />
+                   ~~~~~~~
+
+
+examples/src/App.vue:11:17 - error TS2322: Type 'string[]' is not assignable to type '10 | 10[] | undefined'.
+  Type 'string[]' is not assignable to type '10[]'.
+    Type 'string' is not assignable to type '10'.
+
+11   <BaseCheckbox v-model="parentModel" :value="10" />
+                   ~~~~~~~
+```
+
+However, this check is not exhaustive. If the `trueValue`, `falseValue`, or `value` parameters accept `null` or `undefined` values, the `TypeScript` compiler will not flag an error. Example:
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+
+import BaseCheckbox from '@/components/base-checkbox/BaseCheckbox.vue'
+
+const parentModel = ref<string>('')
+</script>
+
+<template>
+  <BaseCheckbox v-model="parentModel" :true-value="null" />
+</template>
+```

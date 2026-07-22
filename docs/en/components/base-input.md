@@ -7,6 +7,8 @@ The styles for this component are managed directly via the `class` attribute
 
 ## Model
 
+The component uses the following model type:
+
 <<< @/../src/components/base-input/index.ts#base-input-model {ts}
 
 ::: info
@@ -37,7 +39,7 @@ import { data } from '../../props.data.ts'
 
 <<< @/../examples/src/components/ExampleInput.vue#example-input-basic-classes {ts}
 
-### Input with state-dependent styling: "disabled", "error", "read-only", "required"
+### Input with states
 
 <ExampleContainer disabled error readonly required>
   <template #default="{ disabled, error, readonly, required, modelValue, updateModelValue }">
