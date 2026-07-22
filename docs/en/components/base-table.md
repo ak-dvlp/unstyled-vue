@@ -2,7 +2,9 @@
 
 ## Model
 
-v-model binding not supported.
+`v-model` binding not supported.
+
+The component uses a generic type `T` (extending `Record<string, any>`) that defines the structure of a single data row. It maps the item type of the `rows` array to dynamic cell slot names and column configurations.
 
 ## Props
 

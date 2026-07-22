@@ -1,6 +1,5 @@
-export { BaseCheckbox, type BaseCheckboxProps } from './components/base-checkbox/index'
+export { BaseCheckbox, type BaseCheckboxModel, type BaseCheckboxProps } from './components/base-checkbox/index'
 export { BaseInput, type BaseInputModel, type BaseInputProps } from './components/base-input/index'
-export { BaseSwitch, type BaseSwitchProps } from './components/base-switch/index'
 export { BaseTable, type BaseTableProps, type HeaderCell, type TableCol } from './components/base-table/index'
 export { BaseTextarea, type BaseTextareaProps } from './components/base-textarea/index'
 export { BaseToggle, type BaseToggleProps } from './components/base-toggle/index'

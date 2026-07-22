@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 
-import type { BaseTextareaProps } from '.'
+import type { BaseTextareaModel, BaseTextareaProps } from '.'
 
-// #region base-textarea-model
-const model = defineModel<string | number | null>()
-// #endregion base-textarea-model
+const model = defineModel<BaseTextareaModel>()
 
 const {
   autocomplete = 'off',

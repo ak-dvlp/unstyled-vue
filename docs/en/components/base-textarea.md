@@ -2,7 +2,9 @@
 
 ## Model
 
-<<< @/../src/components/base-textarea/BaseTextarea.vue#base-textarea-model {ts}
+The component uses the following model type:
+
+<<< @/../src/components/base-textarea/index.ts#base-textarea-model {ts}
 
 ::: info
 The model is not required

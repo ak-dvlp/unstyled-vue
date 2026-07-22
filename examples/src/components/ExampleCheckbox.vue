@@ -1,14 +1,15 @@
 <script setup lang="ts">
+// import BaseCheckbox from '@/components/base-checkbox/index.ts'
 import type { BaseCheckboxProps } from '@/index'
 
 interface ExampleCheckboxProps extends BaseCheckboxProps {
   /** Наличие ошибки */
   error?: boolean
   /** Категория примера */
-  kind?: 'basic' | 'advanced' | 'states' | 'icons'
+  kind?: 'basic' | 'advanced' | 'states' | 'icons' | 'switch'
 }
 
-const model = defineModel<string | number | boolean | null | undefined>()
+const model = defineModel<string | number | boolean | null>()
 
 defineProps<ExampleCheckboxProps>()
 </script>
@@ -25,6 +26,8 @@ defineProps<ExampleCheckboxProps>()
     }"
     :label
     name="example-checkbox-advanced"
+    @click="console.log($event)"
+    @keydown="console.log($event)"
   />
   <!-- #endregion example-checkbox-advanced-template -->
 
@@ -45,6 +48,8 @@ defineProps<ExampleCheckboxProps>()
     name="example-checkbox-states"
     :readonly
     :required
+    @click="console.log($event)"
+    @keydown="console.log($event)"
   />
   <!-- #endregion example-checkbox-states-template -->
 
@@ -61,9 +66,11 @@ defineProps<ExampleCheckboxProps>()
     }"
     :disabled
     :label
-    name="example-checkbox-states"
+    name="example-checkbox-icons"
     :readonly
     :required
+    @click="console.log($event)"
+    @keydown="console.log($event)"
   >
     <template #control>
       <div
@@ -83,6 +90,28 @@ defineProps<ExampleCheckboxProps>()
   </BaseCheckbox>
   <!-- #endregion example-checkbox-icons-template -->
 
+  <!-- #region example-checkbox-switch-template -->
+  <BaseCheckbox
+    v-else-if="kind === 'switch'"
+    v-model="model"
+    :classes="{
+      root: 'inline-flex cursor-pointer items-center gap-x-1.25 p-0.75 select-none',
+      input: 'peer sr-only',
+      label: 'text-my-label',
+    }"
+    :label
+    name="example-checkbox-switch"
+    @click="console.log($event)"
+    @keydown="console.log($event)"
+  >
+    <template #control>
+      <div
+        class="ease bg-my-switch-body peer-checked:bg-my-primary block h-2 w-6.25 min-w-6.25 rounded-full transition-all duration-150 after:relative after:top-[-0.15rem] after:left-0 after:block after:h-3.25 after:w-3.25 after:rounded-full after:border after:border-slate-400 after:bg-white after:transition-all after:duration-200 after:ease-linear peer-checked:after:left-3"
+      ></div>
+    </template>
+  </BaseCheckbox>
+  <!-- #endregion example-checkbox-switch-template -->
+
   <!-- #region example-checkbox-basic-template -->
   <BaseCheckbox
     v-else
@@ -94,6 +123,8 @@ defineProps<ExampleCheckboxProps>()
     }"
     :label
     name="example-checkbox-basic"
+    @click="console.log($event)"
+    @keydown="console.log($event)"
   />
   <!-- #endregion example-checkbox-basic-template -->
 </template>

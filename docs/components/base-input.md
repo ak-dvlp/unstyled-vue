@@ -7,6 +7,8 @@
 
 ## Модель
 
+В компоненте используется следующий тип модели:
+
 <<< @/../src/components/base-input/index.ts#base-input-model {ts}
 
 ::: info Информация
@@ -37,7 +39,7 @@ import { data } from '../props.data.ts'
 
 <<< @/../examples/src/components/ExampleInput.vue#example-input-basic-classes {ts}
 
-### Поле ввода с стилями учитывающими состояния: "отключено", "ошибка", "только для чтения", "обязательный"
+### Поле ввода с состояниями
 
 <ExampleContainer disabled error readonly required>
   <template #default="{ disabled, error, readonly, required, modelValue, updateModelValue }">

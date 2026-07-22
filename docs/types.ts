@@ -16,7 +16,7 @@ export interface PropItem {
   type: string
 
   /** Значение по умолчанию */
-  default?: string
+  base?: string
 }
 
 export interface ComposableParameter {

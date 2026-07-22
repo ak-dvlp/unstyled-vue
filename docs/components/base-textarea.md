@@ -2,7 +2,9 @@
 
 ## Модель
 
-<<< @/../src/components/base-textarea/BaseTextarea.vue#base-textarea-model {ts}
+В компоненте используется следующий тип модели:
+
+<<< @/../src/components/base-textarea/index.ts#base-textarea-model {ts}
 
 ::: info Информация
 Модель не является обязательной

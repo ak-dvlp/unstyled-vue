@@ -9,3 +9,8 @@ References to classes later in this documentation imply `Tailwind classes`. <br 
 The components featured in the `Examples` section are not standard pre-styled library components. Beyond static and dynamic styling via classes, the components in the examples may include additional template elements or internal logic. <br />
 Custom classes use the `my-` prefix
 :::
+
+
+::: info
+In component examples, the values of certain events are logged to the developer console to show the type and count of generated events.
+:::
