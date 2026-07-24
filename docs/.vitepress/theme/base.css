@@ -13,6 +13,8 @@
   --vp-c-brand-3: hsl(315, 44%, 46%);
   --vp-c-brand-soft: hsl(315, 64%, 76%);
 
+  --vp-code-color: hsl(212, 100%, 39%);
+
   --vp-c-text-1: hsl(240, 6%, 25%);
 
   --vp-c-tip-soft: hsla(315, 94%, 21%, 0.2);
@@ -49,6 +51,7 @@
   --vp-c-brand-soft: hsl(210, 74%, 83%);
 
   --vp-code-block-bg: hsl(240, 4%, 15%);
+  --vp-code-color: hsl(212, 100%, 74%);
 
   --vp-c-text-1: hsl(60, 12%, 86%);
 
@@ -77,6 +80,8 @@
   --color-brand-3: var(--vp-c-brand-3);
   --color-divider: var(--divider);
   --color-custom-block-danger-text: var(--vp-custom-block-danger-text);
+
+  --color-code: var(--vp-code-color);
 
   --color-text-1: var(--vp-c-text-1);
 

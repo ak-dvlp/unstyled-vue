@@ -72,10 +72,10 @@ function codeString(str: string) {
       <template #description="{ row }">
         <div>
           <div>{{ row.description[lang] }}</div>
-          <div v-if="row.type.startsWith('{')" class="text-brand-1">
+          <div v-if="row.type.startsWith('{')" class="text-code">
             <pre class="language-ts">{{ codeString(row.type) }}</pre>
           </div>
-          <div v-else class="text-brand-1">{{ row.type }}</div>
+          <div v-else class="text-code">{{ row.type }}</div>
         </div>
       </template>
 
