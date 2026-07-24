@@ -44,7 +44,7 @@ type HeaderCell = {
   <ExampleTable />
 </ExampleContainer>
 
-<<< @/../examples/src/components/ExampleTable.vue#example-table-classes {ts}
+<<< @/../examples/src/components/ExampleTable.vue#example-table-template {3-10html}
 
 ## Component Internals Notes
 

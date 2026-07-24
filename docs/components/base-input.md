@@ -29,6 +29,10 @@ import { data } from '../props.data.ts'
 
 ## Примеры
 
+Шаблон примера
+
+<<< @/../examples/src/components/ExampleInput.vue#example-input-template {1,5,13html}
+
 ### Поле ввода с простым набором стилей
 
 <ExampleContainer>

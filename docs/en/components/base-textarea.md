@@ -30,4 +30,4 @@ import { data } from '../../props.data.ts'
   </template>
 </ExampleContainer>
 
-<<< @/../examples/src/components/ExampleTextarea.vue#example-textarea-classes {ts}
+<<< @/../examples/src/components/ExampleTextarea.vue#example-textarea-template {3html}

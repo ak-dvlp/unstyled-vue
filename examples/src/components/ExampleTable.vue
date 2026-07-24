@@ -64,9 +64,9 @@ const COLS: TableCol<(typeof rows.value)[number]>[] = [
 </script>
 
 <template>
+  <!-- #region example-table-template -->
   <BaseTable
     :classes="{
-      // #region example-table-classes
       root: 'border-my-label overflow-x-auto rounded-xl border',
       table: 'text-my-label w-full text-left text-sm',
       header: 'bg-my-label border-b text-xs font-semibold tracking-wider uppercase',
@@ -75,12 +75,12 @@ const COLS: TableCol<(typeof rows.value)[number]>[] = [
       row: 'hover:bg-my-label hover:text-my-label-inverse transition-colors duration-150',
       cell: 'px-6 py-4 align-middle',
       emptyCell: 'px-6 py-4 text-sm',
-      // #endregion example-table-classes
     }"
     :cols="COLS"
     :headers
     :rows="rows"
   >
+    <!-- #endregion example-table-template -->
     <template #empty> Таблица пуста </template>
   </BaseTable>
 </template>
